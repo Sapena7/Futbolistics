@@ -1,6 +1,6 @@
 /**
  * This is jQuery plugin declaration for standings html-component
- * @html: ./html-component/ranking.html
+ * @html: ./html-component/ranking.html.twig
  * @deps: jQuery, jquery-bracket
  * @using: ./js/main.js
  * @author torbara  (https://themeforest.net/user/torbara)

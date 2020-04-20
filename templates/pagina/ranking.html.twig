@@ -10,28 +10,12 @@
     <title>Futbolistics</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="css/library/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="dev-assets/preloader-default.css" rel="stylesheet" type="text/css" />
-    <link href="dev-assets/demo-switcher.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css-min/soccer.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css-min/soccer.min.css') }}" rel="stylesheet" type="text/css" />
 
-    <link href="css-min/soccer.min.css" rel="stylesheet" type="text/css" />
-    
-    <!-- 
-    
-    Enable one styles which the you want
-    
-    <link href="css-min/soccer.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/hockey.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/basketball.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/football.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/baseball.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/dota.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/csgo.min.css" rel="stylesheet" type="text/css" />
-    
-    All libraries included in this css, concating rules in /grunt/cssmin.js
-    Use grunt default task for creating this files
-    
-    -->
 </head>
 
 <body>
@@ -49,7 +33,7 @@
     <!--MAIN MENU WRAP BEGIN-->
     <div class="main-menu-wrap sticky-menu">
         <div class="container">
-            <a href="amateurs.html.twig" class="custom-logo-link"><img src="images/soccer/logo.png" alt="logo" class="custom-logo"></a>
+            <a href="amateurs.html.twig" class="custom-logo-link"><img src="{{ asset('assets/images/soccer/logo.png') }}" alt="logo" class="custom-logo"></a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#team-menu" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -68,7 +52,7 @@
                                 <li>
                                     <a href="cup.html"><span>Standings<i class="fa fa-long-arrow-right" aria-hidden="true"></i></span></a>
                                     <ul>
-                                        <li><a href="ranking.html"><span>championship</span></a></li>
+                                        <li><a href="ranking.html.twig"><span>championship</span></a></li>
                                     </ul>
                                 </li>
                                 <li><a href="club-stats.html"><span>club stats</span></a></li>
@@ -85,10 +69,10 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="staff.html"><span>Equipos</span></a>
+                            <a href="{{ path('equipos_index') }}"><span>Equipos</span></a>
                         </li>
                         <li class="active">
-                            <a href="ranking.html"><span>Clasificaciones</span></a>
+                            <a href="ranking.html.twig"><span>Clasificaciones</span></a>
                         </li>
                         <li><a href="news.html"><span>Noticias</span></a></li>
                         <li><a href="contacts.html"><span>Contacto</span></a></li>
@@ -156,9 +140,10 @@
                                     <th>Forma</th>
                                     <th>Siguiente</th>
                                 </tr>
+                                {% for equipo in equipos %}
                                 <tr>
                                     <td class="up">
-                                        <i class="fa fa-caret-up" aria-hidden="true"></i> 1 <span class="team"><img src="images/soccer/team-logo1.png" width="30" height="30" alt="team-logo"> </span>Team 1
+                                        <i class="fa fa-caret-up" aria-hidden="true"></i> 1 <span class="team"><img src="{{ asset('assets/images/escudos/')}}{{ equipo.fotoPerfil }}" width="30" height="30" alt="team-logo"> </span>Team 1
                                     </td>
                                     <td>11</td>
                                     <td>8</td>
@@ -175,82 +160,7 @@
                                     </td>
                                     <td><a href="club-stats.html"><img src="images/soccer/team-logo2.png" width="30" height="30" alt="team-logo"></a></td>
                                 </tr>
-                                <tr>
-                                    <td class="down">
-                                        <i class="fa fa-caret-down" aria-hidden="true"></i> 2 <span class="team"><img src="images/soccer/team-logo2.png" width="30" height="30" alt="team-logo"> </span>Team 2
-                                    </td>
-                                    <td>11</td>
-                                    <td>8</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>+14</td>
-                                    <td class="points"><span>23</span></td>
-                                    <td class="form">
-                                        <span class="win">w</span>
-                                        <span class="drawn">d</span>
-                                        <span class="lose">l</span>
-                                        <span class="win">w</span>
-                                        <span class="lose">l</span>
-                                    </td>
-                                    <td><a href="club-stats.html"><img src="images/soccer/team-logo1.png" width="30" height="30" alt="team-logo"></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="down">
-                                        <i class="fa fa-caret-down" aria-hidden="true"></i> 2 <span class="team"><img src="images/soccer/team-logo3.png" width="30" height="30" alt="team-logo"> </span>Team 3
-                                    </td>
-                                    <td>11</td>
-                                    <td>8</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>+13</td>
-                                    <td class="points"><span>23</span></td>
-                                    <td class="form">
-                                        <span class="win">w</span>
-                                        <span class="lose">l</span>
-                                        <span class="lose">l</span>
-                                        <span class="win">w</span>
-                                        <span class="drawn">d</span>
-                                    </td>
-                                    <td><a href="club-stats.html"><img src="images/soccer/team-logo4.png" width="30" height="30" alt="team-logo"></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="down">
-                                        <i class="fa fa-caret-down" aria-hidden="true"></i> 2 <span class="team"><img src="images/soccer/team-logo4.png" width="30" height="30" alt="team-logo"> </span>Team 4
-                                    </td>
-                                    <td>11</td>
-                                    <td>8</td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>+10</td>
-                                    <td class="points"><span>23</span></td>
-                                    <td class="form">
-                                        <span class="lose">l</span>
-                                        <span class="drawn">d</span>
-                                        <span class="win">w</span>
-                                        <span class="win">w</span>
-                                        <span class="win">w</span>
-                                    </td>
-                                    <td><a href="club-stats.html"><img src="images/soccer/team-logo3.png" width="30" height="30" alt="team-logo"></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="none">
-                                        <i class="fa fa-circle" aria-hidden="true"></i> 3 <span class="team"><img src="images/soccer/team-logo5.png" width="30" height="30" alt="team-logo"> </span>Team 5
-                                    </td>
-                                    <td>11</td>
-                                    <td>8</td>
-                                    <td>2</td>
-                                    <td>2</td>
-                                    <td>+16</td>
-                                    <td class="points"><span>20</span></td>
-                                    <td class="form">
-                                        <span class="win">w</span>
-                                        <span class="drawn">d</span>
-                                        <span class="lose">l</span>
-                                        <span class="win">w</span>
-                                        <span class="win">w</span>
-                                    </td>
-                                    <td><a href="club-stats.html"><img src="images/soccer/team-logo1.png" width="30" height="30" alt="team-logo"></a></td>
-                                </tr>
+                                {% endfor %}
                             </table>
                         </div>
                     </div>

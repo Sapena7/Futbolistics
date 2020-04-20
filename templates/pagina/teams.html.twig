@@ -7,29 +7,15 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Team HTML</title>
+    <title>Equipos</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link href="css/library/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="dev-assets/preloader-default.css" rel="stylesheet" type="text/css" />
-    <link href="dev-assets/demo-switcher.css" rel="stylesheet" type="text/css" />
 
-    <!--
+    <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css-min/soccer.min.css') }}" rel="stylesheet" type="text/css" />
 
-    Enable one styles which the you want
-
-    <link href="css-min/soccer.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/hockey.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/basketball.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/football.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/baseball.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/dota.min.css" rel="stylesheet" type="text/css" />
-    <link href="css-min/csgo.min.css" rel="stylesheet" type="text/css" />
-
-    All libraries included in this css, concating rules in /grunt/cssmin.js
-    Use grunt default task for creating this files
-
-    -->
 </head>
 
 <body>
@@ -47,7 +33,7 @@
 <!--MAIN MENU WRAP BEGIN-->
 <div class="main-menu-wrap sticky-menu">
     <div class="container">
-        <a href="amateurs.html.twig" class="custom-logo-link"><img src="images/soccer/logo.png" alt="logo" class="custom-logo"></a>
+        <a href="amateurs.html.twig" class="custom-logo-link"><img src="{{ asset('assets/images/soccer/logo.png') }}" alt="logo" class="custom-logo"></a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#team-menu" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -58,7 +44,7 @@
             <div class="collapse navbar-collapse" id="team-menu">
                 <ul class="main-menu nav">
                     <li class="active">
-                        <a href="amateurs.html.twig"><span>Home</span></a>
+                        <a href="{{ path('homepage') }}"><span>Home</span></a>
                     </li>
                     <li>
                         <a href="matches.html"><span>Partidos</span></a>
@@ -77,12 +63,12 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="teams.html"><span>Equipos</span></a>
+                        <a href="teams.html.twig"><span>Equipos</span></a>
                     </li>
                     <li>
-                        <a href="ranking.html"><span>Clasificaciones</span></a>
+                        <a href="ranking.html.twig"><span>Clasificaciones</span></a>
                         <ul>
-                            <li><a href="ranking.html"><span>Liga</span></a></li>
+                            <li><a href="ranking.html.twig"><span>Liga</span></a></li>
                             <li><a href="cup.html"><span>Copa</span></a></li>
                         </ul>
                     </li>
@@ -132,66 +118,14 @@
             <div class="part-list">
                 <div class="container">
                     <div class="row">
+                        {% for equipo in equipos %}
                         <div class="col-md-3">
                             <a href="club-stats.html" class="item">
-                                <span class="logo"><img src="images/soccer/team-logo1.png" width="80" height="80" alt="team-logo"></span>
-                                <span class="name">Team 1</span>
+                                <span class="logo"><img src="{{ asset('assets/images/escudos/')}}{{ equipo.fotoPerfil }}" width="80" height="80" alt="team-logo"></span>
+                                <span class="name">{{ equipo.Nombre }}</span>
                             </a>
                         </div>
-                        <div class="col-md-3">
-                            <a href="club-stats.html" class="item">
-                                <span class="logo"><img src="images/soccer/0201127.jpg" width="80" height="80" alt="team-logo"></span>
-                                <span class="name">C.D. S.B. ONTINYENT</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="club-stats.html" class="item">
-                                <span class="logo"><img src="images/soccer/team-logo3.png" width="80" height="80" alt="team-logo"></span>
-                                <span class="name">Team 3</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="club-stats.html" class="item">
-                                <span class="logo"><img src="images/soccer/team-logo4.png" width="80" height="80" alt="team-logo"></span>
-                                <span class="name">Team 4</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="club-stats.html" class="item">
-                                <span class="logo"><img src="images/soccer/team-logo5.png" width="80" height="80" alt="team-logo"></span>
-                                <span class="name">Team 5</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="club-stats.html" class="item">
-                                <span class="logo"><img src="images/soccer/team-logo1.png" width="80" height="80" alt="team-logo"></span>
-                                <span class="name">Team 6</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="club-stats.html" class="item">
-                                <span class="logo"><img src="images/soccer/team-logo2.png" width="80" height="80" alt="team-logo"></span>
-                                <span class="name">Team 7</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="club-stats.html" class="item">
-                                <span class="logo"><img src="images/soccer/team-logo3.png" width="80" height="80" alt="team-logo"></span>
-                                <span class="name">Team 8</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="club-stats.html" class="item">
-                                <span class="logo"><img src="images/soccer/team-logo4.png" width="80" height="80" alt="team-logo"></span>
-                                <span class="name">Team 9</span>
-                            </a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="club-stats.html" class="item">
-                                <span class="logo"><img src="images/soccer/team-logo5.png" width="80" height="80" alt="team-logo"></span>
-                                <span class="name">Team 10</span>
-                            </a>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -208,13 +142,13 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-4 text-center">
-                                <img class="sponsor-icons" src="images/common/sponsor-img.png" alt="sponsor-image">
+                                <img class="sponsor-icons" src="{{ asset('assets/images/common/sponsor-img.png') }}" alt="sponsor-image">
                             </div>
                             <div class="col-xs-4 text-center">
-                                <img class="sponsor-icons" src="images/common/sponsor-img1.png" alt="sponsor-image">
+                                <img class="sponsor-icons" src="{{ asset('assets/images/common/sponsor-img1.png') }}" alt="sponsor-image">
                             </div>
                             <div class="col-xs-4 text-center">
-                                <img  class="sponsor-icons dota-csgo-image" src="images/common/sponsor-img2.png" alt="sponsor-image">
+                                <img  class="sponsor-icons dota-csgo-image" src="{{ asset('assets/images/common/sponsor-img2.png') }}" alt="sponsor-image">
                             </div>
                         </div>
                     </div>
@@ -223,13 +157,13 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xs-4 text-center">
-                                <img class="sponsor-icons" src="images/common/sponsor-img.png" alt="sponsor-image">
+                                <img class="sponsor-icons" src="{{ asset('assets/images/common/sponsor-img.png') }}" alt="sponsor-image">
                             </div>
                             <div class="col-xs-4 text-center">
-                                <img  class="sponsor-icons" src="images/common/sponsor-img1.png" alt="sponsor-image">
+                                <img  class="sponsor-icons" src="{{ asset('assets/images/common/sponsor-img1.png') }}" alt="sponsor-image">
                             </div>
                             <div class="col-xs-4 text-center">
-                                <img class="sponsor-icons dota-csgo-image" src="images/common/sponsor-img2.png" alt="sponsor-image">
+                                <img class="sponsor-icons dota-csgo-image" src="{{ asset('assets/images/common/sponsor-img2.png') }}" alt="sponsor-image">
                             </div>
                         </div>
                     </div>
@@ -260,7 +194,7 @@
                 <div class="col-md-4 col-sm-12">
                     <div class="footer-left">
                         <div class="wrap">
-                            <a href="index-2.html" class="foot-logo"><img src="images/soccer/footer-logo.png" alt="footer-logo"></a>
+                            <a href="index-2.html" class="foot-logo"><img src="{{ asset('assets/images/soccer/footer-logo.png') }}" alt="footer-logo"></a>
                             <p>Activated charcoal trust fund ugh prism af, beard marfa air plant stumptown gastropub farm-to-table jianbing.</p>
                             <ul class="foot-left-menu">
                                 <li><a href="staff.html">First team</a></li>
@@ -276,7 +210,7 @@
                     <div class="foot-news">
                         <h4>Recent news</h4>
                         <div class="item">
-                            <a href="news.html" class="image"><img class="img-responsive" src="images/soccer/foot-news-img.jpg" alt="news-image"></a>
+                            <a href="news.html" class="image"><img class="img-responsive" src="{{ asset('assets/images/soccer/foot-news-img.jpg') }}" alt="news-image"></a>
                             <a href="news.html" class="name">When somersaulting Sanchez shouldered Mexico’s hopes</a>
                             <a href="news.html" class="date">25 Sep 2016</a>
                             <span class="separator">in</span>
@@ -340,69 +274,69 @@
 </footer>
 <!--FOOTER END-->
 
-<script type="text/javascript" src="js/library/jquery.js"></script>
-<script type="text/javascript" src="js/library/jquery-ui.js"></script>
-<script type="text/javascript" src="js/library/bootstrap.js"></script>
-<script type="text/javascript" src="js/library/jquery.sticky.js"></script>
-<script type="text/javascript" src="js/library/jquery.jcarousel.js"></script>
-<script type="text/javascript" src="js/library/jcarousel.connected-carousels.js"></script>
-<script type="text/javascript" src="js/library/owl.carousel.js"></script>
-<script type="text/javascript" src="js/library/progressbar.js"></script>
-<script type="text/javascript" src="js/library/jquery.bracket.min.js"></script>
-<script type="text/javascript" src="js/library/chartist.js"></script>
-<script type="text/javascript" src="js/library/Chart.js"></script>
-<script type="text/javascript" src="js/library/fancySelect.js"></script>
-<script type="text/javascript" src="js/library/isotope.pkgd.js"></script>
-<script type="text/javascript" src="js/library/imagesloaded.pkgd.js"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/jquery-ui.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/jquery.sticky.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/jquery.jcarousel.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/jcarousel.connected-carousels.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/owl.carousel.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/progressbar.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/jquery.bracket.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/chartist.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/Chart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/fancySelect.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/isotope.pkgd.js') }}"></script>
+<script type="text/javascript" src=" {{ asset('assets/js/library/imagesloaded.pkgd.js') }}"></script>
 
-<script type="text/javascript" src="js/jquery.team-coundown.js"></script>
-<script type="text/javascript" src="js/matches-slider.js"></script>
-<script type="text/javascript" src="js/header.js"></script>
-<script type="text/javascript" src="js/matches_broadcast_listing.js"></script>
-<script type="text/javascript" src="js/news-line.js"></script>
-<script type="text/javascript" src="js/match_galery.js"></script>
-<script type="text/javascript" src="js/main-club-gallery.js"></script>
-<script type="text/javascript" src="js/product-slider.js"></script>
-<script type="text/javascript" src="js/circle-bar.js"></script>
-<script type="text/javascript" src="js/standings.js"></script>
-<script type="text/javascript" src="js/shop-price-filter.js"></script>
-<script type="text/javascript" src="js/timeseries.js"></script>
-<script type="text/javascript" src="js/radar.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/preloader.js"></script>
-<script type="text/javascript" src="js/diagram.js"></script>
-<script type="text/javascript" src="js/bi-polar-diagram.js"></script>
-<script type="text/javascript" src="js/label-placement-diagram.js"></script>
-<script type="text/javascript" src="js/donut-chart.js"></script>
-<script type="text/javascript" src="js/animate-donut.js"></script>
-<script type="text/javascript" src="js/advanced-smil.js"></script>
-<script type="text/javascript" src="js/svg-path.js"></script>
-<script type="text/javascript" src="js/pick-circle.js"></script>
-<script type="text/javascript" src="js/horizontal-bar.js"></script>
-<script type="text/javascript" src="js/gauge-chart.js"></script>
-<script type="text/javascript" src="js/stacked-bar.js"></script>
+<script type="text/javascript" src="{{ asset('assets/js/jquery.team-coundown.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/matches-slider.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/header.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/matches_broadcast_listing.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/news-line.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/match_galery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/main-club-gallery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/product-slider.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/circle-bar.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/standings.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/shop-price-filter.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/timeseries.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/radar.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/slider.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/preloader.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/diagram.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/bi-polar-diagram.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/label-placement-diagram.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/donut-chart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/animate-donut.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/advanced-smil.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/svg-path.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/pick-circle.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/horizontal-bar.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/gauge-chart.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/stacked-bar.js') }}"></script>
 
-<script type="text/javascript" src="js/library/chartist-plugin-legend.js"></script>
-<script type="text/javascript" src="js/library/chartist-plugin-threshold.js"></script>
-<script type="text/javascript" src="js/library/chartist-plugin-pointlabels.js"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-legend.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-threshold.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-pointlabels.js') }}"></script>
 
-<script type="text/javascript" src="js/treshold.js"></script>
-<script type="text/javascript" src="js/visible.js"></script>
-<script type="text/javascript" src="js/anchor.js"></script>
-<script type="text/javascript" src="js/landing_carousel.js"></script>
-<script type="text/javascript" src="js/landing_sport_standings.js"></script>
-<script type="text/javascript" src="js/twitterslider.js"></script>
-<script type="text/javascript" src="js/champions.js"></script>
-<script type="text/javascript" src="js/landing_mainnews_slider.js"></script>
-<script type="text/javascript" src="js/carousel.js"></script>
-<script type="text/javascript" src="js/video_slider.js"></script>
-<script type="text/javascript" src="js/footer_slides.js"></script>
-<script type="text/javascript" src="js/player_test.js"></script>
+<script type="text/javascript" src="{{ asset('assets/js/treshold.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/visible.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/anchor.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/landing_carousel.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/landing_sport_standings.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/twitterslider.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/champions.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/landing_mainnews_slider.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/carousel.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/video_slider.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/footer_slides.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/player_test.js') }}"></script>
 
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
 
-<script type="text/javascript" src="dev-assets/demo-switcher.js"></script>
+<script type="text/javascript" src="{{ asset('dev-assets/demo-switcher.js') }}"></script>
+
 </body>
-
 
 </html>
