@@ -96,11 +96,6 @@ class Usuario implements UserInterface
         return $this;
     }
 
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -161,7 +156,7 @@ class Usuario implements UserInterface
      */
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return ['ROLE_ADMIN'];
     }
 
     /**
@@ -173,7 +168,7 @@ class Usuario implements UserInterface
      */
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
+        return null;
     }
 
     /**
@@ -183,7 +178,12 @@ class Usuario implements UserInterface
      */
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return $this->nombre;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
     }
 
     /**
@@ -194,6 +194,10 @@ class Usuario implements UserInterface
      */
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+
+    }
+
+    public function __toString() {
+        return $this->getNombre();
     }
 }

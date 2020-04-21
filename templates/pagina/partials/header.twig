@@ -1,0 +1,50 @@
+<!--MAIN MENU WRAP BEGIN-->
+<div class="main-menu-wrap sticky-menu">
+    <div class="container">
+        <a href="{{ path('homepage') }}" class="custom-logo-link"><img src="{{ asset('assets/images/soccer/logo.png') }}" alt="logo" class="custom-logo"></a>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#team-menu" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <nav class="navbar">
+            <div class="collapse navbar-collapse" id="team-menu">
+                <ul class="main-menu nav">
+                    <li class="active">
+                        <a href="{{ path('homepage') }}"><span>Home</span></a>
+                    </li>
+                    <li>
+                        <a href="matches.html"><span>Partidos</span></a>
+                        <ul>
+                            <li><a href="live-text-stream.html"><span>En directo</span></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="{{ path('equipos_index') }}"><span>Equipos</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ path('rankingLeague') }}"><span>Clasificaciones</span></a>
+                        <ul>
+                            <li><a href="{{ path('rankingLeague') }}"><span>Liga</span></a></li>
+                            <li><a href="cup.html"><span>Copa</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="news.html"><span>Noticias</span></a></li>
+                    <li><a href="contacts.html"><span>Contacto</span></a></li>
+                    <li>
+                        <a href="#other"><span>other</span></a>
+                        <ul>
+                            <li><a href="404.html"><span>404</span></a></li>
+                            <li><a href="trophies.html"><span>trophies</span></a></li>
+                            <li><a href="about-club.html"><span>about club</span></a></li>
+                        </ul>
+                    </li>
+                    <a href="{{ path('login') }}"><img class="icons" src="{{ asset('assets/images/common/login.png') }}" width="25" height="25">Login</a>
+                    <a href="{{ path('app_logout') }}"><img src="{{ asset('assets/images/common/login.png') }}" width="25" height="25">Logout</a>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<!--MAIN MENU WRAP END-->
