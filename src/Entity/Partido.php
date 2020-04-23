@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Partido
  *
- * @ORM\Table(name="Partido", indexes={@ORM\Index(name="equipo_visitante", columns={"equipo_visitante"}), @ORM\Index(name="equipo_local", columns={"equipo_local"})})
+ * @ORM\Table(name="Partido", indexes={@ORM\Index(name="equipo_visitante", columns={"equipo_visitante"}), @ORM\Index(name="equipo_local", columns={"equipo_local"}), @ORM\Index(name="estadio", columns={"estadio"})})
  * @ORM\Entity
  */
 class Partido
@@ -61,6 +61,16 @@ class Partido
      * })
      */
     private $equipoVisitante;
+
+    /**
+     * @var \Estadio
+     *
+     * @ORM\ManyToOne(targetEntity="Estadio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="estadio", referencedColumnName="id")
+     * })
+     */
+    private $estadio;
 
     public function getId(): ?int
     {
@@ -123,6 +133,18 @@ class Partido
     public function setEquipoVisitante(?Equipo $equipoVisitante): self
     {
         $this->equipoVisitante = $equipoVisitante;
+
+        return $this;
+    }
+
+    public function getEstadio(): ?Estadio
+    {
+        return $this->estadio;
+    }
+
+    public function setEstadio(?Estadio $estadio): self
+    {
+        $this->estadio = $estadio;
 
         return $this;
     }

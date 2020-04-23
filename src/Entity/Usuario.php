@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Usuario
  *
- * @ORM\Table(name="Usuario", indexes={@ORM\Index(name="equipo_favorito", columns={"equipo_favorito"})})
+ * @ORM\Table(name="Usuario", indexes={@ORM\Index(name="rol", columns={"rol"}), @ORM\Index(name="equipo_favorito", columns={"equipo_favorito"})})
  * @ORM\Entity
  */
 class Usuario implements UserInterface
@@ -44,13 +44,6 @@ class Usuario implements UserInterface
     private $password;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="es_admin", type="integer", nullable=false)
-     */
-    private $esAdmin;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="foto_perfil", type="string", length=100, nullable=false)
@@ -66,6 +59,16 @@ class Usuario implements UserInterface
      * })
      */
     private $equipoFavorito;
+
+    /**
+     * @var \Rol
+     *
+     * @ORM\ManyToOne(targetEntity="Rol")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="rol", referencedColumnName="Id")
+     * })
+     */
+    private $rol;
 
     public function getId(): ?int
     {
@@ -96,21 +99,14 @@ class Usuario implements UserInterface
         return $this;
     }
 
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    public function getEsAdmin(): ?int
-    {
-        return $this->esAdmin;
-    }
-
-    public function setEsAdmin(int $esAdmin): self
-    {
-        $this->esAdmin = $esAdmin;
 
         return $this;
     }
@@ -139,65 +135,54 @@ class Usuario implements UserInterface
         return $this;
     }
 
-
-    /**
-     * Returns the roles granted to the user.
-     *
-     *     public function getRoles()
-     *     {
-     *         return ['ROLE_USER'];
-     *     }
-     *
-     * Alternatively, the roles might be stored on a ``roles`` property,
-     * and populated in any number of different ways when the user object
-     * is created.
-     *
-     * @return (Role|string)[] The user roles
-     */
-    public function getRoles()
+    public function getRol(): ?Rol
     {
-        return ['ROLE_ADMIN'];
+        return $this->rol;
+    }
+
+    public function setRol(?Rol $rol): self
+    {
+        $this->rol = $rol;
+
+        return $this;
     }
 
     /**
-     * Returns the salt that was originally used to encode the password.
-     *
-     * This can return null if the password was not encoded using a salt.
-     *
-     * @return string|null The salt
+     * @inheritDoc
      */
-    public function getSalt()
+    public function getSalt():?string
     {
         return null;
     }
 
     /**
-     * Returns the username used to authenticate the user.
-     *
-     * @return string The username
-     */
-    public function getUsername()
-    {
-        return $this->nombre;
-    }
-
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Removes sensitive data from the user.
-     *
-     * This is important if, at any given point, sensitive information like
-     * the plain-text password is stored on this object.
+     * @inheritDoc
      */
     public function eraseCredentials()
     {
 
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function getRoles():?array{
+
+        //return $this->rol;
+        return ['ROLE_ADMIN'];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUsername()
+    {
+        return $this->nombre;
+    }
+
+
     public function __toString() {
         return $this->getNombre();
     }
+
 }
