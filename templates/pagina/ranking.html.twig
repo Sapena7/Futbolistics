@@ -81,8 +81,16 @@
                                 </tr>
                                 {% for equipoClas in clasificacion %}
                                 <tr>
+                                    {% if (equipoClas.Id == 1) or (equipoClas.Id == 2) or (equipoClas.Id == 3) %}
                                     <td class="up">
-                                        <i class="fa fa-caret-up" aria-hidden="true"></i> 1 <span class="team">
+                                        <i class="fa fa-caret-up" aria-hidden="true"></i> {{ equipoClas.Id }} <span class="team">
+                                        {% elseif (equipoClas.Id == 14) or (equipoClas.Id == 15) or (equipoClas.Id == 16) %}
+                                    <td class="down">
+                                        <i class="fa fa-caret-down" aria-hidden="true"></i> {{ equipoClas.Id }} <span class="team">
+                                        {% else %}
+                                    <td>
+                                        <i class="fa fa-caret-right" aria-hidden="true"></i> {{ equipoClas.Id }} <span class="team">
+                                        {% endif %}
                                             <img src="{{ asset('assets/images/escudos/')}}{{ equipos[equipoClas.Id-1].fotoPerfil }}" width="30" height="30" alt="team-logo">
                                         </span>{{ equipos[equipoClas.Id-1].nombre }}
                                     </td>
@@ -109,7 +117,15 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <p>Pabst irony tattooed, synth sriracha selvage pok pok. Wayfarers kinfolk sartorial, helvetica you probably haven't heard of them tumeric venmo deep v mixtape semiotics brunch.</p>
+                    <td class="up">
+                        <i class="fa fa-caret-up" aria-hidden="true"></i>Sube<span class="team"></span>
+                    </td>
+                    <td class="down">
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>Baja<span class="team"></span>
+                    </td>
+                    <td>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>Se mantiene<span class="team"></span>
+                    </td>
                 </div>
             </div>
         </div>
