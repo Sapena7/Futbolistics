@@ -23,8 +23,12 @@ class ClasificacionController extends AbstractController
             ->getRepository(Clasificacion::class)
             ->findAll();
 
-        return $this->render('pagina/ranking.html.twig', [
-            'clasificacion' => $clasificacion,
-        ]);
+        $equipos = $this->getDoctrine()
+            ->getRepository(Equipo::class)
+            ->findAll();
+
+        $properties = ["clasificacion" => $clasificacion, "equipos" => $equipos];
+
+        return $this->render('pagina/ranking.html.twig', $properties);
     }
 }
