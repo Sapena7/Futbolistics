@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use http\Client\Curl\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -184,5 +185,4 @@ class Usuario implements UserInterface
     public function __toString() {
         return $this->getNombre();
     }
-
 }

@@ -8,9 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Equipo
  *
  * @ORM\Table(name="Equipo", indexes={@ORM\Index(name="liga", columns={"liga"}), @ORM\Index(name="estadio", columns={"estadio"})})
- * @ORM\Entity
  * @ORM\Entity(repositoryClass="App\Repository\EquipoRepository")
-
  */
 class Equipo
 {
@@ -31,11 +29,25 @@ class Equipo
     private $nombre;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="entrenador", type="string", length=100, nullable=false)
+     */
+    private $entrenador;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="trofeos", type="integer", nullable=false)
      */
     private $trofeos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="region", type="string", length=100, nullable=false)
+     */
+    private $region;
 
     /**
      * @var string
@@ -81,6 +93,18 @@ class Equipo
         return $this;
     }
 
+    public function getEntrenador(): ?string
+    {
+        return $this->entrenador;
+    }
+
+    public function setEntrenador(string $entrenador): self
+    {
+        $this->entrenador = $entrenador;
+
+        return $this;
+    }
+
     public function getTrofeos(): ?int
     {
         return $this->trofeos;
@@ -89,6 +113,18 @@ class Equipo
     public function setTrofeos(int $trofeos): self
     {
         $this->trofeos = $trofeos;
+
+        return $this;
+    }
+
+    public function getRegion(): ?string
+    {
+        return $this->region;
+    }
+
+    public function setRegion(string $region): self
+    {
+        $this->region = $region;
 
         return $this;
     }
