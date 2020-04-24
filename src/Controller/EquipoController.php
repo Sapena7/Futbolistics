@@ -26,4 +26,16 @@ class EquipoController extends AbstractController
             'equipos' => $equipos,
         ]);
     }
+
+    /**
+     * @Route("/{id}", name="equipos_byId", methods={"GET"})
+     */
+    public function findEquipoById($id)
+    {
+        $equipos = $this->getDoctrine()
+            ->getRepository(Equipo::class);
+        $equipo = $equipos->findTeamById($id);
+        $properties = ['equipo' => $equipo];
+        return $this->render('pagina/club-stats.html.twig', $properties);
+    }
 }
