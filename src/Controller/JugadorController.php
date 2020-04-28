@@ -29,14 +29,29 @@ class JugadorController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="jugador_byId", methods={"GET"})
+     * @Route("/{equipo}/{id}", name="jugador_byIdAndTeam", methods={"GET"})
      */
-    public function findPlayerById($id)
+    public function findPlayerById($equipo, $id)
     {
-        $equipos = $this->getDoctrine()
+        $jugadores = $this->getDoctrine()
             ->getRepository(Jugador::class);
-        $equipo = $equipos->findPlayerById($id);
-        $properties = ['equipo' => $equipo];
+        $jugador = $jugadores->findByEquipoAndId($equipo, $id);
+        $properties = ['equipo' => $equipo, 'jugador' => $jugador];
+        return $this->render('pagina/player.html.twig', $properties);
+    }
+
+    /**
+     * @Route("/equipo/{id}", name="equipos_byId", methods={"GET"})
+     */
+    public function findPlayersByTeamId($id)
+    {
+        $jug = $this->getDoctrine()
+            ->getRepository(Jugador::class);
+        $jugadores = $jug->findByEquipo($id);
+        $equipos = $this->getDoctrine()
+            ->getRepository(Equipo::class);
+        $equipo = $equipos->findTeamById($id);
+        $properties = ['jugadores' => $jugadores, 'equipo' => $equipo];
         return $this->render('pagina/players.html.twig', $properties);
     }
 }
