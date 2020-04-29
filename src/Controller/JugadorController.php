@@ -29,18 +29,6 @@ class JugadorController extends AbstractController
     }
 
     /**
-     * @Route("/{equipo}/{id}", name="jugador_byIdAndTeam", methods={"GET"})
-     */
-    public function findPlayerById($equipo, $id)
-    {
-        $jugadores = $this->getDoctrine()
-            ->getRepository(Jugador::class);
-        $jugador = $jugadores->findByEquipoAndId($equipo, $id);
-        $properties = ['equipo' => $equipo, 'jugador' => $jugador];
-        return $this->render('pagina/player.html.twig', $properties);
-    }
-
-    /**
      * @Route("/equipo/{id}", name="equipos_byId", methods={"GET"})
      */
     public function findPlayersByTeamId($id)
@@ -53,5 +41,20 @@ class JugadorController extends AbstractController
         $equipo = $equipos->findTeamById($id);
         $properties = ['jugadores' => $jugadores, 'equipo' => $equipo];
         return $this->render('pagina/players.html.twig', $properties);
+    }
+
+    /**
+     * @Route("/equipo/{equipo}/jugador/{id}", name="jugador_byIdAndTeam", methods={"GET"})
+     */
+    public function findPlayerByTeamId($equipo, $id)
+    {
+        $jug = $this->getDoctrine()
+            ->getRepository(Jugador::class);
+        $jugador = $jug->findById($id);
+        $equipos = $this->getDoctrine()
+            ->getRepository(Equipo::class);
+        $equipo = $equipos->findTeamById($equipo);
+        $properties = ['jugador' => $jugador, 'equipo' => $equipo];
+        return $this->render('pagina/player.html.twig', $properties);
     }
 }

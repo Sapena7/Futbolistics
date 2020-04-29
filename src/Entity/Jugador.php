@@ -29,6 +29,27 @@ class Jugador
     private $nombre;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="goles", type="integer", nullable=false)
+     */
+    private $goles;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="amarillas", type="integer", nullable=false)
+     */
+    private $amarillas;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="rojas", type="integer", nullable=false)
+     */
+    private $rojas;
+
+    /**
      * @var \Equipo
      *
      * @ORM\ManyToOne(targetEntity="Equipo")
@@ -71,6 +92,42 @@ class Jugador
     public function setNombre(string $nombre): self
     {
         $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getGoles(): ?int
+    {
+        return $this->goles;
+    }
+
+    public function setGoles(int $goles): self
+    {
+        $this->goles = $goles;
+
+        return $this;
+    }
+
+    public function getAmarillas(): ?int
+    {
+        return $this->amarillas;
+    }
+
+    public function setAmarillas(int $amarillas): self
+    {
+        $this->amarillas = $amarillas;
+
+        return $this;
+    }
+
+    public function getRojas(): ?int
+    {
+        return $this->rojas;
+    }
+
+    public function setRojas(int $rojas): self
+    {
+        $this->rojas = $rojas;
 
         return $this;
     }

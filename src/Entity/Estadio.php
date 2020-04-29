@@ -29,9 +29,9 @@ class Estadio
     private $nombre;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="ciudad", type="integer", nullable=false)
+     * @ORM\Column(name="ciudad", type="string", length=100, nullable=false)
      */
     private $ciudad;
 
@@ -52,12 +52,12 @@ class Estadio
         return $this;
     }
 
-    public function getCiudad(): ?int
+    public function getCiudad(): ?string
     {
         return $this->ciudad;
     }
 
-    public function setCiudad(int $ciudad): self
+    public function setCiudad(string $ciudad): self
     {
         $this->ciudad = $ciudad;
 

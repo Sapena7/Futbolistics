@@ -29,13 +29,9 @@ class JugadorRepository extends ServiceEntityRepository
         return $query->getSingleResult();
     }
 
-    /**
-     * @return Jugador[]
-     */
-    public function findByEquipoAndId($equipo, $id){
+    public function findById($id): Jugador{
         $query = $this->createQueryBuilder('j')
-            ->andwhere("j.equipo = :equipo AND j.id = :id")
-            ->setParameter('equipo', $equipo)
+            ->andwhere("j.id = :id")
             ->setParameter('id', $id)
             ->getQuery();
 

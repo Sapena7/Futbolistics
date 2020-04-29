@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Equipo
  *
  * @ORM\Table(name="Equipo", indexes={@ORM\Index(name="liga", columns={"liga"}), @ORM\Index(name="estadio", columns={"estadio"})})
- * @ORM\Entity(repositoryClass="App\Repository\EquipoRepository")
+ * @ORM\Entity
  */
 class Equipo
 {
@@ -48,6 +48,13 @@ class Equipo
      * @ORM\Column(name="region", type="string", length=100, nullable=false)
      */
     private $region;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="fundacion", type="integer", nullable=false)
+     */
+    private $fundacion;
 
     /**
      * @var string
@@ -125,6 +132,18 @@ class Equipo
     public function setRegion(string $region): self
     {
         $this->region = $region;
+
+        return $this;
+    }
+
+    public function getFundacion(): ?int
+    {
+        return $this->fundacion;
+    }
+
+    public function setFundacion(int $fundacion): self
+    {
+        $this->fundacion = $fundacion;
 
         return $this;
     }

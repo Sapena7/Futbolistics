@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Partido
  *
- * @ORM\Table(name="Partido", indexes={@ORM\Index(name="equipo_visitante", columns={"equipo_visitante"}), @ORM\Index(name="equipo_local", columns={"equipo_local"}), @ORM\Index(name="estadio", columns={"estadio"})})
+ * @ORM\Table(name="Partido", indexes={@ORM\Index(name="equipo_visitante", columns={"equipo_visitante"}), @ORM\Index(name="jornada", columns={"jornada"}), @ORM\Index(name="equipo_local", columns={"equipo_local"}), @ORM\Index(name="estadio", columns={"estadio"})})
  * @ORM\Entity
  */
 class Partido
@@ -71,6 +71,16 @@ class Partido
      * })
      */
     private $estadio;
+
+    /**
+     * @var \Jornada
+     *
+     * @ORM\ManyToOne(targetEntity="Jornada")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="jornada", referencedColumnName="id")
+     * })
+     */
+    private $jornada;
 
     public function getId(): ?int
     {
@@ -145,6 +155,18 @@ class Partido
     public function setEstadio(?Estadio $estadio): self
     {
         $this->estadio = $estadio;
+
+        return $this;
+    }
+
+    public function getJornada(): ?Jornada
+    {
+        return $this->jornada;
+    }
+
+    public function setJornada(?Jornada $jornada): self
+    {
+        $this->jornada = $jornada;
 
         return $this;
     }

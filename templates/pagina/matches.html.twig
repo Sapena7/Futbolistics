@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Team HTML</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css-min/soccer.min.css') }}" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+	<div class="preloader-wrapper" id="preloader">
+    <div class="motion-line dark-big"></div>
+    <div class="motion-line yellow-big"></div>
+    <div class="motion-line dark-small"></div>
+    <div class="motion-line yellow-normal"></div>
+    <div class="motion-line yellow-small1"></div>
+    <div class="motion-line yellow-small2"></div>
+</div>
+
+
+    {% include 'pagina/partials/header.twig' %}
+
+    <!--MAIN MENU WRAP END-->
+
+    <!--BREADCRUMBS BEGIN-->
+<section class="image-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info">
+                    <div class="wrap">
+                        <ul class="breadcrumbs">
+                            <li><a href="index-2.html">Home</a>/</li>
+                            <li>Category</li>
+                        </ul>
+                        <h1>Category</h1>
+                    </div>
+                </div>
+            </div>	
+        </div>
+    </div>
+</section>
+<!--BREADCRUMBS END-->
+    <!--MAIN MATCH SHEDULE BEGIN-->
+
+    <section class="main-match-shedule amateurs-match-shedule">
+        <div class="container">
+            <div class="row">
+                {% for liga in ligas %}
+                    <div class="col-md-12 col-sm-12 col-xs-12"><h5>{{ liga.nombre }}</h5></div>
+                {% endfor %}
+                <div class="col-md-10 col-sm-9 col-xs-9">
+
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+<ul class="tab-filters" role="tablist">
+    <li class="active"><a href="#premierleague" role="tab" data-toggle="tab" aria-expanded="true">Liga</a></li>
+    <li><a href="#nationalcup" role="tab" data-toggle="tab" aria-expanded="true">Copa</a></li>
+</ul>
+                    <form action=" {{ path('partidos') }}" name="search_form" method="GET">
+                        <select name="jornada">
+                            {% for jornada in jornadas %}
+                                <option value="{{ jornada.Id }}">{{ jornada.Jornada }}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" name="search" value="Filtrar">
+                    </form>
+                    <br>
+<div class="tab-content">
+    <div class="tab-pane active" id="all">
+        <div class="amateurs-main-match">
+            <div class="title">Premier League - Round 28</div>	
+            <a href="matches.html.twig" class="team">
+                <span class="image"><img src="images/soccer/team-logo1.png" alt="main-match"></span>
+                <span class="info">
+                    <span class="name">Team 1</span>
+                    <span class="city">london</span>
+                </span>
+            </a>
+            <div class="score">
+                <span>3:2</span>	
+            </div>
+            <a href="matches.html.twig" class="team guest">
+                <span class="info">
+                    <span class="name">Team 2</span>
+                    <span class="city">London</span>
+                </span>	
+                <span class="image"><img src="images/soccer/team-logo2.png" alt="main-match"></span>
+            </a>
+            <div class="title">26 september / 8:45 PM</div>
+        </div>
+    </div>
+    <div class="tab-pane" id="nationalcup">
+        <div class="amateurs-main-match">
+            <div class="title">National Cup - Round 1</div>	
+            <a href="matches.html.twig" class="team">
+                <span class="image"><img src="images/soccer/team-logo3.png" alt="main-match"></span>
+                <span class="info">
+                    <span class="name">Internacional</span>
+                    <span class="city">london</span>
+                </span>
+            </a>
+            <div class="score">
+                <span>3:2</span>	
+            </div>
+            <a href="matches.html.twig" class="team guest">
+                <span class="info">
+                    <span class="name">Arsenalp</span>
+                    <span class="city">Lyon</span>
+                </span>	
+                <span class="image"><img src="images/soccer/team-logo4.png" alt="main-match"></span>
+            </a>
+            <div class="title">26 september / 8:45 PM</div>
+        </div>
+    </div>
+     <div class="tab-pane" id="premierleague">
+        <div class="amateurs-main-match">
+            <div class="title">Premier League - Round 28</div>	
+            <a href="matches.html.twig" class="team">
+                <span class="image"><img src="images/soccer/team-logo2.png" alt="main-match"></span>
+                <span class="info">
+                    <span class="name">Internacional</span>
+                    <span class="city">london</span>
+                </span>
+            </a>
+            <div class="score">
+                <span>2:2</span>	
+            </div>
+            <a href="matches.html.twig" class="team guest">
+                <span class="info">
+                    <span class="name">Arsenalp</span>
+                    <span class="city">Lyon</span>
+                </span>	
+                <span class="image"><img src="images/soccer/team-logo4.png" alt="main-match"></span>
+            </a>
+            <div class="title">26 september / 8:45 PM</div>
+        </div>
+    </div>
+</div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12"><h6>Jornada {{ jornada }}</h6></div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                        
+<div class="main-lates-matches">
+    {% for partido in partidos %}
+        <a href="match-live.html" class="item">
+            <span class="teams-wrap">
+                <span class="team">
+                    <span>
+                        <img src="{{ asset('assets/images/escudos/')}}{{ partido.equipoLocal.fotoPerfil }}" alt="team-image">
+                    </span>
+                    <span>{{ partido.equipoLocal.nombre }}</span>
+                </span>
+                <span class="score">
+                    <span>{{ partido.golesLocal }} : {{ partido.golesVisitante }}</span>
+
+                </span>
+                <span class="team1">
+                    <span>{{ partido.equipoVisitante.nombre }}</span>
+                    <span><img src="{{ asset('assets/images/escudos/')}}{{ partido.equipoVisitante.fotoPerfil }}" alt="team-image"></span>
+                </span>
+        </span>
+        </a>
+    {% endfor %}
+
+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--MAIN MATCH SHEDULE END-->
+
+    {% include 'pagina/partials/footer.twig' %}
+
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.sticky.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.jcarousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jcarousel.connected-carousels.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/owl.carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/progressbar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.bracket.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/Chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/fancySelect.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/isotope.pkgd.js') }}"></script>
+    <script type="text/javascript" src=" {{ asset('assets/js/library/imagesloaded.pkgd.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.team-coundown.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/matches-slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/header.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/matches_broadcast_listing.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/news-line.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/match_galery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/main-club-gallery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/product-slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/circle-bar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/standings.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/shop-price-filter.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/timeseries.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/radar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/preloader.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/diagram.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/bi-polar-diagram.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/label-placement-diagram.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/donut-chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/animate-donut.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/advanced-smil.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/svg-path.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/pick-circle.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/horizontal-bar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/gauge-chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/stacked-bar.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-legend.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-threshold.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-pointlabels.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/treshold.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/visible.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/anchor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/landing_carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/landing_sport_standings.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/twitterslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/champions.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/landing_mainnews_slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/video_slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/footer_slides.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/player_test.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('dev-assets/demo-switcher.js') }}"></script>
+</body>
+
+
+</html>
