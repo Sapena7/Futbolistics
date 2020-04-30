@@ -27,6 +27,6 @@ class PartidoRepository extends ServiceEntityRepository
             ->setParameter('jornada', $jornada)
             ->getQuery();
 
-        return $query->getSingleResult();
+        return $query->getResult();
     }
 }

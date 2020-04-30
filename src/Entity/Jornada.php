@@ -28,6 +28,13 @@ class Jornada
      */
     private $jornada;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="partidoEstrella", type="integer", nullable=false)
+     */
+    private $partidoestrella;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -41,6 +48,18 @@ class Jornada
     public function setJornada(string $jornada): self
     {
         $this->jornada = $jornada;
+
+        return $this;
+    }
+
+    public function getPartidoestrella(): ?int
+    {
+        return $this->partidoestrella;
+    }
+
+    public function setPartidoestrella(int $partidoestrella): self
+    {
+        $this->partidoestrella = $partidoestrella;
 
         return $this;
     }

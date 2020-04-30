@@ -26,7 +26,7 @@ class JugadorRepository extends ServiceEntityRepository
             ->setParameter('id', $id)
             ->getQuery();
 
-        return $query->getSingleResult();
+        return $query->getResult();
     }
 
     public function findById($id): Jugador{

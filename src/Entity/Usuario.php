@@ -32,6 +32,13 @@ class Usuario implements UserInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="nombreCompleto", type="string", length=100, nullable=false)
+     */
+    private $nombrecompleto;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="email", type="string", length=100, nullable=false)
      */
     private $email;
@@ -83,6 +90,18 @@ class Usuario implements UserInterface
     public function setNombre(string $nombre): self
     {
         $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    public function getNombrecompleto(): ?string
+    {
+        return $this->nombrecompleto;
+    }
+
+    public function setNombrecompleto(string $nombrecompleto): self
+    {
+        $this->nombrecompleto = $nombrecompleto;
 
         return $this;
     }
@@ -184,4 +203,6 @@ class Usuario implements UserInterface
     public function __toString() {
         return $this->getNombre();
     }
+
+
 }

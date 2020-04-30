@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Team HTML</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css-min/soccer.min.css') }}" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+	<div class="preloader-wrapper" id="preloader">
+    <div class="motion-line dark-big"></div>
+    <div class="motion-line yellow-big"></div>
+    <div class="motion-line dark-small"></div>
+    <div class="motion-line yellow-normal"></div>
+    <div class="motion-line yellow-small1"></div>
+    <div class="motion-line yellow-small2"></div>
+</div>
+
+
+
+    {% include 'pagina/partials/header.twig' %}
+
+
+    <!--BREADCRUMBS BEGIN-->
+<section class="image-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info">
+                    <div class="wrap">
+                        <ul class="breadcrumbs">
+                            <li><a href="index-2.html">Main</a>/</li>
+                            <li>Category</li>
+                        </ul>
+                        <h1>Category</h1>
+                    </div>
+                </div>
+            </div>	
+        </div>
+    </div>
+</section>
+<!--BREADCRUMBS END-->
+
+    <!--CONTENT BEGIN-->
+
+    <div class="content">
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-left">
+
+                <!--SIEDBAR BEGIN-->
+
+                <section class="sidebar col-xs-6 col-sm-6 col-md-3 sidebar-offcanvas" id="sidebar">
+                    <div class="sidebar-menu-wrap">
+                        <h6>Categories</h6>
+                        <ul class="categories-list">
+                            <li>
+                                <a href="#"><span class="count">4</span>News</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="count">22</span>Competitions & Reviews</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#"><span class="count">12</span>News</a></li>
+                                    <li><a href="#"><span class="count">10</span>Competitions & Reviews</a></li>
+                                    <li><a href="#"><span class="count">9</span>Interviews</a></li>
+                                    <li><a href="#"><span class="count">8</span>Highlights</a></li>
+                                    <li><a href="#"><span class="count">7</span>Other</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><span class="count">4</span>Interviews</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="count">4</span>Highlights</a>
+                            </li>
+                            <li>
+                                <a href="#"><span class="count">4</span>Other</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Buscador -->
+                    <div class="sidebar-search-wrap">
+                        <h6>Search</h6>
+                        <form>
+                            <div class="wrap">
+                                <input type="text">
+                                <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Buscador -->
+
+                    <!-- Ultimos posts -->
+                    <div class="recent-news">
+                        <h6>recent news</h6>
+                        <div class="item">
+                            <div class="date"><a href="news-single.html.twig">25 Sep 2016</a> in <a href="news-single.html.twig">highlights</a></div>
+                            <a href="news-single.html.twig" class="name">When somersaulting Sanchez shoulderd Mexico’s </a>
+                        </div>
+                        <div class="item">
+                            <div class="date"><a href="news-single.html.twig">25 Sep 2016</a> in <a href="news-single.html.twig">highlights</a></div>
+                            <a href="news-single.html.twig" class="name">When somersaulting Sanchez shoulderd Mexico’s </a>
+                        </div>
+                        <div class="item">
+                            <div class="date"><a href="news-single.html.twig">25 Sep 2016</a> in <a href="news-single.html.twig">highlights</a></div>
+                            <a href="news-single.html.twig" class="name">When somersaulting Sanchez shoulderd Mexico’s </a>
+                        </div>
+                    </div>
+                    <!-- Ultimos posts -->
+
+                </section>
+
+                <!--SIEDBAR END-->
+
+                <!--NEWS SINGLE BEGIN-->
+
+                <section class="news-single col-xs-12 col-sm-12 col-md-9">
+                    <p class="hidden-md hidden-lg">
+                        <button type="button" class="btn sidebar-btn" data-toggle="offcanvas" title="Toggle sidebar">sidebar</button>
+                    </p>
+                    <div class="item">
+                        <div class="top-info">
+                            <div class="date"><a href="#">{{ noticia.Fecha|date("m/d/Y") }}</a> por <a href="#">{{ noticia.Colaborador.NombreCompleto }}</a></div>
+                        </div>
+                        <div class="img-wrap">
+                            <div class="bage highlight">Destacado</div>
+                            <img src="{{ asset('assets/images/soccer/') }}{{ noticia.Imagen }}" alt="news-single">
+                        </div>
+                        <div class="post-text">
+                            <p>{{ noticia.Cuerpo }}
+                            </p>
+                        </div>
+                        <div class="author-box">
+                            <div class="top">
+                                <div class="avatar"><img src="{{ asset('assets/images/soccer/') }}{{ noticia.Colaborador.FotoPerfil }}" alt="author-avatar"></div>
+                                <div class="info">
+                                    <div class="name">{{ noticia.Colaborador.NombreCompleto }}</div>
+                                    <p>{{ noticia.Colaborador.Rol.Rol }}</p>
+                                </div>
+
+                            </div>
+                            <div class="share-box">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="item">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                    <div class="title">25 posts</div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 text-right">
+                                                    <ul class="share-socials">
+                                                        <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>	
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--NEWS SINGLE END-->
+
+            </div>
+        </div>
+    </div>
+
+    <!--CONTENT END-->
+
+    {% include 'pagina/partials/footer.twig' %}
+
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.sticky.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.jcarousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jcarousel.connected-carousels.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/owl.carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/progressbar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.bracket.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/Chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/fancySelect.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/isotope.pkgd.js') }}"></script>
+    <script type="text/javascript" src=" {{ asset('assets/js/library/imagesloaded.pkgd.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.team-coundown.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/matches-slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/header.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/matches_broadcast_listing.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/news-line.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/match_galery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/main-club-gallery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/product-slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/circle-bar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/standings.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/shop-price-filter.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/timeseries.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/radar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/preloader.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/diagram.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/bi-polar-diagram.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/label-placement-diagram.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/donut-chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/animate-donut.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/advanced-smil.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/svg-path.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/pick-circle.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/horizontal-bar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/gauge-chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/stacked-bar.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-legend.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-threshold.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-pointlabels.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/treshold.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/visible.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/anchor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/landing_carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/landing_sport_standings.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/twitterslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/champions.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/landing_mainnews_slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/video_slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/footer_slides.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/player_test.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('dev-assets/demo-switcher.js') }}"></script>
+</body>
+
+
+</html>

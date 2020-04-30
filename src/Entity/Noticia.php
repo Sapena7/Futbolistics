@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Noticia
  *
- * @ORM\Table(name="Noticia", indexes={@ORM\Index(name="equipo", columns={"equipo"})})
- * @ORM\Entity
+ * @ORM\Table(name="Noticia", indexes={@ORM\Index(name="noticia_ibfk_2", columns={"colaborador"}), @ORM\Index(name="equipo", columns={"equipo"})})
+ * @ORM\Entity(repositoryClass="App\Repository\NoticiaRepository")
  */
 class Noticia
 {
@@ -58,6 +58,16 @@ class Noticia
      * })
      */
     private $equipo;
+
+    /**
+     * @var \Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="colaborador", referencedColumnName="id")
+     * })
+     */
+    private $colaborador;
 
     public function getId(): ?int
     {
@@ -120,6 +130,18 @@ class Noticia
     public function setEquipo(?Equipo $equipo): self
     {
         $this->equipo = $equipo;
+
+        return $this;
+    }
+
+    public function getColaborador(): ?Usuario
+    {
+        return $this->colaborador;
+    }
+
+    public function setColaborador(?Usuario $colaborador): self
+    {
+        $this->colaborador = $colaborador;
 
         return $this;
     }
