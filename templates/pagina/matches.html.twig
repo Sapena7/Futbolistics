@@ -155,7 +155,7 @@
                         
 <div class="main-lates-matches">
     {% for partido in partidos %}
-        <a href="match-live.html" class="item">
+        <a href="{{ path('partidos_byId', {id: partido.Id}) }}" class="item">
             <span class="teams-wrap">
                 <span class="team">
                     <span>

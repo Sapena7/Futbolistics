@@ -39,4 +39,16 @@ class PartidoController extends AbstractController
 
         return $this->render('pagina/matches.html.twig', $properties);
     }
+
+    /**
+     * @Route("/{id}", name="partidos_byId", methods={"GET"})
+     */
+    public function findPartidoById($id)
+    {
+        $partidos = $this->getDoctrine()
+            ->getRepository(Partido::class);
+        $partido = $partidos->findPartidoById($id);
+        $properties = ['partido' => $partido];
+        return $this->render('pagina/match-live.html.twig', $properties);
+    }
 }

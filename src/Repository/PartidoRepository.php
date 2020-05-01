@@ -29,4 +29,13 @@ class PartidoRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+    public function findPartidoById($id){
+        $query = $this->createQueryBuilder('p')
+            ->andwhere("p.id = :id")
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $query->getSingleResult();
+    }
 }
