@@ -30,7 +30,7 @@ class PartidoRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
-    public function findPartidoById($id){
+    public function findPartidoById($id) : Partido{
         $query = $this->createQueryBuilder('p')
             ->andwhere("p.id = :id")
             ->setParameter('id', $id)

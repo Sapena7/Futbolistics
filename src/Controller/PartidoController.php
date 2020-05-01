@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Jornada;
+use App\Entity\Jugador;
 use App\Entity\Liga;
 use App\Entity\Partido;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -47,8 +48,19 @@ class PartidoController extends AbstractController
     {
         $partidos = $this->getDoctrine()
             ->getRepository(Partido::class);
+        $jugadoresDoctrine = $this->getDoctrine()
+            ->getRepository(Jugador::class);
+
         $partido = $partidos->findPartidoById($id);
-        $properties = ['partido' => $partido];
+
+        $equipoLocal = $partido->getEquipoLocal();
+        $equipoVisitante = $partido->getEquipoVisitante();
+
+        $jugadoresEquipoLocal = $jugadoresDoctrine->findByEquipo($equipoLocal);
+        $jugadoresEquipoVisitante = $jugadoresDoctrine->findByEquipo($equipoVisitante);
+
+
+        $properties = ['partido' => $partido, 'jugadoresLocal' => $jugadoresEquipoLocal, 'jugadoresVisitante' => $jugadoresEquipoVisitante];
         return $this->render('pagina/match-live.html.twig', $properties);
     }
 }

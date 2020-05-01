@@ -68,7 +68,15 @@
                 <div class="col-md-12">
                         
 <div class="match-live-info">
-    <div class="title"> {{ partido.EquipoLocal.nombre }} – {{ partido.EquipoVisitante.nombre }} </div>
+    {% for jugador in jugadoresLocal %}
+        {{ jugador.nombre }}
+    {% endfor %}
+
+    {% for jugador in jugadoresVisitante %}
+        {{ jugador.nombre }}
+    {% endfor %}
+    <div class="title"> {# { partido.liga } #} </div>
+    <div class="title"> {{ partido.fecha|date("d/m/Y") }} </div>
     <div class="match-info">
         <div class="team">
             <div class="avatar">
@@ -156,8 +164,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h3 class="h3-tactic">Tactic</h3>
-                    <h3 class="csgo">De Dust</h3>
+                    <h3 class="h3-tactic">Alineaciones</h3>
                     <div class="tactic football">
     <div class="tab-content">
         <div class="tab-pane active" id="football_pitch_top">
@@ -226,11 +233,10 @@
         <li class="">
             <a href="#football_pitch_button" data-toggle="tab" aria-controls="football_pitch_button" aria-expanded="false">
                 <div class="circle black"></div>Team 2                </a>
-        </li>	
-    </ul> 
+        </li>
+    </ul>
 </div>
 
-                    <h3>Lineups</h3>
                     <div class="match-lineup">
     <div class="no-gutter">
         <div class="col-sm-6">
@@ -491,7 +497,7 @@
             </div>
         </div>					
     </div>
-                    <h3>Coaches</h3>
+                    <h3>Entrenadores</h3>
                     
 <div class="match-lineup">
     <div class="no-gutter">
@@ -525,27 +531,27 @@
 </div>
                 </div>		
                 <div class="col-lg-6">
-                    <h3>match statistics</h3>
+                    <h3>Estadisticas</h3>
                     
 <div class="match-stat-table">
     <div class="item">
-        <div class="name">Component 1</div>
-        <div class="percent">1</div>
-        <div class="percent right">1</div>
+        <div class="name">Posesión</div>
+        <div class="percent">48</div>
+        <div class="percent right">52</div>
         <div class="percent-bar">
             <div class="bar bar-1" ></div>
         </div>
     </div>
     <div class="item">
-        <div class="name">Component 2</div>
-        <div class="percent">48</div>
-        <div class="percent right">52</div>
+        <div class="name">Corners</div>
+        <div class="percent">1</div>
+        <div class="percent right">1</div>
         <div class="percent-bar">
             <div class="bar bar-2" ></div>
         </div>
     </div>
     <div class="item">
-        <div class="name">Component 3</div>
+        <div class="name">Faltas</div>
         <div class="percent">15</div>
         <div class="percent right">13</div>
         <div class="percent-bar">
@@ -553,65 +559,24 @@
         </div>
     </div>
     <div class="item">
-        <div class="name">Component 4</div>
+        <div class="name">Fueras de juego</div>
         <div class="percent">7</div>
         <div class="percent right">5</div>
         <div class="percent-bar">
             <div class="bar bar-4" ></div>
         </div>
     </div>
-    <div class="item">
-        <div class="name">Component 5</div>
-        <div class="percent">2</div>
-        <div class="percent right">1</div>
-        <div class="percent-bar">
-            <div class="bar bar-5" ></div>
-        </div>
-    </div>
-    <div class="item">
-        <div class="name">Component 6</div>
-        <div class="percent">4</div>
-        <div class="percent right">3</div>
-        <div class="percent-bar">
-            <div class="bar bar-6" ></div>
-        </div>
-    </div>
 </div>
 
-                    <div class="live-championship">
-    <h3>Championship</h3>
-    <div class="header">The Greatest League</div>
-    <div class="border">
-        <div class="row">
-            <div class="col-md-4 col-sm-5">
-                <span class="img-champ">
-                    <a href="championship.html" title="The Greatest League">
-                        <img src="images/soccer/championship-ico.jpg" alt="champ-img">
-                    </a>
-                </span>
-            </div>
-            <div class="col-md-8 col-sm-7">
-                <div class="info">
-                    <dl>
-                        <dt>Founded:</dt><dd>1955</dd>
-                        <dt>Region:</dt><dd>Europe</dd>
-                        <dt>Current champions:</dt><dd>Team Name 1</dd>
-                        <dt>Most successful club(s):</dt><dd>Team Name 2</dd>
-                    </dl>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-                    <h3>Arena</h3>
+                    <h3>Estadio</h3>
                     <div class="arena">
     <div class="img-wrap">
         <div class="title">Arena Bridge</div>
         <img src="images/soccer/arena-img.jpg" alt="arena-img">
     </div>
     <div class="arena-info">
-        <div class="name">Arena Bridge Arena</div>
-        <div class="date">7:30 PM, Saturday, 29 Sep 2016</div>
+        <div class="name">{{ partido.estadio.nombre }}</div>
+        <div class="date">{{ partido.fecha|date("d/m/Y") }}</div>
     </div>
 </div>
                     <h3>weather</h3>
@@ -625,7 +590,7 @@
         <div class="text">Partly cloudy night</div>
     </div>
 </div>
-                    <h3>referees</h3>
+                    <h3>Árbitros</h3>
                     
 <div class="match-lineup">
     <div class="team-wrap">	
@@ -668,7 +633,7 @@
         </div>
     </div>
 </div>
-                    <h3>Match details</h3>
+                    <h3>Resumen</h3>
                     <div class="live-details">Chia celiac street art, raclette bespoke biodiesel try-hard chillwave kinfolk art party. Raclette salvia mumblecore roof party locavore. Normcore man braid snackwave. Tacos coloring book everyday carry farm-to-table forage. Chillwave vaporware la croix keytar lyft disrupt jianbing squid normcore venmo gochujang etsy. Cred tote bag retro, enamel pin put a bird on it af irony scenester.</div>
 
                 </div>
@@ -678,81 +643,6 @@
 
     <!--LIVE MATCH STAT END-->
 
-    <!--MACTH LIVE GALLERY BEGIN-->
-<section class="match-live-gallery">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-6">
-                <h3>Match gallery</h3>
-            </div>
-            <div class="col-xs-6 text-right">
-                <div class="owl-carousel-arrows">
-                    <div class="custom-navigation">
-                        <a class="custom-next-btn"><i class="fa fa-caret-left" aria-hidden="true"></i></a>
-                        <a class="custom-prev-btn"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="owl-carousel owl-theme gallery-slider">
-        <div class="item">
-            <a href="news-single.html.twig">
-                <span class="info">
-                    <span class="then">24’</span>
-                    <span class="what">Fight for the ball in midfield</span>
-                </span>
-                <img src="images/soccer/gallery-slide-img.jpg" alt="gallery-slide-img">
-            </a>
-        </div>
-        <div class="item">
-            <a href="news-single.html.twig">
-                <span class="info">
-                    <span class="then">24’</span>
-                    <span class="what">Fight for the ball in midfield</span>
-                </span>
-                <img src="images/soccer/gallery-slide-img1.jpg" alt="gallery-slide-img">
-            </a>
-        </div>
-        <div class="item">
-            <a href="news-single.html.twig">
-                <span class="info">
-                    <span class="then">24’</span>
-                    <span class="what">Fight for the ball in midfield</span>
-                </span>
-                <img src="images/soccer/gallery-slide-img.jpg" alt="gallery-slide-img">
-            </a>
-        </div>
-        <div class="item">
-            <a href="news-single.html.twig">
-                <span class="info">
-                    <span class="then">24’</span>
-                    <span class="what">Fight for the ball in midfield</span>
-                </span>
-                <img src="images/soccer/gallery-slide-img1.jpg" alt="gallery-slide-img">
-            </a>
-        </div>
-        <div class="item">
-            <a href="news-single.html.twig">
-                <span class="info">
-                    <span class="then">24’</span>
-                    <span class="what">Fight for the ball in midfield</span>
-                </span>
-                <img src="images/soccer/gallery-slide-img.jpg" alt="gallery-slide-img">
-            </a>
-        </div>
-        <div class="item">
-            <a href="news-single.html.twig">
-                <span class="info">
-                    <span class="then">24’</span>
-                    <span class="what">Fight for the ball in midfield</span>
-                </span>
-                <img src="images/soccer/gallery-slide-img1.jpg" alt="gallery-slide-img">
-            </a>
-        </div>
-    </div>
-</section>
-<!--MACTH LIVE GALLERY END-->
 
     <!--SHARE BOX BEGIN-->
 
