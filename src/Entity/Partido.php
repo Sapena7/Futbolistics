@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Partido
  *
- * @ORM\Table(name="Partido", indexes={@ORM\Index(name="equipo_visitante", columns={"equipo_visitante"}), @ORM\Index(name="jornada", columns={"jornada"}), @ORM\Index(name="equipo_local", columns={"equipo_local"}), @ORM\Index(name="estadio", columns={"estadio"})})
+ * @ORM\Table(name="Partido", indexes={@ORM\Index(name="jornada", columns={"jornada"}), @ORM\Index(name="equipo_visitante", columns={"equipo_visitante"}), @ORM\Index(name="estadio", columns={"estadio"}), @ORM\Index(name="liga", columns={"liga"}), @ORM\Index(name="equipo_local", columns={"equipo_local"})})
  * @ORM\Entity(repositoryClass="App\Repository\PartidoRepository")
  */
 class Partido
@@ -81,6 +81,16 @@ class Partido
      * })
      */
     private $jornada;
+
+    /**
+     * @var \Liga
+     *
+     * @ORM\ManyToOne(targetEntity="Liga")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="liga", referencedColumnName="id")
+     * })
+     */
+    private $liga;
 
     public function getId(): ?int
     {
@@ -167,6 +177,18 @@ class Partido
     public function setJornada(?Jornada $jornada): self
     {
         $this->jornada = $jornada;
+
+        return $this;
+    }
+
+    public function getLiga(): ?Liga
+    {
+        return $this->liga;
+    }
+
+    public function setLiga(?Liga $liga): self
+    {
+        $this->liga = $liga;
 
         return $this;
     }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Jugador
  *
- * @ORM\Table(name="Jugador", indexes={@ORM\Index(name="liga", columns={"liga"}), @ORM\Index(name="equipo", columns={"equipo"}), @ORM\Index(name="posicion", columns={"posicion"})})
+ * @ORM\Table(name="Jugador", indexes={@ORM\Index(name="liga", columns={"liga"}), @ORM\Index(name="posicion", columns={"posicion"}), @ORM\Index(name="equipo", columns={"equipo"})})
  * @ORM\Entity(repositoryClass="App\Repository\JugadorRepository")
  */
 class Jugador
@@ -48,6 +48,13 @@ class Jugador
      * @ORM\Column(name="rojas", type="integer", nullable=false)
      */
     private $rojas;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="dorsal", type="integer", nullable=false)
+     */
+    private $dorsal;
 
     /**
      * @var \Equipo
@@ -128,6 +135,18 @@ class Jugador
     public function setRojas(int $rojas): self
     {
         $this->rojas = $rojas;
+
+        return $this;
+    }
+
+    public function getDorsal(): ?int
+    {
+        return $this->dorsal;
+    }
+
+    public function setDorsal(int $dorsal): self
+    {
+        $this->dorsal = $dorsal;
 
         return $this;
     }
