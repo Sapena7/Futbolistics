@@ -192,24 +192,75 @@
     <p class="hidden-md hidden-lg">
         <button type="button" class="btn sidebar-btn" data-toggle="offcanvas" title="Toggle sidebar">sidebar</button>
     </p>
+    {% if app.user is not empty %}
+        {% if app.user.rol is not empty %}
+            {% if app.user.rol.id == 1 or app.user.rol.id == 2 %}
+                <a href="{{ path('noticia_new') }}">
+                    <img src="{{ asset('assets/images/common/new.png') }}" width="50px" height="50px" alt="edit image">
+                </a>
+            {% endif %}
+        {% endif %}
+    {% endif %}
 
-    {% for noticia in noticias %}
+    <!-- filtro -->
+
+            <form action="{{ path('noticia_index') }}" name="search_form" method='GET'>
+        <input type="hidden" name="page" value="{{ app.request.query.get("page") }} ?? 'index'">
+        <td>Equipo:</td>
+        <select name="equipo">
+            <option value="">Equipo</option>
+            {% for equipo in equipos %}
+            <option value="{{ equipo.Id }}">{{ equipo.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        <td>Fecha Inicio:</td>
+        <input type="date" name="fechaMin" style="width: 160px">
+
+
+        <td>Fecha Final:</td>
+        <input type="date" name="fechaMax" style="width: 160px">
+
+        <td>Texto a filtrar:</td>
+        <input class="text" type="text" name="text">
+
+        <input type="submit" name="search" value="Filtrar">
+    </form><br>
+
+    <!-- fin filtro -->
+
+    {% for noticia in noticias.results %}
     <!-- noticia -->
     <div class="item img-top">
         <div class="img-wrap">
-            <div class="bage"><a href="{{ path('noticias_byId', {id: noticia.Id}) }}">Destacado</a></div>
+            <div class="bage">
+                <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">Destacado</a>
+            </div>
+            {% if app.user is not empty %}
+                {% if app.user.rol is not empty %}
+                    {% if app.user.rol.id == 1 %}
+                        <a href="{{ path('noticia_edit', {id: noticia.Id}) }}">
+                            <img src="{{ asset('assets/images/common/edit.svg') }}" width="50px" height="50px" alt="edit image">
+                        </a>
+                        <a href="{{ path('noticia_delete', {id: noticia.Id}) }}">
+                            <img src="{{ asset('assets/images/common/delete.svg') }}" width="50px" height="50px" alt="edit image">
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
             <a href="{{ path('noticias_byId', {id: noticia.Id}) }}"><img src="{{ asset('assets/images/soccer/') }}{{ noticia.Imagen }}" alt="post image"></a>
         </div>
         <div class="info">
             <a href="{{ path('noticias_byId', {id: noticia.Id}) }}" class="name">{{ noticia.Titular }}</a>
             <div class="wrap">
-                <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">{{ noticia.Fecha|date("m/d/Y") }}</a> por <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">{{ noticia.Colaborador.NombreCompleto }}</a>
+                <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">{{ noticia.Fecha|date("d/m/Y") }}</a> por <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">{{ noticia.Colaborador.NombreCompleto }}</a>
             </div>
             <div class="clear"></div>
         </div>
     </div>
     {% endfor %}
     <!-- fin noticia -->
+
 
     <div class="pagination-wrap">
         <ul class="pagination">
@@ -223,6 +274,31 @@
         </ul>
     </div>
 </div>
+                {% if noticias.hasToPaginate %}
+                    <div class="product_pagination">
+                        <ul>
+                            {% if noticias.hasPreviousPage %}
+                                <li class="prev"><a href="{{ path('noticia_paginated', {page: noticias.previousPage}) }}" rel="previous"><i class="fa fw fa-long-arrow-left"></i> {{ 'previous'|trans }}</a></li>
+                            {% else %}
+                                <li class="prev disabled"><span><i class="fa fw fa-arrow-left"></i> {{ 'previous'|trans }}</span></li>
+                            {% endif %}
+
+                            {% for i in 1..noticias.lastPage %}
+                                {% if i == noticias.currentPage %}
+                                    <li class="active"><span>{{ i }} <span class="sr-only">{{ 'current'|trans }}</span></span></li>
+                                {% else %}
+                                    <li><a href="{{ path('noticia_paginated', {page: i}) }}">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if noticias.hasNextPage %}
+                                <li class="next"><a href="{{ path('noticia_paginated', {page: noticias.nextPage}) }}" rel="next">{{ 'next'|trans }} <i class="fa fw fa-arrow-right"></i></a></li>
+                            {% else %}
+                                <li class="next disabled"><span>{{ 'next'|trans }} <i class="fa fw fa-arrow-right"></i></span></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endif %}
 <!--NEWS LIST END-->
 
 

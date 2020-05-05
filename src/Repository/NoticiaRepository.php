@@ -28,4 +28,34 @@ class NoticiaRepository extends ServiceEntityRepository
 
         return $query->getSingleResult();
     }
+
+    /**
+     * @return Noticia[]
+     */
+    public function findAllOrderByDate(int $page = 1, int $equipo = null, DateTime $fechaMin = null, DateTime $fechaMax = null, string $text= null): Paginator{
+
+        $qb = $this->createQueryBuilder('n')
+            ->orderBy('n.fecha', 'DESC');
+
+        if ($text != null){
+            $qb = $this->createQueryBuilder('n')
+                ->andwhere("n.titular lIKE :text")
+                ->setParameter('text', "%" . $text . "%");
+        }
+
+        if ($equipo != null){
+            $qb = $this->createQueryBuilder('n')
+                ->andwhere("n.equipo = :equipo")
+                ->setParameter('equipo', $equipo);
+        }
+
+        if ($fechaMin != null && $fechaMax != null){
+            $qb = $this->createQueryBuilder('n')
+                ->andwhere("n.fecha BETWEEN :startDate AND :endDate")
+                ->setParameter('startDate', $fechaMin)
+                ->setParameter('endDate', $fechaMax);
+        }
+
+        return (new Paginator($qb))->paginate($page);
+    }
 }
