@@ -54,14 +54,10 @@ class NoticiaController extends AbstractController
             $fechaMin = DateTime::createFromFormat($formato, $fechaMin .  " 00:00");
             $fechaMax = DateTime::createFromFormat($formato, $fechaMax . " 00:00");
         }
-        $colaborador = $request->query->get('colaborador');
-
         $noticias = $news->findAllOrderByDate($page, $equipo, $fechaMin, $fechaMax, $text);
 
-        return $this->render('pagina/news.html.twig', [
-            'noticias' => $noticias,
-            'equipos' => $equipos
-        ]);
+        $properties = ['noticias' => $noticias, 'equipos' => $equipos];
+        return $this->render('noticia/index.html.twig', $properties);
     }
 
     /**
@@ -73,7 +69,7 @@ class NoticiaController extends AbstractController
             ->getRepository(Noticia::class);
         $noticia = $noticias->findNewsById($id);
         $properties = ['noticia' => $noticia];
-        return $this->render('pagina/news-single.html.twig', $properties);
+        return $this->render('noticia/noticia.twig', $properties);
     }
 
     /**

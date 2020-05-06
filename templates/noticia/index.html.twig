@@ -1,41 +1,277 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Noticia index{% endblock %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Noticias</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
+    <link rel="icon" href="../pagina/favicon.ico" type="image/x-icon">
+    <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css-min/soccer.min.css') }}" rel="stylesheet" type="text/css" />
 
-{% block body %}
-    <h1>Noticia index</h1>
+</head>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titular</th>
-                <th>Cuerpo</th>
-                <th>Fecha</th>
-                <th>Imagen</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for noticium in noticias %}
-            <tr>
-                <td>{{ noticium.id }}</td>
-                <td>{{ noticium.titular }}</td>
-                <td>{{ noticium.cuerpo }}</td>
-                <td>{{ noticium.fecha ? noticium.fecha|date('Y-m-d') : '' }}</td>
-                <td>{{ noticium.imagen }}</td>
-                <td>
-                    <a href="{{ path('noticia_show', {'id': noticium.id}) }}">show</a>
-                    <a href="{{ path('noticia_edit', {'id': noticium.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<body>
 
-    <a href="{{ path('noticia_new') }}">Create new</a>
-{% endblock %}
+	<div class="preloader-wrapper" id="preloader">
+    <div class="motion-line dark-big"></div>
+    <div class="motion-line yellow-big"></div>
+    <div class="motion-line dark-small"></div>
+    <div class="motion-line yellow-normal"></div>
+    <div class="motion-line yellow-small1"></div>
+    <div class="motion-line yellow-small2"></div>
+</div>
+
+
+    {% include 'pagina/partials/header.twig' %}
+
+    {{ dump(noticias) }}
+    <!--MAIN MENU WRAP END-->
+
+    <!--BREADCRUMBS BEGIN-->
+<section class="image-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info">
+                    <div class="wrap">
+                        <ul class="breadcrumbs">
+                            <li><a href="{{ path('homepage') }}">Home</a>/</li>
+                            <li>Noticias</li>
+                        </ul>
+                        <h1>General</h1>
+                    </div>
+                </div>
+            </div>	
+        </div>
+    </div>
+</section>
+<!--BREADCRUMBS END-->
+
+    <!--CONTENT BEGIN-->
+
+    <div class="content">
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-left">
+
+                <!--SIDEBAR BEGIN-->
+<section class="sidebar col-xs-6 col-md-3 sidebar-offcanvas" id="sidebar">
+    <div class="sidebar-menu-wrap">
+        <h6>Categories</h6>
+        <ul class="categories-list">
+            <li>
+                <a href="#"><span class="count">4</span>News</a>
+            </li>
+            <li>
+                <a href="#"><span class="count">22</span>Competiciones</a>
+                <ul>
+                    <li><a href="#"><span class="count">12</span>Noticias</a></li>
+                    <li><a href="#"><span class="count">10</span>Competitions & Reviews</a></li>
+                    <li><a href="#"><span class="count">9</span>Entrevistas</a></li>
+                    <li><a href="#"><span class="count">8</span>Highlights</a></li>
+                    <li><a href="#"><span class="count">7</span>Other</a></li>	
+                </ul>
+            </li>
+            <li>
+                <a href="#"><span class="count">4</span>Entrevistas</a>
+            </li>
+            <li>
+                <a href="#"><span class="count">4</span>Highlights</a>
+            </li>
+            <li>
+                <a href="#"><span class="count">4</span>Other</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- filtro -->
+    <div class="sidebar-search-wrap">
+        <h6>Filtro</h6>
+        <form action="{{ path('noticia_index') }}" name="search_form" method='GET'>
+            <input type="hidden" name="page" value="{{ app.request.query.get("page") }} ?? 'index'">
+            <td>Equipo:</td>
+            <select name="equipo">
+                <option value="">Equipo</option>
+                {% for equipo in equipos %}
+                    <option value="{{ equipo.Id }}">{{ equipo.nombre }}</option>
+                {% endfor %}
+            </select>
+
+            <td>Fecha Inicio:</td>
+            <input type="date" name="fechaMin" style="width: 160px">
+
+
+            <td>Fecha Final:</td>
+            <input type="date" name="fechaMax" style="width: 160px">
+
+            <td>Texto a filtrar:</td>
+            <input class="text" type="text" name="text">
+
+            <input type="submit" name="search" value="Filtrar">
+        </form>
+        <br>
+    </div>
+    <!-- fin filtro -->
+
+
+</section>
+
+
+<!--SIEDBAR END-->
+                <!--NEWS LIST BEGIN-->
+<div class="news-list col-xs-12 col-md-9">
+    <p class="hidden-md hidden-lg">
+        <button type="button" class="btn sidebar-btn" data-toggle="offcanvas" title="Toggle sidebar">sidebar</button>
+    </p>
+    {% if app.user is not empty %}
+        {% if app.user.rol is not empty %}
+            {% if app.user.rol.id == 1 or app.user.rol.id == 2 %}
+                <a href="{{ path('noticia_new') }}">
+                    <img src="{{ asset('assets/images/common/new.png') }}" width="50px" height="50px" alt="edit image">
+                </a>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    {% for noticia in noticias.results %}
+    <!-- noticia -->
+    <div class="item img-top">
+        <div class="img-wrap">
+            <div class="bage">
+                <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">Destacado</a>
+            </div>
+            {% if app.user is not empty %}
+                {% if app.user.rol is not empty %}
+                    {% if app.user.rol.id == 1 %}
+                        <a href="{{ path('noticia_edit', {id: noticia.Id}) }}">
+                            <img src="{{ asset('assets/images/common/edit.svg') }}" width="50px" height="50px" alt="edit image">
+                        </a>
+                        <a href="{{ path('noticia_delete', {id: noticia.Id}) }}">
+                            <img src="{{ asset('assets/images/common/delete.svg') }}" width="50px" height="50px" alt="edit image">
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+            <a href="{{ path('noticias_byId', {id: noticia.Id}) }}"><img src="{{ asset('assets/images/soccer/') }}{{ noticia.Imagen }}" alt="post image"></a>
+        </div>
+        <div class="info">
+            <a href="{{ path('noticias_byId', {id: noticia.Id}) }}" class="name">{{ noticia.Titular }}</a>
+            <div class="wrap">
+                <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">{{ noticia.Fecha|date("d/m/Y") }}</a> por <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">{{ noticia.Colaborador.NombreCompleto }}</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- fin noticia -->
+
+    {% if noticias.hasToPaginate %}
+        <div class="product_pagination">
+            <ul>
+                {% if noticias.hasPreviousPage %}
+                    <li class="prev"><a href="{{ path('noticia_paginated', {page: noticias.previousPage}) }}" rel="previous"><i class="fa fw fa-long-arrow-left"></i> {{ 'previous'|trans }}</a></li>
+                {% else %}
+                    <li class="prev disabled"><span><i class="fa fw fa-arrow-left"></i> {{ 'previous'|trans }}</span></li>
+                {% endif %}
+
+                {% for i in 1..noticias.lastPage %}
+                    {% if i == noticias.currentPage %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">{{ 'current'|trans }}</span></span></li>
+                    {% else %}
+                        <li><a href="{{ path('noticia_paginated', {page: i}) }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if noticias.hasNextPage %}
+                    <li class="next"><a href="{{ path('noticia_paginated', {page: noticias.nextPage}) }}" rel="next">{{ 'next'|trans }} <i class="fa fw fa-arrow-right"></i></a></li>
+                {% else %}
+                    <li class="next disabled"><span>{{ 'next'|trans }} <i class="fa fw fa-arrow-right"></i></span></li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+<!--NEWS LIST END-->
+
+
+            </div>
+        </div>
+    </div>
+
+    <!--CONTENT END-->
+
+    {% include 'pagina/partials/footer.twig' %}
+
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.sticky.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.jcarousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jcarousel.connected-carousels.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/owl.carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/progressbar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/jquery.bracket.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/Chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/fancySelect.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/isotope.pkgd.js') }}"></script>
+    <script type="text/javascript" src=" {{ asset('assets/js/library/imagesloaded.pkgd.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.team-coundown.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/matches-slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/header.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/matches_broadcast_listing.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/news-line.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/match_galery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/main-club-gallery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/product-slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/circle-bar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/standings.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/shop-price-filter.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/timeseries.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/radar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/preloader.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/diagram.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/bi-polar-diagram.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/label-placement-diagram.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/donut-chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/animate-donut.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/advanced-smil.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/svg-path.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/pick-circle.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/horizontal-bar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/gauge-chart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/stacked-bar.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-legend.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-threshold.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/library/chartist-plugin-pointlabels.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/treshold.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/visible.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/anchor.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/landing_carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/landing_sport_standings.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/twitterslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/champions.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/landing_mainnews_slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/video_slider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/footer_slides.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/player_test.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('dev-assets/demo-switcher.js') }}"></script>
+</body>
+
+
+</html>

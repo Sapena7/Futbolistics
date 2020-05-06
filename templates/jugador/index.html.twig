@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Jugadores</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../pagina/favicon.ico" type="image/x-icon">
     <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
@@ -54,29 +54,45 @@
 <!--BREADCRUMBS END-->
     <!--CLUB STAFF TOP BEGIN-->
 
+    <div class="col-xs-12 text-center">
+        <h1>Plantilla {{ equipo.nombre }} temporada 19-20</h1> <img src="{{ asset('assets/images/escudos/') }}{{ equipo.fotoPerfil }}" width="100px" height="150px" alt="edit image">
+    </div>
+
     <div class="club-staff-top">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <h4>Porteros</h4>
                 </div>
-                
+
 <div class="staff-box">
     {% for jugador in jugadores %}
     {% set posicion = jugador.posicion.id %}
-    {% if posicion == 1 %}
-        <div class="col-md-4  col-sm-6 col-xs-12">
-            <a href="{{ path('jugador_byIdAndTeam', {equipo: equipo.Id, id: jugador.Id})}}" class="item">
-            <span class="info">
-                <span class="name">{{ jugador.nombre }}</span>
-                <span class="position">{{ jugador.posicion.nombre }}</span>
-                <span class="number">1</span>
-            </span>
+        {% if posicion == 1 %}
+            <div class="col-md-4  col-sm-6 col-xs-12">
+                <a href="{{ path('jugador_byIdAndTeam', {equipo: equipo.Id, id: jugador.Id})}}" class="item">
+                <span class="info">
+                    <span class="name">{{ jugador.nombre }}</span>
+                    <span class="position">{{ jugador.posicion.nombre }}</span>
+                    <span class="number">{{ jugador.dorsal }}</span>
+                </span>
 
-                <img src="{{ asset('assets/images/soccer/default_user.svg')}}" alt="player">
-            </a>
-        </div>
-    {% endif %}
+                    <img src="{{ asset('assets/images/soccer/default_user.svg')}}" alt="player">
+                </a>
+                {% if app.user is not empty %}
+                    {% if app.user.rol is not empty %}
+                        {% if app.user.rol.id == 1 %}
+                            <a href="{{ path('jugador_edit', {id: jugador.Id}) }}">
+                                <img src="{{ asset('assets/images/common/edit.svg') }}" width="50px" height="50px" alt="edit image">
+                            </a>
+                            <a href="{{ path('jugador_delete', {id: jugador.Id}) }}">
+                                <img src="{{ asset('assets/images/common/delete.svg') }}" width="50px" height="50px" alt="edit image">
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endif %}
     {% endfor %}
 </div>
                 <div class="col-md-12">
@@ -86,18 +102,30 @@
 <div class="staff-box">
     {% for jugador in jugadores %}
         {% set posicion = jugador.posicion.id %}
-        {% if posicion == 2 %}
-            <div class="col-md-4  col-sm-6 col-xs-12">
-                <a href="player-second-page.html" class="item">
-            <span class="info">
-                <span class="name">{{ jugador.nombre }}</span>
-                <span class="position">{{ jugador.posicion.nombre }}</span>
-                <span class="number">1</span>
-            </span>
-                    <img src="{{ asset('assets/images/soccer/default_user.svg')}}" alt="player">
-                </a>
-            </div>
-        {% endif %}
+            {% if posicion == 2 %}
+                <div class="col-md-4  col-sm-6 col-xs-12">
+                    <a href="../pagina/player-second-page.html" class="item">
+                <span class="info">
+                    <span class="name">{{ jugador.nombre }}</span>
+                    <span class="position">{{ jugador.posicion.nombre }}</span>
+                    <span class="number">{{ jugador.dorsal }}</span>
+                </span>
+                        <img src="{{ asset('assets/images/soccer/default_user.svg')}}" alt="player">
+                    </a>
+                    {% if app.user is not empty %}
+                        {% if app.user.rol is not empty %}
+                            {% if app.user.rol.id == 1 %}
+                                <a href="{{ path('jugador_edit', {id: jugador.Id}) }}">
+                                    <img src="{{ asset('assets/images/common/edit.svg') }}" width="50px" height="50px" alt="edit image">
+                                </a>
+                                <a href="{{ path('jugador_delete', {id: jugador.Id}) }}">
+                                    <img src="{{ asset('assets/images/common/delete.svg') }}" width="50px" height="50px" alt="edit image">
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endif %}
     {% endfor %}
 </div>
                 <div class="col-md-12">
@@ -108,14 +136,26 @@
                         {% set posicion = jugador.posicion.id %}
                         {% if posicion == 3 %}
                             <div class="col-md-4  col-sm-6 col-xs-12">
-                                <a href="player-second-page.html" class="item">
+                                <a href="../pagina/player-second-page.html" class="item">
             <span class="info">
                 <span class="name">{{ jugador.nombre }}</span>
                 <span class="position">{{ jugador.posicion.nombre }}</span>
-                <span class="number">1</span>
+                <span class="number">{{ jugador.dorsal }}</span>
             </span>
                                     <img src="{{ asset('assets/images/soccer/default_user.svg')}}" alt="player">
                                 </a>
+                                {% if app.user is not empty %}
+                                    {% if app.user.rol is not empty %}
+                                        {% if app.user.rol.id == 1 %}
+                                            <a href="{{ path('jugador_edit', {id: jugador.Id}) }}">
+                                                <img src="{{ asset('assets/images/common/edit.svg') }}" width="50px" height="50px" alt="edit image">
+                                            </a>
+                                            <a href="{{ path('jugador_delete', {id: jugador.Id}) }}">
+                                                <img src="{{ asset('assets/images/common/delete.svg') }}" width="50px" height="50px" alt="edit image">
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -130,14 +170,26 @@
                         {% set posicion = jugador.posicion.id %}
                         {% if posicion == 4 %}
                             <div class="col-md-4  col-sm-6 col-xs-12">
-                                <a href="player-second-page.html" class="item">
+                                <a href="../pagina/player-second-page.html" class="item">
             <span class="info">
                 <span class="name">{{ jugador.nombre }}</span>
                 <span class="position">{{ jugador.posicion.nombre }}</span>
-                <span class="number">1</span>
+                <span class="number">{{ jugador.dorsal }}</span>
             </span>
                                     <img src="{{ asset('assets/images/soccer/default_user.svg')}}" alt="player">
                                 </a>
+                                {% if app.user is not empty %}
+                                    {% if app.user.rol is not empty %}
+                                        {% if app.user.rol.id == 1 %}
+                                            <a href="{{ path('jugador_edit', {id: jugador.Id}) }}">
+                                                <img src="{{ asset('assets/images/common/edit.svg') }}" width="50px" height="50px" alt="edit image">
+                                            </a>
+                                            <a href="{{ path('jugador_delete', {id: jugador.Id}) }}">
+                                                <img src="{{ asset('assets/images/common/delete.svg') }}" width="50px" height="50px" alt="edit image">
+                                            </a>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -148,11 +200,10 @@
                 </div>
                 <div class="staff-box">
                     <div class="col-md-4  col-sm-6 col-xs-12">
-                        <a href="player-second-page.html" class="item">
+                        <a href="../pagina/player-second-page.html" class="item">
             <span class="info">
                 <span class="name">{{ equipo.entrenador }}</span>
                 <span class="position">Entrenador</span>
-                <span class="number">1</span>
             </span>
                             <img src="{{ asset('assets/images/soccer/default_user.svg')}}" alt="player">
                                 </a>
@@ -171,19 +222,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <p class="text">Whatever copper mug etsy, tilde listicle hammock gastropub literally franzen fanny pack typewriter meditation.<br> Organic chartreuse bicycle rights pinterest, cray humblebrag fap gochujang church-key brooklyn food truck letterpress cred. </p>
+                    <h6>Patrocinadores</h6>
                 </div>
                 <div class="col-xs-3 text-center">
-                    <img  class="sponsor-icons" src="images/common/sponsor-img3.png" alt="sponsor image">	
+                    <img  class="sponsor-icons" src="{{ asset('assets/images/common/sponsor-img3.png') }}" alt="sponsor image">
                 </div>
                 <div class="col-xs-3 text-center">
-                    <img class="sponsor-icons" src="images/common/sponsor-img.png" alt="sponsor image">	
+                    <img class="sponsor-icons" src="{{ asset('assets/images/common/sponsor-img.png') }}" alt="sponsor image">
                 </div>
                 <div class="col-xs-3 text-center">
-                    <img  class="sponsor-icons" src="images/common/sponsor-img1.png" alt="sponsor image">	
+                    <img  class="sponsor-icons" src="{{ asset('assets/images/common/sponsor-img1.png') }}" alt="sponsor image">
                 </div>
                 <div class="col-xs-3 text-center">
-                    <img  class="sponsor-icons" src="images/common/sponsor-img2.png" alt="sponsor image">	
+                    <img  class="sponsor-icons" src="{{ asset('assets/images/common/sponsor-img2.png') }}" alt="sponsor image">
                 </div>
             </div>
         </div>

@@ -21,8 +21,8 @@ class NoticiaRepository extends ServiceEntityRepository
     }
 
     public function findNewsById($id){
-        $query = $this->createQueryBuilder('u')
-            ->andwhere("u.id = :id")
+        $query = $this->createQueryBuilder('n')
+            ->andwhere("n.id = :id")
             ->setParameter('id', $id)
             ->getQuery();
 

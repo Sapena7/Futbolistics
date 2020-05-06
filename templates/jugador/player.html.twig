@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Team HTML</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../pagina/favicon.ico" type="image/x-icon">
     <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
@@ -29,7 +29,6 @@
 </div>
 
     {% include 'pagina/partials/header.twig' %}
-
 
     <!--BREADCRUMBS BEGIN-->
 <section class="image-header">
@@ -59,33 +58,41 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="captain-bage">Captain</div>
-                    <h4 class="player-name">central midfielder</h4>
+                    <h4 class="player-name">{{ jugador.nombre }}</h4>
                 </div>
                 <div class="col-md-6">
                     
 <div class="player-photo">
 
-    <div class="number">15</div>
+    <div class="number">{{ jugador.dorsal }}</div>
     <img class="img-responsive" src="{{ asset('assets/images/soccer/single-player-photo.png') }}" alt="player">
 </div>
                 </div>
                 <div class="col-md-6">
                     <div class="player-info">
-                        <h6 class="player-info-title">summary</h6>	
+                        <h6 class="player-info-title">Datos</h6>
                         <div class="summary">
                             <div class="row">
                                 <div class="col-md-3 col-sm-3 col-xs-3">
                                     <div class="item">Equipo:</div>
                                 </div>
-                                <div class="col-md-9 col-sm-9 col-xs-9">{{ jugador.Id }}</div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">{{ jugador.equipo.nombre }}</div>
                                 <div class="col-md-3 col-sm-3 col-xs-3">
                                     <div class="item">Posicion:</div>
                                 </div>
-                                <div class="col-md-9 col-sm-9 col-xs-9">adsd</div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">{{ jugador.posicion.nombre }}</div>
                                 <div class="col-md-3 col-sm-3 col-xs-3">
-                                    <div class="item">Age:</div>
+                                    <div class="goal" data-toggle="tooltip" data-placement="top" title="" data-original-title="32’">Goles <img src="{{ asset('assets/images/common/timeline-goal.jpg')}}" alt="timeline-goal"></div>
                                 </div>
-                                <div class="col-md-9 col-sm-9 col-xs-9">24</div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">{{ jugador.goles }}</div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <div class="item">Amarillas:</div>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">{{ jugador.amarillas }}</div>
+                                <div class="col-md-3 col-sm-3 col-xs-3">
+                                    <div class="item">Rojas:</div>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-9">{{ jugador.rojas }}</div>
                             </div>
                         </div>
                         <h6>club history</h6>
@@ -111,8 +118,8 @@
                                 </tr>
                             </table>
                         </div>
-                        <h6>About</h6>
-                        <p>Pabst irony tattooed, synth sriracha selvage pok pok. Wayfarers kinfolk sartorial, helvetica you </p>
+                        <h6>Resumen</h6>
+                        <p><b>{{ jugador.nombre }}</b> es <b>{{ jugador.posicion.nombre }}</b> en el equipo <b>{{ jugador.equipo.nombre }} </b>en <b>{{ jugador.equipo.liga.nombre }}</b></p>
                         <h6>Trophies</h6>
                         <ul class="player-trophey">
                             <li>
@@ -177,7 +184,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucas<br>Marshman</span>
                                                 <span class="position">Left Forward</span>
@@ -189,7 +196,7 @@
                                 </div>                    
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucas<br>Marshman</span>
                                                 <span class="position">Left Midfielder</span>
@@ -201,7 +208,7 @@
                                 </div>
                                 <div class="col-md-4 ">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucas<br>Marshman</span>
                                                 <span class="position">Central Attacking Midfielder</span>
@@ -220,7 +227,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucas<br>Marshman</span>
                                                 <span class="position">Left Forward</span>
@@ -232,7 +239,7 @@
                                 </div>                    
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucas<br>Marshman</span>
                                                 <span class="position">Left Midfielder</span>
@@ -244,7 +251,7 @@
                                 </div>
                                 <div class="col-md-4 ">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucas<br>Marshman</span>
                                                 <span class="position">Central Attacking Midfielder</span>
@@ -279,7 +286,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Vito<br>Palet</span>
                                                 <span class="position">Left Forward</span>
@@ -291,7 +298,7 @@
                                 </div>                    
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucas<br>Melet</span>
                                                 <span class="position">Left Midfielder</span>
@@ -303,7 +310,7 @@
                                 </div>
                                 <div class="col-md-4 ">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucas<br>Marse</span>
                                                 <span class="position">Central Attacking Midfielder</span>
@@ -322,7 +329,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucas<br>Marsan</span>
                                                 <span class="position">Left Forward</span>
@@ -334,7 +341,7 @@
                                 </div>                    
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Luscas<br>Mars</span>
                                                 <span class="position">Left Midfielder</span>
@@ -346,7 +353,7 @@
                                 </div>
                                 <div class="col-md-4 ">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucas<br>Mafo</span>
                                                 <span class="position">Central Attacking Midfielder</span>
@@ -381,7 +388,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">James<br>Deshon</span>
                                                 <span class="position">Left Forward</span>
@@ -393,7 +400,7 @@
                                 </div>                    
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Deshon<br>James</span>
                                                 <span class="position">Left Midfielder</span>
@@ -405,7 +412,7 @@
                                 </div>
                                 <div class="col-md-4 ">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">James<br>Deshon</span>
                                                 <span class="position">Central Attacking Midfielder</span>
@@ -424,7 +431,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucas<br>Marsh</span>
                                                 <span class="position">Left Forward</span>
@@ -436,7 +443,7 @@
                                 </div>                    
                                 <div class="col-md-4">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Luca<br>Mas</span>
                                                 <span class="position">Left Midfielder</span>
@@ -448,7 +455,7 @@
                                 </div>
                                 <div class="col-md-4 ">
                                     <div class="staff-item">
-                                        <a href="players.html.twig">
+                                        <a href="index.html.twig">
                                             <span class="info">
                                                 <span class="name">Lucasoto<br>Marsh</span>
                                                 <span class="position">Central Attacking Midfielder</span>
@@ -495,11 +502,11 @@
                             <a href="index-2.html" class="foot-logo"><img src="images/soccer/footer-logo.png" alt="footer-logo"></a>
                             <p>Activated charcoal trust fund ugh prism af, beard marfa air plant stumptown gastropub farm-to-table jianbing.</p>
                             <ul class="foot-left-menu">
-                                <li><a href="players.html.twig">First team</a></li>
-                                <li><a href="players.html.twig">Second team</a></li>
-                                <li><a href="amateurs.html.twig">Amateurs</a></li>
+                                <li><a href="index.html.twig">First team</a></li>
+                                <li><a href="index.html.twig">Second team</a></li>
+                                <li><a href="../pagina/amateurs.html.twig">Amateurs</a></li>
                                 <li><a href="donations.html">Donation</a></li>
-                                <li><a href="trophies.html">trophies</a></li>
+                                <li><a href="../pagina/trophies.html">trophies</a></li>
                             </ul>
                         </div>
                     </div>
@@ -508,11 +515,11 @@
                     <div class="foot-news">
                         <h4>Recent news</h4>
                         <div class="item">
-                            <a href="news.html.twig" class="image"><img class="img-responsive" src="images/soccer/foot-news-img.jpg" alt="news-image"></a>
-                            <a href="news.html.twig" class="name">When somersaulting Sanchez shouldered Mexico’s hopes</a>
-                            <a href="news.html.twig" class="date">25 Sep 2016</a>
+                            <a href="../noticia/index.html.twig" class="image"><img class="img-responsive" src="images/soccer/foot-news-img.jpg" alt="news-image"></a>
+                            <a href="../noticia/index.html.twig" class="name">When somersaulting Sanchez shouldered Mexico’s hopes</a>
+                            <a href="../noticia/index.html.twig" class="date">25 Sep 2016</a>
                             <span class="separator">in</span>
-                            <a href="news.html.twig" class="category">Highlights</a>
+                            <a href="../noticia/index.html.twig" class="category">Highlights</a>
                         </div>
                     </div>
                 </div>
@@ -542,11 +549,11 @@
                 <div class="col-md-12">
                     <ul class="footer-menu">
                         <li class="active"><a href="index-2.html"><span>Home</span></a></li>
-                        <li><a href="matches.html.twig"><span>Matches</span></a></li>
-                        <li><a href="players.html.twig"><span>Team</span></a></li>
-                        <li><a href="news.html.twig"><span>News</span></a></li>
+                        <li><a href="../pagina/matches.html.twig"><span>Matches</span></a></li>
+                        <li><a href="index.html.twig"><span>Team</span></a></li>
+                        <li><a href="../noticia/index.html.twig"><span>News</span></a></li>
                         <li><a href="store.html"><span>Store</span></a></li>
-                        <li><a href="contacts.html"><span>Contact</span></a></li>
+                        <li><a href="../pagina/contacts.html"><span>Contact</span></a></li>
                     </ul>	
                     <a href="#top" class="foot-up"><span>up <i class="fa fa-caret-up" aria-hidden="true"></i></span></a>
                 </div>
