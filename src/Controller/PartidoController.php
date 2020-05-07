@@ -30,13 +30,17 @@ class PartidoController extends AbstractController
         $jornadas = $this->getDoctrine()
             ->getRepository(Jornada::class)
             ->findAll();
+        $jornadasRepo = $this->getDoctrine()
+            ->getRepository(Jornada::class);
         $ligas = $this->getDoctrine()
             ->getRepository(Liga::class)
             ->findAll();
         $partidos = $this->getDoctrine()
             ->getRepository(Partido::class);
         $partidos = $partidos->findByJornada($jornada);
-        $properties = ['partidos' => $partidos, 'jornadas' => $jornadas, 'ligas' => $ligas, 'jornada' => $jornada];
+
+        $jornadaa = $jornadasRepo->findByJornadaId(1);
+        $properties = ['partidos' => $partidos, 'jornadas' => $jornadas, 'ligas' => $ligas, 'jornada' => $jornada, 'jornadaa' => $jornadaa];
 
         return $this->render('pagina/matches.html.twig', $properties);
     }
