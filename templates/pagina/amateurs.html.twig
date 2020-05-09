@@ -111,7 +111,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2 col-sm-3 col-xs-12">
-                <div class="break-title"><span>Breaking news</span></div>
+                <div class="break-title"><span>Ultimas noticias</span></div>
             </div>
             <div class="col-md-10 col-sm-9 col-xs-12">
                 <div id="main-breaking-list" class="carousel slide main-breaking-list" data-ride="carousel">
@@ -133,11 +133,11 @@
                         <!-- Controls -->
                         <a class="nav-arrow left-arrow" href="#main-breaking-list" role="button" data-slide="prev">
                             <i class="fa fa-caret-left" aria-hidden="true"></i>
-                            <span class="sr-only">Previous</span>
+                            <span class="sr-only">Anterior</span>
                         </a>
                         <a class="nav-arrow right-arrow" href="#main-breaking-list" role="button" data-slide="next">
                             <i class="fa fa-caret-right" aria-hidden="true"></i>
-                            <span class="sr-only">Next</span>
+                            <span class="sr-only">Siguiente</span>
                         </a>
                     </div>
                 </div>
@@ -174,147 +174,27 @@
                     <div class="title">26 september / 8:45 PM</div>
                 </div>
             </div>
-            <div class="col-md-12"><h6>Latest matches</h6></div>
+
+            <div class="col-md-12"><h6>Ultimos partidos</h6></div>
             <div class="col-md-12">
                 <ul class="tab-filters" role="tablist">
                     <li class="active"><a href="#nationalcup" role="tab" data-toggle="tab">National cup</a></li>
-                    <li><a href="#championship" role="tab" data-toggle="tab">Championship</a></li>
-                    <li><a href="#friendlies" role="tab" data-toggle="tab">Friendlies</a></li>
-                     <li><a href="#showall" role="tab" data-toggle="tab">Show all</a></li>
                 </ul>
             </div>
             
             <div class="tab-content">
-                <div class="tab-pane active" id="nationalcup" role="tabpanel">
                     <div class="col-md-12">
                         <div class="main-lates-matches">
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">National cup - quarterfinal</span>
+                            {% for partido in ultimosPartidos %}
+                            <a href="{{ path('partidos_byId', {id: partido.Id}) }}" class="item">
+                                <span class="championship">{{ partido.liga.nombre }}</span>
                                 <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo3.png') }}" alt="team-logo"></span><span>Team 1 </span></span>
-                                    <span class="score"><span>3:2</span></span>
-                                    <span class="team1"><span>Team 2 </span><span><img src="{{ asset('assets/images/soccer/team-logo4.png') }}" alt="team-logo"></span></span>
+                                    <span class="team"><span><img src="{{ asset('assets/images/escudos/') }}{{ partido.equipoLocal.fotoPerfil }}" alt="team-logo"></span><span>{{ partido.equipoLocal.nombre }} </span></span>
+                                    <span class="score"><span>{{ partido.golesLocal }} : {{ partido.golesVisitante }}</span></span>
+                                    <span class="team1"><span>{{ partido.equipoVisitante.fotoPerfil }} </span><span><img src="{{ asset('assets/images/escudos/') }}{{ partido.equipoVisitante.fotoPerfil }}" alt="team-logo"></span></span>
                                 </span>
-                                <span class="game-result">(5-4) penalties</span>
                             </a>
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">National cup - quarterfinal</span>
-                                <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo3.png') }}" alt="team-logo"></span><span>Team 1</span></span>
-                                    <span class="score"><span>3:2</span></span>
-                                    <span class="team1"><span>Team 2</span><span><img src="{{ asset('assets/images/soccer/team-logo4.png') }}" alt="team-logo"></span></span>
-                                </span>
-                                <span class="game-result">(5-4) penalties</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="championship" role="tabpanel">
-                    <div class="col-md-12">
-                        <div class="main-lates-matches">
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">Championship - quarterfinal</span>
-                                <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo3.png') }}" alt="team-logo"></span><span>Team 1 </span></span>
-                                    <span class="score"><span>3:2</span></span>
-                                    <span class="team1"><span>Team 2 Internacionasal</span><span><img src="{{ asset('assets/images/soccer/team-logo4.png') }}" alt="team-logo"></span></span>
-                                </span>
-                                <span class="game-result">(5-4) penalties</span>
-                            </a>
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">Championship - quarterfinal</span>
-                                <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo3.png') }}" alt="team-logo"></span><span>Team 1</span></span>
-                                    <span class="score"><span>3:2</span></span>
-                                    <span class="team1"><span>Team 2</span><span><img src="{{ asset('assets/images/soccer/team-logo4.png') }}" alt="team-logo"></span></span>
-                                </span>
-                                <span class="game-result">(5-4) penalties</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="friendlies" role="tabpanel">
-                    <div class="col-md-12">
-                        <div class="main-lates-matches">
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">Friendly match</span>
-                                <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo3.png') }}" alt="team-logo"></span><span>Team 1</span></span>
-                                    <span class="score"><span>2:2</span></span>
-                                    <span class="team1"><span>Team 2</span><span><img src="{{ asset('assets/images/soccer/team-logo4.png') }}" alt="team-logo"></span></span>
-                                </span>
-                                <span class="game-result">(5-4) penalties</span>
-                            </a>
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">Friendly match</span>
-                                <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo1.png') }}" alt="team-logo"></span><span>Team 1</span></span>
-                                    <span class="score"><span>3:3</span></span>
-                                    <span class="team1"><span>Team 2</span><span><img src="{{ asset('assets/images/soccer/team-logo2.png') }}" alt="team-logo"></span></span>
-                                </span>
-                                <span class="game-result">(5-4) penalties</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="showall" role="tabpanel">
-                    <div class="col-md-12">
-                        <div class="main-lates-matches">
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">National cup - quarterfinal</span>
-                                <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo3.png') }}" alt="team-logo"></span><span>Team 1 </span></span>
-                                    <span class="score"><span>3:2</span></span>
-                                    <span class="team1"><span>Team 2 </span><span><img src="{{ asset('assets/images/soccer/team-logo4.png') }}" alt="team-logo"></span></span>
-                                </span>
-                                <span class="game-result">(5-4) penalties</span>
-                            </a>
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">National cup - quarterfinal</span>
-                                <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo3.png') }}" alt="team-logo"></span><span>Team 1</span></span>
-                                    <span class="score"><span>3:2</span></span>
-                                    <span class="team1"><span>Team 2</span><span><img src="{{ asset('assets/images/soccer/team-logo4.png') }}" alt="team-logo"></span></span>
-                                </span>
-                                <span class="game-result">(5-4) penalties</span>
-                            </a>
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">Championship - quarterfinal</span>
-                                <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo3.png') }}" alt="team-logo"></span><span>Team 1 </span></span>
-                                    <span class="score"><span>3:2</span></span>
-                                    <span class="team1"><span>Team 2 Internacionasal</span><span><img src="{{ asset('assets/images/soccer/team-logo4.png') }}g" alt="team-logo"></span></span>
-                                </span>
-                                <span class="game-result">(5-4) penalties</span>
-                            </a>
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">Championship - quarterfinal</span>
-                                <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo3.png') }}" alt="team-logo"></span><span>Team 1</span></span>
-                                    <span class="score"><span>3:2</span></span>
-                                    <span class="team1"><span>Team 2</span><span><img src="{{ asset('assets/images/soccer/team-logo4.png') }}" alt="team-logo"></span></span>
-                                </span>
-                                <span class="game-result">(5-4) penalties</span>
-                            </a>
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">Friendly match</span>
-                                <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo3.png') }}" alt="team-logo"></span><span>Team 1</span></span>
-                                    <span class="score"><span>2:2</span></span>
-                                    <span class="team1"><span>Team 2</span><span><img src="{{ asset('assets/images/soccer/team-logo4.png') }}" alt="team-logo"></span></span>
-                                </span>
-                                <span class="game-result">(5-4) penalties</span>
-                            </a>
-                            <a href="matches.html.twig" class="item">
-                                <span class="championship">Friendly match</span>
-                                <span class="teams-wrap">
-                                    <span class="team"><span><img src="{{ asset('assets/images/soccer/team-logo1.png') }}" alt="team-logo"></span><span>Team 1</span></span>
-                                    <span class="score"><span>3:3</span></span>
-                                    <span class="team1"><span>Team 2</span><span><img src="{{ asset('assets/images/soccer/team-logo2.png') }}" alt="team-logo"></span></span>
-                                </span>
-                                <span class="game-result">(5-4) penalties</span>
-                            </a>
-
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -330,23 +210,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h4>club stuff</h4>  
+                <h4>Rankings</h4>
                 <ul class="tab-filters" role="tablist">
                     <li class="active">
                         <a href="#managers" role="tab" data-toggle="tab">
-                            Managers                  
+                            Goleadores
                         </a>
                     </li>
                     <li>
                         <a href="#firstteam" role="tab" data-toggle="tab">
-                            First team
+                            Asistencias
                         </a>
                     </li>
-                    <li>
-                        <a href="#academy" role="tab" data-toggle="tab">
-                            Academy
-                        </a>
-                    </li>                  
                 </ul>
             </div>
         </div>
@@ -671,28 +546,27 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h4>success story <br>began here</h4>
-                <p>Pabst irony tattooed, synth sriracha selvage pok pok. Wayfarers kinfolk sartorial, helvetica you probably haven't heard of them tumeric venmo deep mixtape semiotics brunch. </p>
+                <h4>Funcionamiento de la <br>web</h4>
+                <p>Web dedicada a la gestión de ligas. </p>
                 <div class="row">
                     <div class="col-md-6">
 
                         <div class="icon"><img src="{{ asset('assets/images/common/success-icon.png') }}" alt="success-icon"></div>
-                        <div class="title">Legendary</div>
-                        <p>Next level paleo taxidermy, bespoke messenger bag leggings occupy food truck. </p>
+                        <div class="title">Resultados</div>
+                        <p>Sigue los resultados y clasificaciones de la liga de tu equipo favorito. </p>
                     </div>
                     <div class="col-md-6">
                         <div class="icon"><img src="{{ asset('assets/images/common/success-icon1.png') }}" alt="success-icon"></div>
-                        <div class="title">fabulous</div>
-                        <p>Wayfarers kinfolk sartorial, helvetica you probably haven't heard of them tumeric venmo deep v mixtape semiotics brunch. </p>
+                        <div class="title">Detalles</div>
+                        <p>Todos los detalles de cada partido. </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="wrap position-relative">
                     <div class="amateurs-success-slogan">
-                        <div class="title">Children and Youth</div>
-                        <div class="big-title">Academy</div>
-                        <a href="about-club.html" class="btn">Details</a>
+                        <div class="big-title">Futbolistics</div>
+                        <a href="about-club.html" class="btn">Detalles</a>
                     </div>
                 </div>
             </div>
@@ -707,10 +581,9 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="text">
-                    <div class="title">visit our</div>
-                    <div class="big-title">Trophy room</div>
-                    <p>Snackwave tote bag fixie gluten-free, affogato master cleane cronut portland prism knausgaard.  Chartreuse fingerstache gentrify you probably</p>
-                    <a href="trophies.html" class="btn">Details</a>
+                    <div class="big-title">Competiciones</div>
+                    <p>Sigue las mejores competiciones</p>
+                    <a href="trophies.html" class="btn">Detalles</a>
                 </div>
             </div>
             <div class="col-md-7">
@@ -720,22 +593,15 @@
                             <div class="item">
 
                                 <img src="{{ asset('assets/images/common/am-trophey.png') }}" alt="am-trophey">
-                                <div class="name">National cup</div>
-                                <div class="year">2010</div>
+                                <div class="name">Copa regional</div>
+                                <div class="year">2019-20</div>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4">
                             <div class="item">
                                 <img src="{{ asset('assets/images/common/am-trophey1.png') }}" alt="am-trophey">
-                                <div class="name">Championship trophy</div>
-                                <div class="year">2012</div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <div class="item">
-                                <img src="{{ asset('assets/images/common/am-trophey2.png') }}" alt="am-trophey">
-                                <div class="name">Super cup</div>
-                                <div class="year">2017</div>
+                                <div class="name">Titulo regional</div>
+                                <div class="year">2019-20</div>
                             </div>
                         </div>
                     </div>
@@ -751,7 +617,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h4>Club Gallery</h4>
+                <h4>Galeria</h4>
             </div>
             <div class="col-md-6 text-right">
                 <div class="owl-carousel-arrows">
@@ -845,7 +711,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <p class="text">Whatever copper mug etsy, tilde listicle hammock gastropub literally franzen fanny pack typewriter meditation.<br> Organic chartreuse bicycle rights pinterest, cray humblebrag fap gochujang church-key brooklyn food truck letterpress cred. </p>
+                    <b class="text">Patrocinadores. </b><br>
                 </div>
 
                 <div class="col-xs-3 text-center">
@@ -869,66 +735,11 @@
 <div class="amateurs-news-list">
     <div class="container">
         <div class="row">
-            <div class="col-md-12"><h4>Team news</h4></div>
-            <div class="col-md-10 col-xs-9">
-                <ul class="tab-filters" role="tablist">
-                    <li class="active"><a href="#news" role="tab" data-toggle="tab">News</a></li>
-                    <li><a href="#highlights" role="tab" data-toggle="tab">Highlight</a></li>
-                    <li><a href="#interviews" role="tab" data-toggle="tab">interviews</a></li>
-                </ul>
-            </div>
-            <div class="col-md-2 col-xs-3 text-right">
-
-                <a id="show-all-link" href="../noticia/index.html.twig">Show all</a>
-
-            </div>
+            <div class="col-md-12"><h4>Noticias recomendadas</h4></div> <!-- Segons equip de l'usuari, si no en te, aleatori -->
             <div class="tab-content">
                 <div class="tab-pane active" id="news" role="tabpanel">
                     <div class="col-md-4">
                         <div class="item">
-
-                            <a href="../noticia/noticia.twig" class="img-wrap"><img src="{{ asset('assets/images/soccer/news1.jpg') }}" alt="news-single"></a>
-                            <a href="../noticia/noticia.twig" class="name">Bauza: Bozo and Topolo will start against Intertupo</a>
-                            <div class="date"><a href="../noticia/noticia.twig">25 Sep 2016</a> by <a href="../noticia/noticia.twig">Logan Holmes</a></div>
-                            <p>Snackwave tote bag fixie gluten-free, affogato master cleanse cronut portland prism knausgaard.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="item">
-                            <a href="../noticia/noticia.twig" class="img-wrap"><img src="{{ asset('assets/images/soccer/news2.jpg') }}" alt="news-single"></a>
-                            <a href="../noticia/noticia.twig" class="name">Bauza: Bozo and Topolo will start against Intertupo</a>
-                            <div class="date"><a href="../noticia/noticia.twig">25 Sep 2016</a> by <a href="../noticia/noticia.twig">Logan Holmes</a></div>
-                            <p>Snackwave tote bag fixie gluten-free, affogato master cleanse cronut portland prism knausgaard.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="item">
-                            <a href="../noticia/noticia.twig" class="img-wrap"><img src="{{ asset('assets/images/soccer/news3.jpg') }}" alt="news-single"></a>
-                            <a href="../noticia/noticia.twig" class="name">Bauza: Bozo and Topolo will start against Intertupo</a>
-                            <div class="date"><a href="../noticia/noticia.twig">25 Sep 2016</a> by <a href="../noticia/noticia.twig">Logan Holmes</a></div>
-                            <p>Snackwave tote bag fixie gluten-free, affogato master cleanse cronut portland prism knausgaard.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane" id="highlights" role="tabpanel">
-                    <div class="col-md-4">
-                        <div class="item">
-                            <a href="../noticia/noticia.twig" class="img-wrap"><img src="{{ asset('assets/images/soccer/news2.jpg') }}" alt="news-single"></a>
-                            <a href="../noticia/noticia.twig" class="name">Test Bozo and Topolo will start against Intertupo</a>
-                            <div class="date"><a href="../noticia/noticia.twig">25 Sep 2016</a> by <a href="../noticia/noticia.twig">Logan Holmes</a></div>
-                            <p>Snackwave tote bag fixie gluten-free, affogato master cleanse cronut portland prism knausgaard.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="item">
-                            <a href="../noticia/noticia.twig" class="img-wrap"><img src="{{ asset('assets/images/soccer/news3.jpg') }}" alt="news-single"></a>
-                            <a href="../noticia/noticia.twig" class="name">Bauza: Bozo and Topolo will start against Intertupo</a>
-                            <div class="date"><a href="../noticia/noticia.twig">25 Sep 2016</a> by <a href="../noticia/noticia.twig">Logan Holmes</a></div>
-                            <p>Snackwave tote bag fixie gluten-free, affogato master cleanse cronut portland prism knausgaard.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="item">
                             <a href="../noticia/noticia.twig" class="img-wrap"><img src="{{ asset('assets/images/soccer/news1.jpg') }}" alt="news-single"></a>
                             <a href="../noticia/noticia.twig" class="name">Bauza: Bozo and Topolo will start against Intertupo</a>
                             <div class="date"><a href="../noticia/noticia.twig">25 Sep 2016</a> by <a href="../noticia/noticia.twig">Logan Holmes</a></div>
@@ -936,35 +747,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane" id="interviews" role="tabpanel">
-                    <div class="col-md-4">
-                        <div class="item">
-                            <a href="../noticia/noticia.twig" class="img-wrap"><img src="{{ asset('assets/images/soccer/news1.jpg') }}" alt="news-single"></a>
-                            <a href="../noticia/noticia.twig" class="name">Bauza: Bozo and Topolo will start against Intertupo</a>
-                            <div class="date"><a href="../noticia/noticia.twig">25 Sep 2016</a> by <a href="../noticia/noticia.twig">Logan Holmes</a></div>
-                            <p>Snackwave tote bag fixie gluten-free, affogato master cleanse cronut portland prism knausgaard.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="item">
-                            <a href="../noticia/noticia.twig" class="img-wrap"><img src="{{ asset('assets/images/soccer/news3.jpg') }}" alt="news-single"></a>
-                            <a href="../noticia/noticia.twig" class="name">Bauza: Bozo and Topolo will start against Intertupo</a>
-                            <div class="date"><a href="../noticia/noticia.twig">25 Sep 2016</a> by <a href="../noticia/noticia.twig">Logan Holmes</a></div>
-                            <p>Snackwave tote bag fixie gluten-free, affogato master cleanse cronut portland prism knausgaard.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="item">
-                            <a href="../noticia/noticia.twig" class="img-wrap"><img src="{{ asset('assets/images/soccer/news2.jpg') }}" alt="news-single"></a>
-                            <a href="../noticia/noticia.twig" class="name">Bauza: Bozo and Topolo will start against Intertupo</a>
-                            <div class="date"><a href="../noticia/noticia.twig">25 Sep 2016</a> by <a href="../noticia/noticia.twig">Logan Holmes</a></div>
-                            <p>Snackwave tote bag fixie gluten-free, affogato master cleanse cronut portland prism knausgaard.</p>
-                        </div>
-                    </div>
-                </div>
-
-
-
             </div>
         </div>
     </div>

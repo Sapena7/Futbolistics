@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * Usuario
  *
  * @ORM\Table(name="Usuario", indexes={@ORM\Index(name="rol", columns={"rol"}), @ORM\Index(name="equipo_favorito", columns={"equipo_favorito"})})
- * @ORM\Entity(repositoryClass="App\Repository\UsuarioRepository")
+ * @ORM\Entity
  */
 class Usuario implements UserInterface
 {

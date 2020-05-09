@@ -38,4 +38,13 @@ class PartidoRepository extends ServiceEntityRepository
 
         return $query->getSingleResult();
     }
+
+    public function orderByFecha(){
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('p.fecha', 'DESC')
+            ->setMaxResults(2)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

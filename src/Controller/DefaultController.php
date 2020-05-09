@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Noticia;
+use App\Entity\Partido;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -12,8 +14,16 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        return $this->render('pagina/amateurs.html.twig', [
-            'controller_name' => 'DefaultController',
-        ]);
+
+        $partidos = $this->getDoctrine()
+            ->getRepository(Partido::class);
+        $noticias = $this->getDoctrine()
+            ->getRepository(Noticia::class);
+
+        $ultimosPartidos = $partidos->orderByFecha();
+
+        $properties = ['ultimosPartidos' => $ultimosPartidos];
+
+        return $this->render('pagina/amateurs.html.twig', $properties);
     }
 }
