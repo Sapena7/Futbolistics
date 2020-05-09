@@ -12,30 +12,39 @@ easy_admin:
             - label: "Estadio"
               children:
                       - {entity: Estadio, label: "Lista estadios", icon: "th-list"}
+                      - {entity: Estadio, label: "Añadir estadio", icon: "plus", params: {action: 'new'}}
             - label: "Jornada"
               children:
                       - {entity: Jornada, label: "Lista jornadas", icon: "th-list"}
+                      - {entity: Jornada, label: "Añadir jornada", icon: "plus", params: {action: 'new'}}
             - label: "Jugador"
               children:
                       - {entity: Jugador, label: "Lista jugadores", icon: "th-list"}
+                      - {entity: Jugador, label: "Añadir jugador", icon: "plus", params: {action: 'new'}}
             - label: "Liga"
               children:
                       - {entity: Liga, label: "Lista ligas", icon: "th-list"}
+                      - {entity: Liga, label: "Añadir liga", icon: "plus", params: {action: 'new'}}
             - label: "Noticia"
               children:
                       - {entity: Noticia, label: "Lista noticias", icon: "th-list"}
+                      - {entity: Noticia, label: "Añadir noticia", icon: "plus", params: {action: 'new'}}
             - label: "Partido"
               children:
                       - {entity: Partido, label: "Lista partidos", icon: "th-list"}
+                      - {entity: Partido, label: "Añadir partido", icon: "plus", params: {action: 'new'}}
             - label: "Posicion"
               children:
                       - {entity: Posicion, label: "Lista posiciones", icon: "th-list"}
+                      - {entity: Posicion, label: "Añadir posicion", icon: "plus", params: {action: 'new'}}
             - label: "Rol"
               children:
                       - {entity: Rol, label: "Lista roles", icon: "th-list"}
+                      - {entity: Rol, label: "Añadir rol", icon: "plus", params: {action: 'new'}}
             - label: "Usuario"
               children:
                       - {entity: Usuario, label: "Lista usuarios", icon: "th-list"}
+                      - {entity: Usuario, label: "Añadir usuario", icon: "plus", params: {action: 'new'}}
     site-name: 'Futbolistics'
     entities:
         # List the entity class name you want to manage
