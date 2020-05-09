@@ -222,5 +222,4 @@ class Clasificacion
         return $this;
     }
 
-
 }

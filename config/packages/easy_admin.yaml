@@ -1,0 +1,53 @@
+easy_admin:
+    design:
+        menu:
+            - {label: "Entidades"}
+            - label: "Clasificacion"
+              children:
+                  - {entity: Clasificacion, label: "Lista clasificacion", icon: "th-list"}
+            - label: "Equipo"
+              children:
+                      - {entity: Equipo, label: "Lista equipos", icon: "th-list"}
+                      - {entity: Equipo, label: "Añadir equipo", icon: "plus", params: {action: 'new'}}
+            - label: "Estadio"
+              children:
+                      - {entity: Estadio, label: "Lista estadios", icon: "th-list"}
+            - label: "Jornada"
+              children:
+                      - {entity: Jornada, label: "Lista jornadas", icon: "th-list"}
+            - label: "Jugador"
+              children:
+                      - {entity: Jugador, label: "Lista jugadores", icon: "th-list"}
+            - label: "Liga"
+              children:
+                      - {entity: Liga, label: "Lista ligas", icon: "th-list"}
+            - label: "Noticia"
+              children:
+                      - {entity: Noticia, label: "Lista noticias", icon: "th-list"}
+            - label: "Partido"
+              children:
+                      - {entity: Partido, label: "Lista partidos", icon: "th-list"}
+            - label: "Posicion"
+              children:
+                      - {entity: Posicion, label: "Lista posiciones", icon: "th-list"}
+            - label: "Rol"
+              children:
+                      - {entity: Rol, label: "Lista roles", icon: "th-list"}
+            - label: "Usuario"
+              children:
+                      - {entity: Usuario, label: "Lista usuarios", icon: "th-list"}
+    site-name: 'Futbolistics'
+    entities:
+        # List the entity class name you want to manage
+        - App\Entity\Clasificacion
+        - App\Entity\Equipo
+        - App\Entity\Estadio
+        - App\Entity\Jornada
+        - App\Entity\Jugador
+        - App\Entity\Liga
+        - App\Entity\Noticia
+        - App\Entity\Partido
+        - App\Entity\Posicion
+        - App\Entity\Rol
+        - App\Entity\Usuario
+
