@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Jornada
  *
- * @ORM\Table(name="Jornada")
+ * @ORM\Table(name="Jornada", indexes={@ORM\Index(name="partidoEstrella", columns={"partidoEstrella"})})
  * @ORM\Entity(repositoryClass="App\Repository\JornadaRepository")
  */
 class Jornada
@@ -29,9 +29,12 @@ class Jornada
     private $jornada;
 
     /**
-     * @var int
+     * @var \Partido
      *
-     * @ORM\Column(name="partidoEstrella", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Partido")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="partidoEstrella", referencedColumnName="id")
+     * })
      */
     private $partidoestrella;
 
@@ -52,12 +55,12 @@ class Jornada
         return $this;
     }
 
-    public function getPartidoestrella(): ?int
+    public function getPartidoestrella(): ?Partido
     {
         return $this->partidoestrella;
     }
 
-    public function setPartidoestrella(int $partidoestrella): self
+    public function setPartidoestrella(?Partido $partidoestrella): self
     {
         $this->partidoestrella = $partidoestrella;
 

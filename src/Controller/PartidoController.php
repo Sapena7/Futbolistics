@@ -22,9 +22,9 @@ class PartidoController extends AbstractController
     public function index(Request $request)
     {
         if ($request->query->get('jornada') == null){
-            $jornada = 1;
+            $jornadaId = 1;
         }else{
-            $jornada = $request->query->get('jornada');
+            $jornadaId = $request->query->get('jornada');
         }
 
         $jornadas = $this->getDoctrine()
@@ -37,10 +37,10 @@ class PartidoController extends AbstractController
             ->findAll();
         $partidos = $this->getDoctrine()
             ->getRepository(Partido::class);
-        $partidos = $partidos->findByJornada($jornada);
+        $partidos = $partidos->findByJornada($jornadaId);
 
-        $jornadaa = $jornadasRepo->findByJornadaId(1);
-        $properties = ['partidos' => $partidos, 'jornadas' => $jornadas, 'ligas' => $ligas, 'jornada' => $jornada, 'jornadaa' => $jornadaa];
+        $jornada = $jornadasRepo->findById($jornadaId);
+        $properties = ['partidos' => $partidos, 'jornadas' => $jornadas, 'ligas' => $ligas, 'jornada' => $jornada];
 
         return $this->render('pagina/matches.html.twig', $properties);
     }

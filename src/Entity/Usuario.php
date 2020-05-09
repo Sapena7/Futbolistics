@@ -3,15 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Usuario
  *
  * @ORM\Table(name="Usuario", indexes={@ORM\Index(name="rol", columns={"rol"}), @ORM\Index(name="equipo_favorito", columns={"equipo_favorito"})})
- * @ORM\Entity
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @ORM\Entity(repositoryClass="App\Repository\UsuarioRepository")
  */
 class Usuario implements UserInterface
 {
@@ -53,9 +51,9 @@ class Usuario implements UserInterface
     private $password;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="foto_perfil", type="string", length=100, nullable=false)
+     * @ORM\Column(name="foto_perfil", type="string", length=100, nullable=true)
      */
     private $fotoPerfil;
 
@@ -137,7 +135,7 @@ class Usuario implements UserInterface
         return $this->fotoPerfil;
     }
 
-    public function setFotoPerfil(string $fotoPerfil): self
+    public function setFotoPerfil(?string $fotoPerfil): self
     {
         $this->fotoPerfil = $fotoPerfil;
 

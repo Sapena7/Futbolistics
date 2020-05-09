@@ -53,7 +53,6 @@
 </section>
 <!--BREADCRUMBS END-->
     <!--MAIN MATCH SHEDULE BEGIN-->
-    {{ dump(jornadaa) }}
     <section class="main-match-shedule amateurs-match-shedule">
         <div class="container">
             <div class="row">
@@ -81,25 +80,23 @@
 <div class="tab-content">
     <div class="tab-pane active" id="all">
         <div class="amateurs-main-match">
-            <div class="title">Premier League - Round 28</div>	
-            <a href="matches.html.twig" class="team">
-                <span class="image"><img src="images/soccer/team-logo1.png" alt="main-match"></span>
+            <div class="title">{{ jornada.partidoEstrella.fecha|date("d/m/Y") }}</div>
+            <a href="{{ path('partidos_byId', {id: jornada.partidoEstrella.Id}) }}" class="team">
+                <span class="image"><img src="{{ asset('assets/images/escudos/')}}{{ jornada.partidoEstrella.equipoLocal.fotoPerfil }}" alt="main-match"></span>
                 <span class="info">
-                    <span class="name">Team 1</span>
-                    <span class="city">london</span>
+                    <span class="name">{{ jornada.partidoEstrella.equipoLocal.nombre }}</span>
                 </span>
             </a>
             <div class="score">
-                <span>3:2</span>	
+                <span>{{ jornada.partidoEstrella.golesLocal }} : {{ jornada.partidoEstrella.golesVisitante }}</span>
             </div>
-            <a href="matches.html.twig" class="team guest">
+            <a href="{{ path('partidos_byId', {id: jornada.partidoEstrella.Id}) }}" class="team guest">
                 <span class="info">
-                    <span class="name">Team 2</span>
-                    <span class="city">London</span>
-                </span>	
-                <span class="image"><img src="images/soccer/team-logo2.png" alt="main-match"></span>
+                    <span class="name">{{ jornada.partidoEstrella.equipoVisitante.nombre }}</span>
+                </span>
+                <span class="image"><img src="{{ asset('assets/images/escudos/')}}{{ jornada.partidoEstrella.equipoVisitante.fotoPerfil }}" alt="main-match"></span>
             </a>
-            <div class="title">26 september / 8:45 PM</div>
+
         </div>
     </div>
     <div class="tab-pane" id="nationalcup">
@@ -150,7 +147,7 @@
     </div>
 </div>
                 </div>
-                <div class="col-md-12 col-sm-12 col-xs-12"><h6>Jornada {{ jornada }}</h6></div>
+                <div class="col-md-12 col-sm-12 col-xs-12"><h6>{{ jornada.jornada }}</h6></div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
                         
 <div class="main-lates-matches">

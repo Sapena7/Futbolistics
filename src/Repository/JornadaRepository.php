@@ -19,7 +19,7 @@ class JornadaRepository extends ServiceEntityRepository
         parent::__construct($registry, Jornada::class);
     }
 
-    public function findByJornadaId($id) : Jornada{
+    public function findById($id) : Jornada{
         $query = $this->createQueryBuilder('j')
             ->andwhere("j.id = :id")
             ->setParameter('id', $id)
