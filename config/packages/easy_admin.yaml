@@ -48,15 +48,37 @@ easy_admin:
     site-name: 'Futbolistics'
     entities:
         # List the entity class name you want to manage
-        - App\Entity\Clasificacion
-        - App\Entity\Equipo
-        - App\Entity\Estadio
-        - App\Entity\Jornada
-        - App\Entity\Jugador
-        - App\Entity\Liga
-        - App\Entity\Noticia
-        - App\Entity\Partido
-        - App\Entity\Posicion
-        - App\Entity\Rol
-        - App\Entity\Usuario
-
+      Clasificacion:
+          class: App\Entity\Clasificacion
+      Equipo:
+        class: App\Entity\Equipo
+        image_base_path: 'assets/images/escudos/'
+        list:
+          fields:
+            - { property: 'id', type: 'integer' }
+            - { property: 'nombre', type: 'string' }
+            - { property: 'entrenador', type: 'string' }
+            - { property: 'trofeos', type: 'integer' }
+            - { property: 'region', type: 'string' }
+            - { property: 'fundacion', type: 'integer' }
+            - { property: 'fotoperfil', type: 'image' }
+            - { property: 'estadio'}
+            - { property: 'liga'}
+      Estadio:
+        class: App\Entity\Estadio
+      Jornada:
+        class: App\Entity\Jornada
+      Jugador:
+        class: App\Entity\Jugador
+      Liga:
+        class: App\Entity\Liga
+      Noticia:
+        class: App\Entity\Noticia
+      Partido:
+        class: App\Entity\Partido
+      Posicion:
+        class: App\Entity\Posicion
+      Rol:
+        class: App\Entity\Rol
+      Usuario:
+        class: App\Entity\Usuario
