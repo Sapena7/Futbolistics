@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Equipo
  *
  * @ORM\Table(name="Equipo", indexes={@ORM\Index(name="liga", columns={"liga"}), @ORM\Index(name="estadio", columns={"estadio"})})
  * @ORM\Entity(repositoryClass="App\Repository\EquipoRepository")
+ * @Vich\Uploadable()
  */
 class Equipo
 {
@@ -62,6 +64,27 @@ class Equipo
      * @ORM\Column(name="foto_perfil", type="string", length=500, nullable=false)
      */
     private $fotoPerfil;
+
+    /**
+     * @Vich\UploadableField(mapping="equipo_images", fileNameProperty="fotoPerfil")
+     */
+    private $fotoPerfilFile;
+
+    /**
+     * @return mixed
+     */
+    public function getFotoPerfilFile()
+    {
+        return $this->fotoPerfilFile;
+    }
+
+    /**
+     * @param mixed $fotoPerfilFile
+     */
+    public function setFotoPerfilFile($fotoPerfilFile): void
+    {
+        $this->fotoPerfilFile = $fotoPerfilFile;
+    }
 
     /**
      * @var \Estadio

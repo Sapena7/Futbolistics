@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Estadio
  *
  * @ORM\Table(name="Estadio")
  * @ORM\Entity
+ * @Vich\Uploadable()
  */
 class Estadio
 {
@@ -41,6 +43,27 @@ class Estadio
      * @ORM\Column(name="foto_estadio", type="string", length=100, nullable=false)
      */
     private $fotoEstadio;
+
+    /**
+     * @Vich\UploadableField(mapping="estadio_images", fileNameProperty="fotoEstadio")
+     */
+    private $fotoEstadioFile;
+
+    /**
+     * @return mixed
+     */
+    public function getFotoEstadioFile()
+    {
+        return $this->fotoEstadioFile;
+    }
+
+    /**
+     * @param mixed $fotoEstadioFile
+     */
+    public function setFotoEstadioFile($fotoEstadioFile): void
+    {
+        $this->fotoEstadioFile = $fotoEstadioFile;
+    }
 
     public function getId(): ?int
     {

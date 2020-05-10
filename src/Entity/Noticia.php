@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Noticia
  *
  * @ORM\Table(name="Noticia", indexes={@ORM\Index(name="noticia_ibfk_2", columns={"colaborador"}), @ORM\Index(name="equipo", columns={"equipo"})})
  * @ORM\Entity(repositoryClass="App\Repository\NoticiaRepository")
+ * @Vich\Uploadable()
  */
 class Noticia
 {
@@ -48,6 +50,27 @@ class Noticia
      * @ORM\Column(name="imagen", type="string", length=100, nullable=false)
      */
     private $imagen;
+
+    /**
+     * @Vich\UploadableField(mapping="noticia_images", fileNameProperty="imagen")
+     */
+    private $imagenFile;
+
+    /**
+     * @return mixed
+     */
+    public function getImagenFile()
+    {
+        return $this->imagenFile;
+    }
+
+    /**
+     * @param mixed $imagenFile
+     */
+    public function setImagenFile($imagenFile): void
+    {
+        $this->imagenFile = $imagenFile;
+    }
 
     /**
      * @var \Equipo

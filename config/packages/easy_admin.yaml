@@ -3,13 +3,16 @@ easy_admin:
         menu:
             - {label: "Entidades"}
             - label: "Clasificacion"
+              icon: "list-ol"
               children:
                   - {entity: Clasificacion, label: "Lista clasificacion", icon: "th-list"}
             - label: "Equipo"
+              icon: "shield-alt"
               children:
                       - {entity: Equipo, label: "Lista equipos", icon: "th-list"}
                       - {entity: Equipo, label: "Añadir equipo", icon: "plus", params: {action: 'new'}}
             - label: "Estadio"
+              icon: "building"
               children:
                       - {entity: Estadio, label: "Lista estadios", icon: "th-list"}
                       - {entity: Estadio, label: "Añadir estadio", icon: "plus", params: {action: 'new'}}
@@ -18,30 +21,37 @@ easy_admin:
                       - {entity: Jornada, label: "Lista jornadas", icon: "th-list"}
                       - {entity: Jornada, label: "Añadir jornada", icon: "plus", params: {action: 'new'}}
             - label: "Jugador"
+              icon: "running"
               children:
                       - {entity: Jugador, label: "Lista jugadores", icon: "th-list"}
                       - {entity: Jugador, label: "Añadir jugador", icon: "plus", params: {action: 'new'}}
             - label: "Liga"
+              icon: "trophy"
               children:
                       - {entity: Liga, label: "Lista ligas", icon: "th-list"}
                       - {entity: Liga, label: "Añadir liga", icon: "plus", params: {action: 'new'}}
             - label: "Noticia"
+              icon: "newspaper"
               children:
                       - {entity: Noticia, label: "Lista noticias", icon: "th-list"}
                       - {entity: Noticia, label: "Añadir noticia", icon: "plus", params: {action: 'new'}}
             - label: "Partido"
+              icon: "poll"
               children:
                       - {entity: Partido, label: "Lista partidos", icon: "th-list"}
                       - {entity: Partido, label: "Añadir partido", icon: "plus", params: {action: 'new'}}
             - label: "Posicion"
+              icon: "map-pin"
               children:
                       - {entity: Posicion, label: "Lista posiciones", icon: "th-list"}
                       - {entity: Posicion, label: "Añadir posicion", icon: "plus", params: {action: 'new'}}
             - label: "Rol"
+              icon: "user-tag"
               children:
                       - {entity: Rol, label: "Lista roles", icon: "th-list"}
                       - {entity: Rol, label: "Añadir rol", icon: "plus", params: {action: 'new'}}
             - label: "Usuario"
+              icon: "user"
               children:
                       - {entity: Usuario, label: "Lista usuarios", icon: "th-list"}
                       - {entity: Usuario, label: "Añadir usuario", icon: "plus", params: {action: 'new'}}
@@ -53,12 +63,22 @@ easy_admin:
       Equipo:
         class: App\Entity\Equipo
         image_base_path: 'assets/images/escudos/'
+        form:
+          fields:
+            - nombre
+            - entrenador
+            - trofeos
+            - region
+            - fundacion
+            - estadio
+            - liga
+            - { property: 'fotoPerfilFile', type: 'vich_image', label: 'Foto escudo' }
         list:
           fields:
             - { property: 'id', type: 'integer' }
             - { property: 'nombre', type: 'string' }
             - { property: 'entrenador', type: 'string' }
-            - { property: 'trofeos', type: 'integer' }
+            - { property: 'trofeos', type: 'integer'}
             - { property: 'region', type: 'string' }
             - { property: 'fundacion', type: 'integer' }
             - { property: 'fotoperfil', type: 'image' }
@@ -66,6 +86,17 @@ easy_admin:
             - { property: 'liga'}
       Estadio:
         class: App\Entity\Estadio
+        image_base_path: 'assets/images/estadios/'
+        form:
+          fields:
+            - nombre
+            - ciudad
+            - { property: 'fotoEstadioFile', type: 'vich_image', label: 'Foto estadio' }
+        list:
+          fields:
+            - { property: 'nombre', type: 'string' }
+            - { property: 'ciudad', type: 'string' }
+            - { property: 'fotoEstadio', type: 'image' }
       Jornada:
         class: App\Entity\Jornada
       Jugador:
@@ -74,6 +105,23 @@ easy_admin:
         class: App\Entity\Liga
       Noticia:
         class: App\Entity\Noticia
+        image_base_path: 'assets/images/noticias/'
+        form:
+          fields:
+            - titular
+            - equipo
+            - cuerpo
+            - fecha
+            - colaborador
+            - { property: 'imagenFile', type: 'vich_image', label: 'Foto noticia' }
+        list:
+          fields:
+            - { property: 'titular', type: 'string' }
+            - { property: 'equipo'}
+            - { property: 'cuerpo', type: 'email' }
+            - { property: 'fecha'}
+            - { property: 'colaborador'}
+            - { property: 'imagen', type: 'image' }
       Partido:
         class: App\Entity\Partido
       Posicion:
@@ -82,3 +130,20 @@ easy_admin:
         class: App\Entity\Rol
       Usuario:
         class: App\Entity\Usuario
+        image_base_path: 'assets/images/usuarios/'
+        form:
+          fields:
+            - nombre
+            - nombreCompleto
+            - email
+            - equipoFavorito
+            - rol
+            - { property: 'fotoPerfilFile', type: 'vich_image', label: 'Foto usuario' }
+        list:
+          fields:
+            - { property: 'nombre', type: 'string' }
+            - { property: 'nombreCompleto', type: 'string' }
+            - { property: 'nombreCompleto', type: 'email' }
+            - { property: 'equipoFavorito'}
+            - { property: 'rol'}
+            - { property: 'fotoPerfil', type: 'image' }
