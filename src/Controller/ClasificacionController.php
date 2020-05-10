@@ -19,15 +19,15 @@ class ClasificacionController extends AbstractController
      */
     public function index(): Response
     {
-        $clasificacion = $this->getDoctrine()
-            ->getRepository(Clasificacion::class)
-            ->findAll();
+        $clasificacionRepos = $this->getDoctrine()
+            ->getRepository(Clasificacion::class);
 
-        $equipos = $this->getDoctrine()
-            ->getRepository(Equipo::class)
-            ->findAll();
+        $partidoRepos = $this->getDoctrine()
+            ->getRepository(Partido::class);
 
-        $properties = ["clasificacion" => $clasificacion, "equipos" => $equipos];
+        $clasificacion = $clasificacionRepos->findAllOrderedByPuntos();
+
+        $properties = ["clasificacion" => $clasificacion];
 
         return $this->render('pagina/ranking.html.twig', $properties);
     }

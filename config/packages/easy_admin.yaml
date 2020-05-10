@@ -55,6 +55,9 @@ easy_admin:
               children:
                       - {entity: Usuario, label: "Lista usuarios", icon: "th-list"}
                       - {entity: Usuario, label: "Añadir usuario", icon: "plus", params: {action: 'new'}}
+            - { label: 'Otros' }
+            - { label: 'Página', url: '../', icon: 'home', target: '_blank' }
+
     site-name: 'Futbolistics'
     entities:
         # List the entity class name you want to manage

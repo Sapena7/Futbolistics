@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Clasificacion
  *
  * @ORM\Table(name="Clasificacion", indexes={@ORM\Index(name="liga", columns={"liga"}), @ORM\Index(name="equipo", columns={"equipo"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ClasificacionRepository")
  */
 class Clasificacion
 {

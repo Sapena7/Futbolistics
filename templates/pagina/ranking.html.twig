@@ -55,6 +55,7 @@
 
     <!--STANDING TABLE WRAP BEGIN-->
 
+
     <section class="standing-table-wrap">
         <div class="container">
             <div class="row">
@@ -79,20 +80,22 @@
                                     <th>Forma</th>
                                     <th>Siguiente</th>
                                 </tr>
+                                {% set pos = 0 %}
                                 {% for equipoClas in clasificacion %}
+                                    {% set pos = pos+1 %}
                                 <tr>
-                                    {% if (equipoClas.Id == 1) or (equipoClas.Id == 2) or (equipoClas.Id == 3) %}
+                                    {% if (pos == 1) or (pos == 2) or (pos == 3) %}
                                     <td class="up">
-                                        <i class="fa fa-caret-up" aria-hidden="true"></i> {{ equipoClas.Id }} <span class="team">
-                                        {% elseif (equipoClas.Id == 14) or (equipoClas.Id == 15) or (equipoClas.Id == 16) %}
+                                        <i class="fa fa-caret-up" aria-hidden="true"></i> {{ pos }} <span class="team">
+                                        {% elseif (pos == 14) or (pos == 15) or (pos == 16) %}
                                     <td class="down">
-                                        <i class="fa fa-caret-down" aria-hidden="true"></i> {{ equipoClas.Id }} <span class="team">
+                                        <i class="fa fa-caret-down" aria-hidden="true"></i> {{ pos }} <span class="team">
                                         {% else %}
                                     <td>
-                                        <i class="fa fa-caret-right" aria-hidden="true"></i> {{ equipoClas.Id }} <span class="team">
+                                        <i class="fa fa-caret-right" aria-hidden="true"></i> {{ pos }} <span class="team">
                                         {% endif %}
-                                            <img src="{{ asset('assets/images/escudos/')}}{{ equipos[equipoClas.Id-1].fotoPerfil }}" width="30" height="30" alt="team-logo">
-                                        </span>{{ equipos[equipoClas.Id-1].nombre }}
+                                            <img src="{{ asset('assets/images/escudos/')}}{{ equipoClas.equipo.fotoPerfil }}" width="30" height="30" alt="team-logo">
+                                        </span>{{ equipoClas.equipo.nombre }}
                                     </td>
                                     <td>{{ equipoClas.jugados }}</td>
                                     <td>{{ equipoClas.ganados }}</td>
@@ -106,8 +109,6 @@
                                         <span class="win">w</span>
                                         <span class="drawn">d</span>
                                         <span class="lose">l</span>
-                                        <span class="win">w</span>
-                                        <span class="win">w</span>
                                     </td>
                                     <td><a href="club-stats.html.twig"><img src="images/soccer/team-logo2.png" width="30" height="30" alt="team-logo"></a></td>
                                 </tr>
