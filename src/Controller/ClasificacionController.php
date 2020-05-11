@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Clasificacion;
-use App\Entity\Equipo;
+use App\Entity\Partido;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

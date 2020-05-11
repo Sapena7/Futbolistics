@@ -16,9 +16,6 @@
                     </li>
                     <li>
                         <a href="{{ path('partidos') }}"><span>Partidos</span></a>
-                        <ul>
-                            <li><a href="live-text-stream.html"><span>En directo</span></a></li>
-                        </ul>
                     </li>
                     <li>
                         <a href="{{ path('equipos_index') }}"><span>Equipos</span></a>
@@ -31,7 +28,7 @@
                         </ul>
                     </li>
                     <li><a href="{{ path('noticia_index') }}"><span>Noticias</span></a></li>
-                    <li><a href="contacts.html"><span>Contacto</span></a></li>
+                    <li><a href="{{ path('contact') }}"><span>Contacto</span></a></li>
                     <li><a href="{{ path('app_register') }}"><span>Registrar</span></a></li>
                     <li>
                         <a href="#other"><span>other</span></a>
@@ -55,10 +52,6 @@
                                     <li><a href="{{ path('easyadmin') }}">Dashboard <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
                                     <li class="divider"></li>
                             {% endif %}
-                                    <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
-                                    <li class="divider"></li>
                                     <li><a href="{{ path('app_logout') }}">Cerrar Sessión <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                                 </ul>
                             </li>
