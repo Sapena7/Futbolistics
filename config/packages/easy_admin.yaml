@@ -54,12 +54,6 @@ easy_admin:
               children:
                       - {entity: Posicion, label: "Lista posiciones", icon: "th-list"}
                       - {entity: Posicion, label: "Añadir posicion", icon: "plus", params: {action: 'new'}}
-            - label: "Rol"
-              permission: 'ROLE_ADMIN'
-              icon: "user-tag"
-              children:
-                      - {entity: Rol, label: "Lista roles", icon: "th-list", permission: 'ROLE_ADMIN'}
-                      - {entity: Rol, label: "Añadir rol", icon: "plus", params: {action: 'new'}, permission: 'ROLE_ADMIN'}
             - label: "Usuario"
               permission: 'ROLE_ADMIN'
               icon: "user"
@@ -201,16 +195,6 @@ easy_admin:
           item_permission: ['ROLE_ADMIN', 'ROLE_COLABORATOR']
       Posicion:
         class: App\Entity\Posicion
-        list:
-          item_permission: ['ROLE_ADMIN', 'ROLE_COLABORATOR']
-        edit:
-          item_permission: ['ROLE_ADMIN', 'ROLE_COLABORATOR']
-        delete:
-          item_permission: ['ROLE_ADMIN', 'ROLE_COLABORATOR']
-        new:
-          item_permission: ['ROLE_ADMIN', 'ROLE_COLABORATOR']
-      Rol:
-        class: App\Entity\Rol
         list:
           item_permission: ['ROLE_ADMIN', 'ROLE_COLABORATOR']
         edit:
