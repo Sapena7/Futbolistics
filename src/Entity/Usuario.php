@@ -91,14 +91,11 @@ class Usuario implements UserInterface
     private $equipoFavorito;
 
     /**
-     * @var \Rol
+     * @var json
      *
-     * @ORM\ManyToOne(targetEntity="Rol")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="rol", referencedColumnName="Id")
-     * })
+     * @ORM\Column(name="rol", type="json")
      */
-    private $rol;
+    private $rol = [];
 
     public function getId(): ?int
     {
@@ -177,12 +174,12 @@ class Usuario implements UserInterface
         return $this;
     }
 
-    public function getRol(): ?Rol
+    public function getRol(): ?array
     {
         return $this->rol;
     }
 
-    public function setRol(?Rol $rol): self
+    public function setRol(array $rol): self
     {
         $this->rol = $rol;
 
@@ -210,8 +207,11 @@ class Usuario implements UserInterface
      */
     public function getRoles():?array{
 
-        //return $this->rol;
-        return ['ROLE_ADMIN'];
+        $roles = $this->rol;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
     /**

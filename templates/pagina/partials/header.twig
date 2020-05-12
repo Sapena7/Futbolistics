@@ -48,22 +48,13 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ path('usuario_edit', {id: app.user.Id}) }}">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                                     <li class="divider"></li>
-                            {% if app.user.nombre is not empty %}
+                            {% if app.user.rol == ['ROLE_ADMIN'] or app.user.rol == ['ROLE_COLABORATOR'] %}
                                     <li><a href="{{ path('easyadmin') }}">Dashboard <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
                                     <li class="divider"></li>
                             {% endif %}
                                     <li><a href="{{ path('app_logout') }}">Cerrar Sessión <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                                 </ul>
                             </li>
-                        {% endif %}
-                    {% endif %}
-
-
-                    {% if app.user is not empty %}
-                        {% if app.user.rol is not empty %}
-                            {% if app.user.rol == ['ROLE_ADMIN'] %}
-                                <a href="{{ path('login') }}"><input class="loginButton" type="image" src="{{ asset('assets/images/myuser.png')}}"> Dashboard</a>
-                            {% endif %}
                         {% endif %}
                     {% endif %}
 

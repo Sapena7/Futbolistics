@@ -35,7 +35,7 @@ security:
                 failure_path: login
     access_control:
         # require ROLE_ADMIN for /admin*
-        - { path: '^/admin', roles: ROLE_ADMIN }
+        - { path: '^/admin', roles: [ROLE_ADMIN, ROLE_COLABORATOR] }
         # the 'path' value can be any valid regular expression
         # (this one will match URLs like /api/post/7298 and /api/comment/528491)
         - { path: ^/api/(post|comment)/\d+$, roles: ROLE_USER }

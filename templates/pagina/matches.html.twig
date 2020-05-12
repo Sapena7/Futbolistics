@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Team HTML</title>
+    <title>Partidos</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
@@ -32,6 +32,7 @@
     {% include 'pagina/partials/header.twig' %}
 
     <!--MAIN MENU WRAP END-->
+
 
     <!--BREADCRUMBS BEGIN-->
 <section class="image-header">
@@ -60,13 +61,11 @@
                     <div class="col-md-12 col-sm-12 col-xs-12"><h5>{{ liga.nombre }}</h5></div>
                 {% endfor %}
                 <div class="col-md-10 col-sm-9 col-xs-9">
-
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12">
 
 <ul class="tab-filters" role="tablist">
     <li class="active"><a href="#premierleague" role="tab" data-toggle="tab" aria-expanded="true">Liga</a></li>
-    <li><a href="#nationalcup" role="tab" data-toggle="tab" aria-expanded="true">Copa</a></li>
 </ul>
                     <form action=" {{ path('partidos') }}" name="search_form" method="GET">
                         <select name="jornada">
@@ -99,51 +98,6 @@
 
         </div>
     </div>
-    <div class="tab-pane" id="nationalcup">
-        <div class="amateurs-main-match">
-            <div class="title">National Cup - Round 1</div>	
-            <a href="matches.html.twig" class="team">
-                <span class="image"><img src="images/soccer/team-logo3.png" alt="main-match"></span>
-                <span class="info">
-                    <span class="name">Internacional</span>
-                    <span class="city">london</span>
-                </span>
-            </a>
-            <div class="score">
-                <span>3:2</span>	
-            </div>
-            <a href="matches.html.twig" class="team guest">
-                <span class="info">
-                    <span class="name">Arsenalp</span>
-                    <span class="city">Lyon</span>
-                </span>	
-                <span class="image"><img src="images/soccer/team-logo4.png" alt="main-match"></span>
-            </a>
-            <div class="title">26 september / 8:45 PM</div>
-        </div>
-    </div>
-     <div class="tab-pane" id="premierleague">
-        <div class="amateurs-main-match">
-            <div class="title">Premier League - Round 28</div>	
-            <a href="matches.html.twig" class="team">
-                <span class="image"><img src="images/soccer/team-logo2.png" alt="main-match"></span>
-                <span class="info">
-                    <span class="name">Internacional</span>
-                    <span class="city">london</span>
-                </span>
-            </a>
-            <div class="score">
-                <span>2:2</span>	
-            </div>
-            <a href="matches.html.twig" class="team guest">
-                <span class="info">
-                    <span class="name">Arsenalp</span>
-                    <span class="city">Lyon</span>
-                </span>	
-                <span class="image"><img src="images/soccer/team-logo4.png" alt="main-match"></span>
-            </a>
-            <div class="title">26 september / 8:45 PM</div>
-        </div>
     </div>
 </div>
                 </div>

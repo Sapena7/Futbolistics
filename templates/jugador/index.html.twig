@@ -104,7 +104,7 @@
         {% set posicion = jugador.posicion.id %}
             {% if posicion == 2 %}
                 <div class="col-md-4  col-sm-6 col-xs-12">
-                    <a href="../pagina/player-second-page.html" class="item">
+                    <a href="{{ path('jugador_byIdAndTeam', {equipo: equipo.Id, id: jugador.Id})}}" class="item">
                 <span class="info">
                     <span class="name">{{ jugador.nombre }}</span>
                     <span class="position">{{ jugador.posicion.nombre }}</span>
@@ -136,7 +136,7 @@
                         {% set posicion = jugador.posicion.id %}
                         {% if posicion == 3 %}
                             <div class="col-md-4  col-sm-6 col-xs-12">
-                                <a href="../pagina/player-second-page.html" class="item">
+                                <a href="{{ path('jugador_byIdAndTeam', {equipo: equipo.Id, id: jugador.Id})}}" class="item">
             <span class="info">
                 <span class="name">{{ jugador.nombre }}</span>
                 <span class="position">{{ jugador.posicion.nombre }}</span>
@@ -170,7 +170,7 @@
                         {% set posicion = jugador.posicion.id %}
                         {% if posicion == 4 %}
                             <div class="col-md-4  col-sm-6 col-xs-12">
-                                <a href="../pagina/player-second-page.html" class="item">
+                                <a href="{{ path('jugador_byIdAndTeam', {equipo: equipo.Id, id: jugador.Id})}}" class="item">
             <span class="info">
                 <span class="name">{{ jugador.nombre }}</span>
                 <span class="position">{{ jugador.posicion.nombre }}</span>
@@ -200,7 +200,7 @@
                 </div>
                 <div class="staff-box">
                     <div class="col-md-4  col-sm-6 col-xs-12">
-                        <a href="../pagina/player-second-page.html" class="item">
+                        <a href="" class="item">
             <span class="info">
                 <span class="name">{{ equipo.entrenador }}</span>
                 <span class="position">Entrenador</span>
