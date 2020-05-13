@@ -24009,6 +24009,26 @@ overflow-scroll.table tr td {
     display: block
 }
 
+.staff-box .edit {
+    padding: 10px 0 10px 320px;
+    width: 30%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: -1px;
+    display: block
+}
+
+.staff-box .delete {
+    padding: 60px 0 10px 320px;
+    width: 30%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: -1px;
+    display: block
+}
+
 .staff-box .info:before {
     content: '';
     height: 100%;
@@ -24065,6 +24085,7 @@ overflow-scroll.table tr td {
     background: #ffa000;
     position: relative
 }
+
 
 .staff-box .info .role span {
     position: relative

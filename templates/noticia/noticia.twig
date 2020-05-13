@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Team HTML</title>
+    <title>Noticia</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
     <link rel="icon" href="../pagina/favicon.ico" type="image/x-icon">
     <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
@@ -40,10 +40,10 @@
                 <div class="info">
                     <div class="wrap">
                         <ul class="breadcrumbs">
-                            <li><a href="index-2.html">Main</a>/</li>
-                            <li>Category</li>
+                            <li><a href="{{ path('homepage') }}">Home</a>/</li>
+                            <li>Noticia</li>
                         </ul>
-                        <h1>Category</h1>
+                        <h1>Noticia</h1>
                     </div>
                 </div>
             </div>	
@@ -134,7 +134,7 @@
                         </div>
                         <div class="img-wrap">
                             <div class="bage highlight">Destacado</div>
-                            <img src="{{ asset('assets/images/soccer/') }}{{ noticia.Imagen }}" alt="news-single">
+                            <img src="{{ asset('assets/images/noticias/') }}{{ noticia.Imagen }}" alt="news-single">
                         </div>
                         <div class="post-text">
                             <p>{{ noticia.Cuerpo }}
@@ -142,10 +142,9 @@
                         </div>
                         <div class="author-box">
                             <div class="top">
-                                <div class="avatar"><img src="{{ asset('assets/images/soccer/') }}{{ noticia.Colaborador.FotoPerfil }}" alt="author-avatar"></div>
+                                <div class="avatar"><img src="{{ asset('assets/images/usuarios/') }}{{ noticia.Colaborador.FotoPerfil }}" alt="author-avatar"></div>
                                 <div class="info">
                                     <div class="name">{{ noticia.Colaborador.NombreCompleto }}</div>
-                                    <p>{{ noticia.Colaborador.Rol.Rol }}</p>
                                 </div>
 
                             </div>
@@ -159,11 +158,9 @@
                                                 </div>
                                                 <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 text-right">
                                                     <ul class="share-socials">
-                                                        <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>	
+                                                        <li><a href="http://facebook.com/{{ noticia.Colaborador.nombre }}"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                                                        <li><a href="http://twitter.com/{{ noticia.Colaborador.nombre }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                        <li><a href="http://instagram.com/{{ noticia.Colaborador.nombre }}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
