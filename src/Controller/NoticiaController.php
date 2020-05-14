@@ -91,12 +91,12 @@ class NoticiaController extends AbstractController
             $entityManager->flush();
             $contenido = substr($noticium->getCuerpo(), 0, 15).'...';
 
+            //TODO enviar a tots els correus registrats en eixe equip
             $email = (new NotificationEmail())
                 ->from('jsapenafutbolistics@gmail.com')
                 ->to('jaumesapena77@gmail.com')
                 ->subject($noticium->getTitular())
-                ->action('Leer', '127.0.0.1:8000/noticias/noticia/' . $noticium->getId())
-                ->markdown("");
+                ->action('Leer', 'http://127.0.0.1:8000/noticias/noticia/' . $noticium->getId());
                 //->importance(NotificationEmail::IMPORTANCE_MEDIUM);
 
             $mailer->send($email);
