@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Equipo;
 use App\Entity\Usuario;
 use App\Form\UsuarioType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -93,5 +94,22 @@ class UsuarioController extends AbstractController
         }
 
         return $this->redirectToRoute('usuario_index');
+    }
+
+    /**
+     * @Route("/equipo/{id_team}/user/{id_user}", name="follow_team", methods={"GET"})
+     */
+    public function followTeam($id_team, $id_user)
+    {
+        $equipos = $this->getDoctrine()
+            ->getRepository(Equipo::class);
+        $usuarios = $this->getDoctrine()
+            ->getRepository(Usuario::class);
+        $equipo = $equipos->findTeamById($id_team);
+        $usuario = $usuarios->findUserById($id_user);
+
+        $usuario->setEquipoFavorito($equipo);
+
+        return $this->redirectToRoute('equipo_index');
     }
 }

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Clasificacion{% endblock %}
+
+{% block body %}
+    <h1>Create new Clasificacion</h1>
+
+    {{ include('clasificacion/_form.html.twig') }}
+
+    <a href="{{ path('clasificacion_index') }}">back to list</a>
+{% endblock %}

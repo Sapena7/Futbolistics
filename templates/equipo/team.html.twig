@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Team HTML</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../pagina/favicon.ico" type="image/x-icon">
     <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
@@ -39,7 +39,7 @@
                 <div class="info">
                     <div class="wrap">
                         <ul class="breadcrumbs">
-                            <li><a href="index-2.html">Home</a>/</li>
+                            <li><a href="{{ path('homepage') }}">Home</a>/</li>
                             <li>Equipos</li>
                         </ul>
                         <h1>{{ equipo.nombre }}</h1>
@@ -61,11 +61,13 @@
                 <div class="col-md-9 col-sm-9 col-xs-9">
                     <h4>{{ equipo.nombre }}</h4>
                 </div>
+                {% if app.user is not empty %}
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                    <a href="broadcasts.html" class="btn small club-top-btn">Seguir</a>
+                    <a href="{{ path('follow_team', {id_team: equipo.Id, id_user: app.user.Id}) }}" class="btn small club-top-btn">Seguir</a>
                 </div>
+                {% endif %}
                 <div class="col-md-3 col-sm-3 col-xs-3">
-                    <a href="{{ path('jugadores_byId', {id: equipo.Id}) }}" class="btn small club-top-btn">Jugadores</a>
+                    <a href="{{ path('equipos_byId', {id: equipo.Id}) }}" class="btn small club-top-btn">Jugadores</a>
                 </div>
             </div>
         </div>
@@ -80,11 +82,7 @@
             </div>
             <div class="col-md-3">
                 <div class="org-club-info">
-                                        <div class="item country">
-                        <img src="{{ asset('assets/images/common/en-flag.png')}}" alt="flag">
-                        España</div>
-                                        
-                    <div class="item"><span>Founded:</span> 22 July 1927</div>
+                    <div class="item"><span>Fundacion:</span> {{ equipo.fundacion }}</div>
                     <div class="item"><span>Campo:</span> {{ equipo.estadio.nombre }}</div>
                     <div class="item"><span>Trofeos:</span> {{ equipo.trofeos }}</div>
                     <div class="item"><span>Entrenador:</span> {{ equipo.entrenador }}</div>
@@ -93,26 +91,14 @@
             </div>
             <div class="col-md-4">
                 <div class="org-club-stat">
-                    <div class="title">next opponent</div>
-                    <div class="next">
-                        <div class="avatar">
-                            <a href="matches.html.twig" title="Athleticos Bilbor – AC Ramau">
-                                <img src="images/common/main-match-icon1.png"  alt="oponent logo"> 
-                            </a>
-                        </div>
-                        <div class="info">
-                            <div class="name">Athleticos Bilbor</div>
-                            <div class="date">18 July 2017 / 17:00 UTC</div>
-                        </div>
-                    </div>
-                    <div class="title">team stats</div>
+                    <div class="title">Estadisticas</div>
                     <div class="circle-item">
                         <div class="circle-bar" id="circle_3" data-percent="47"></div>
-                        <div class="text">Possession </div>
+                        <div class="text">Ganados </div>
                     </div>
                     <div class="circle-item">
                         <div class="circle-bar" id="circle_4" data-percent="87"></div>
-                        <div class="text">Pass Accuracy </div>
+                        <div class="text">Perdidos </div>
                     </div>             
                 </div>
             </div>
@@ -129,74 +115,25 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h6>Last match</h6>
+                <h6>Ultimo partido</h6>
                 <div class="last-match">
                     <div class="team">
-                        <a href="about-club.html"><img src="images/soccer/team-logo1.png" width="40" height="40" alt="team-logo"></a>
-                        <a href="about-club.html" class="name">Team 1</a>
+                        <a href="../pagina/about-club.html"><img src="images/soccer/team-logo1.png" width="40" height="40" alt="team-logo"></a>
+                        <a href="../pagina/about-club.html" class="name">Team 1</a>
                     </div>
                     <div class="score"><span>2</span>:<span>0</span></div>
                     <div class="team right">
-                        <a href="about-club.html" class="name">Team 2</a>
-                        <a href="about-club.html"><img src="images/soccer/team-logo2.png" width="40" height="40" alt="team-logo"></a>
+                        <a href="../pagina/about-club.html" class="name">Team 2</a>
+                        <a href="../pagina/about-club.html"><img src="images/soccer/team-logo2.png" width="40" height="40" alt="team-logo"></a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <h6>Standings</h6>
-                <div class="club-standings overflow-scroll">
-                    <table class="table-standings">
-                        <tr>
-                            <th>Club</th>
-                            <th>Win</th>
-                            <th>Los</th>
-                            <th>pts</th>
-                        </tr>
-                        <tr>
-                            <td class="up">
-                                <i class="fa fa-caret-up" aria-hidden="true"></i> 1 <span class="team"><img src="images/soccer/team-logo2.png" width="30" height="30" alt="team-logo"></span> <span>Team 1</span></td>
-                            <td>11</td>
-                            <td>2</td>
-                            <td><span>62</span></td>
-                        </tr>
-                        <tr>
-                            <td class="down">
-                                <i class="fa fa-caret-down" aria-hidden="true"></i> 2 <span class="team"><img src="images/soccer/team-logo3.png" width="30" height="30" alt="team-logo"></span> <span>Team 2</span></td>
-                            <td>11</td>
-                            <td>2</td>
-                            <td><span>62</span></td>
-                        </tr>
-                        <tr>
-                            <td class="none">
-                                <i class="fa fa-circle" aria-hidden="true"></i> 3 <span class="team"><img src="images/soccer/team-logo4.png" width="30" height="30" alt="team-logo"></span> <span>Team 3</span></td>
-                            <td>11</td>
-                            <td>2</td>
-                            <td><span>62</span></td>
-                        </tr>
-                        <tr>
-                            <td class="down">
-                                <i class="fa fa-caret-down" aria-hidden="true"></i> 4 <span class="team"><img src="images/soccer/team-logo5.png" width="30" height="30" alt="team-logo"></span> <span>Team 4</span></td>
-                            <td>11</td>
-                            <td>2</td>
-                            <td><span>62</span></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h6>Attacks per game </h6>	
-                <div class="ct-chart" id="attack-per-game"></div>
-            </div>
-            <div class="col-md-12">
-                <h6>tournament path</h6>
-                <div class="ct-chart" id="tournament-path"></div>
-            </div>
-            <div class="col-md-12"><h6>Last five matches</h6></div>
+            <div class="col-md-12"><h6>Ultimos cinco partidos</h6></div>
             <div class="col-md-12 overflow-scroll">
 
                 <table>
                     <tr>
-                        <th>competitor</th>
+                        <th>Rival</th>
                         <th>gp</th>
                         <th>gs</th>
                         <th>min</th>

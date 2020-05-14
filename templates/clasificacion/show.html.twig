@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clasificacion{% endblock %}
+
+{% block body %}
+    <h1>Clasificacion</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ clasificacion.id }}</td>
+            </tr>
+            <tr>
+                <th>Puntos</th>
+                <td>{{ clasificacion.puntos }}</td>
+            </tr>
+            <tr>
+                <th>Jugados</th>
+                <td>{{ clasificacion.jugados }}</td>
+            </tr>
+            <tr>
+                <th>Ganados</th>
+                <td>{{ clasificacion.ganados }}</td>
+            </tr>
+            <tr>
+                <th>Empatados</th>
+                <td>{{ clasificacion.empatados }}</td>
+            </tr>
+            <tr>
+                <th>Perdidos</th>
+                <td>{{ clasificacion.perdidos }}</td>
+            </tr>
+            <tr>
+                <th>GolesFavor</th>
+                <td>{{ clasificacion.golesFavor }}</td>
+            </tr>
+            <tr>
+                <th>GolesContra</th>
+                <td>{{ clasificacion.golesContra }}</td>
+            </tr>
+            <tr>
+                <th>GolesDiferencia</th>
+                <td>{{ clasificacion.golesDiferencia }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('clasificacion_index') }}">back to list</a>
+
+    <a href="{{ path('clasificacion_edit', {'id': clasificacion.id}) }}">edit</a>
+
+    {{ include('clasificacion/_delete_form.html.twig') }}
+{% endblock %}

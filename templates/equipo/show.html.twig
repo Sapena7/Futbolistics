@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipo{% endblock %}
+
+{% block body %}
+    <h1>Equipo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ equipo.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ equipo.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Entrenador</th>
+                <td>{{ equipo.entrenador }}</td>
+            </tr>
+            <tr>
+                <th>Trofeos</th>
+                <td>{{ equipo.trofeos }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ equipo.region }}</td>
+            </tr>
+            <tr>
+                <th>Fundacion</th>
+                <td>{{ equipo.fundacion }}</td>
+            </tr>
+            <tr>
+                <th>FotoPerfil</th>
+                <td>{{ equipo.fotoPerfil }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('equipo_index') }}">back to list</a>
+
+    <a href="{{ path('equipo_edit', {'id': equipo.id}) }}">edit</a>
+
+    {{ include('equipo/_delete_form.html.twig') }}
+{% endblock %}

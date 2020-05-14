@@ -10,7 +10,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * Usuario
  *
  * @ORM\Table(name="Usuario", indexes={@ORM\Index(name="rol", columns={"rol"}), @ORM\Index(name="equipo_favorito", columns={"equipo_favorito"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\UsuarioRepository")
  * @Vich\Uploadable()
  */
 class Usuario implements UserInterface

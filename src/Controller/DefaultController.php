@@ -24,6 +24,6 @@ class DefaultController extends AbstractController
 
         $properties = ['ultimosPartidos' => $ultimosPartidos];
 
-        return $this->render('pagina/amateurs.html.twig', $properties);
+        return $this->render('default/index.html.twig', $properties);
     }
 }

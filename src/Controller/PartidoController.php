@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Jornada;
-use App\Entity\Jugador;
-use App\Entity\Liga;
 use App\Entity\Partido;
+use App\Entity\Jornada;
+use App\Entity\Liga;
+use App\Entity\Jugador;
+use App\Form\PartidoType;
+use App\Repository\PartidoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +19,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class PartidoController extends AbstractController
 {
     /**
-     * @Route("/", name="partidos", methods={"GET"})
+     * @Route("/", name="partidos_index", methods={"GET"})
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
+
         if ($request->query->get('jornada') == null){
             $jornadaId = 1;
         }else{
@@ -42,7 +45,30 @@ class PartidoController extends AbstractController
         $jornada = $jornadasRepo->findById($jornadaId);
         $properties = ['partidos' => $partidos, 'jornadas' => $jornadas, 'ligas' => $ligas, 'jornada' => $jornada];
 
-        return $this->render('pagina/matches.html.twig', $properties);
+        return $this->render('partido/index.html.twig', $properties);
+    }
+
+    /**
+     * @Route("/new", name="partido_new", methods={"GET","POST"})
+     */
+    public function new(Request $request): Response
+    {
+        $partido = new Partido();
+        $form = $this->createForm(PartidoType::class, $partido);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($partido);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('partidos_index');
+        }
+
+        return $this->render('partido/new.html.twig', [
+            'partido' => $partido,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -65,6 +91,40 @@ class PartidoController extends AbstractController
 
 
         $properties = ['partido' => $partido, 'jugadoresLocal' => $jugadoresEquipoLocal, 'jugadoresVisitante' => $jugadoresEquipoVisitante];
-        return $this->render('pagina/match-live.html.twig', $properties);
+        return $this->render('partido/match-live.html.twig', $properties);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="partido_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Partido $partido): Response
+    {
+        $form = $this->createForm(PartidoType::class, $partido);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('partidos_index');
+        }
+
+        return $this->render('partido/edit.html.twig', [
+            'partido' => $partido,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="partido_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Partido $partido): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$partido->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($partido);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('partidos_index');
     }
 }
