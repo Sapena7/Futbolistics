@@ -1,87 +1,69 @@
-<!--FOOTER BEGIN-->
-<footer class="footer">
-    <div class="wrapper-overfllow">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12">
-                    <div class="footer-left">
-                        <div class="wrap">
-                            <a href="index-2.html" class="foot-logo"><img src="images/soccer/footer-logo.png" alt="footer-logo"></a>
-                            <p>Activated charcoal trust fund ugh prism af, beard marfa air plant stumptown gastropub farm-to-table jianbing.</p>
-                            <ul class="foot-left-menu">
-                                <li><a href="staff.html">First team</a></li>
-                                <li><a href="staff.html">Second team</a></li>
-                                <li><a href="amateurs.html.twig">Amateurs</a></li>
-                                <li><a href="donations.html">Donation</a></li>
-                                <li><a href="trophies.html">trophies</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12 col-lg-offset-1">
-                    <div class="foot-news">
-                        <h4>Recent news</h4>
-                        <div class="item">
-                            <a href="news.html" class="image"><img class="img-responsive" src="images/soccer/foot-news-img.jpg" alt="news-image"></a>
-                            <a href="news.html" class="name">When somersaulting Sanchez shouldered Mexico’s hopes</a>
-                            <a href="news.html" class="date">25 Sep 2016</a>
-                            <span class="separator">in</span>
-                            <a href="news.html" class="category">Highlights</a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" col-lg-3 col-md-4 col-sm-12">
-                    <div class="foot-contact">
-                        <h4>Contact us</h4>
-                        <ul class="contact-list">
-                            <li><i class="fa fa-flag" aria-hidden="true"></i><span>276 Upper Parliament Street, Liverpool L8, Great Britain</span></li>
-                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:team@email.com">team@email.com</a></li>
-                            <li class="phone"><i class="fa fa-phone" aria-hidden="true"></i><span>+61 3 8376 6284</span></li>
-                        </ul>
-                        <ul class="socials">
-                            <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-menu-wrap">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="footer-menu">
-                        <li class="active"><a href="index-2.html"><span>Home</span></a></li>
-                        <li><a href="matches.html"><span>Matches</span></a></li>
-                        <li><a href="staff.html"><span>Team</span></a></li>
-                        <li><a href="news.html"><span>News</span></a></li>
-                        <li><a href="store.html"><span>Store</span></a></li>
-                        <li><a href="contacts.html"><span>Contact</span></a></li>
-                    </ul>
-                    <a href="#top" class="foot-up"><span>up <i class="fa fa-caret-up" aria-hidden="true"></i></span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="copyrights">
-                        <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="created">
+<body class="d-flex flex-column">
+<!-- For demo purpose -->
+<div class="container-fluid flex-grow-1 flex-shrink-0">
+    <div class="px-lg-5">
+        <div class="row py-5">
+            <div class="col-lg-12 mx-auto text-white text-center">
+                <h1 class="display-4">Futbolistics</h1>
 
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End -->
+<!-- Footer -->
+<footer class="bg-white">
+    <div class="container py-5">
+        <div class="row py-4">
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" class="mb-3">
+                <p class="font-italic text-muted">Nuestras redes sociales, para seguir la actualidad de nuestros equipos.</p>
+                <ul class="list-inline mt-4">
+                    <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                    <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i class="fa fa-vimeo"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                <h6 class="text-uppercase font-weight-bold mb-4">Contenido</h6>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2"><a href="{{ path('homepage') }}" class="text-muted">Home</a></li>
+                    <li class="mb-2"><a href="{{ path('partidos') }}" class="text-muted">Partidos</a></li>
+                    <li class="mb-2"><a href="{{ path('equipos_index') }}" class="text-muted">Equipos</a></li>
+                    <li class="mb-2"><a href="{{ path('rankingLeague') }}" class="text-muted">Clasificaciones</a></li>
+                    <li class="mb-2"><a href="{{ path('noticia_index') }}" class="text-muted">Noticias</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                <h6 class="text-uppercase font-weight-bold mb-4">Acceso</h6>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2"><a href="{{ path('login') }}" class="text-muted">Login</a></li>
+                    <li class="mb-2"><a href="{{ path('app_register') }}" class="text-muted">Registro</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-lg-0">
+                <h6 class="text-uppercase font-weight-bold mb-4">Suscribirse</h6>
+                <p class="text-muted mb-4">Suscribete para seguir las novedades de la página.</p>
+                <div class="p-1 rounded border">
+                    <div class="input-group">
+                        <input type="email" placeholder="Introduce tu email" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
+                        <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link"><i class="fa fa-paper-plane"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Copyrights -->
+    <div class="bg-light py-4">
+        <div class="container text-center">
+            <p class="text-muted mb-0 py-2">© 2020 Futbolistics Todos los derechos reservados.</p>
         </div>
     </div>
 </footer>
-<!--FOOTER END-->
+<!-- End -->
+
+</body>

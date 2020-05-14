@@ -112,6 +112,9 @@
     "egulias/email-validator": {
         "version": "2.1.17"
     },
+    "erusev/parsedown": {
+        "version": "1.7.4"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -135,6 +138,9 @@
     },
     "league/uri-schemes": {
         "version": "1.2.1"
+    },
+    "lorenzo/pinky": {
+        "version": "1.0.5"
     },
     "monolog/monolog": {
         "version": "1.25.3"
@@ -309,6 +315,15 @@
             "src/Controller/.gitignore",
             "src/Kernel.php"
         ]
+    },
+    "symfony/google-mailer": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.4",
+            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
+        }
     },
     "symfony/http-client": {
         "version": "v4.4.7"
@@ -562,7 +577,19 @@
     "symfony/yaml": {
         "version": "v4.4.7"
     },
+    "tijsverkoyen/css-to-inline-styles": {
+        "version": "2.2.2"
+    },
+    "twig/cssinliner-extra": {
+        "version": "v3.0.3"
+    },
     "twig/extra-bundle": {
+        "version": "v3.0.3"
+    },
+    "twig/inky-extra": {
+        "version": "v3.0.3"
+    },
+    "twig/markdown-extra": {
         "version": "v3.0.3"
     },
     "twig/twig": {

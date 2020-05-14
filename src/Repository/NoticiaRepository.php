@@ -27,7 +27,7 @@ class NoticiaRepository extends ServiceEntityRepository
             ->setParameter('id', $id)
             ->getQuery();
 
-        return $query->getSingleResult();
+        return $query->getOneOrNullResult();
     }
 
     /**

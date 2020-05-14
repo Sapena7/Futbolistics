@@ -24,12 +24,10 @@
                         <a href="{{ path('rankingLeague') }}"><span>Clasificaciones</span></a>
                         <ul>
                             <li><a href="{{ path('rankingLeague') }}"><span>Liga</span></a></li>
-                            <li><a href="cup.html"><span>Copa</span></a></li>
                         </ul>
                     </li>
                     <li><a href="{{ path('noticia_index') }}"><span>Noticias</span></a></li>
                     <li><a href="{{ path('contact') }}"><span>Contacto</span></a></li>
-                    <li><a href="{{ path('app_register') }}"><span>Registrar</span></a></li>
                     <li>
                         <a href="#other"><span>other</span></a>
                         <ul>
@@ -40,6 +38,7 @@
                     </li>
                     {% if app.user is empty %}
                         <a href="{{ path('login') }}"><img class="icons" src="{{ asset('assets/images/common/login.png') }}" width="25" height="25">Login</a>
+                        <a href="{{ path('app_register') }}"><span>Registrar</span></a>
                     {% else %}
                         {% if app.user.nombre is not empty %}
                             <li class="dropdown">

@@ -5,14 +5,17 @@ namespace App\Controller;
 use App\Entity\Equipo;
 use App\Entity\Noticia;
 use App\Form\NoticiaType;
+use Symfony\Bridge\Twig\Mime\NotificationEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use DateTime;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mime\Email;
 
 /**
- * @Route("/noticia")
+ * @Route("/noticias")
  */
 class NoticiaController extends AbstractController
 {
@@ -62,7 +65,7 @@ class NoticiaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="noticias_byId", methods={"GET"})
+     * @Route("/noticia/{id}", name="noticias_byId", methods={"GET"})
      */
     public function findNoticiaById($id)
     {
@@ -76,7 +79,7 @@ class NoticiaController extends AbstractController
     /**
      * @Route("/new", name="noticia_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, MailerInterface $mailer): Response
     {
         $noticium = new Noticia();
         $form = $this->createForm(NoticiaType::class, $noticium);
@@ -86,6 +89,17 @@ class NoticiaController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($noticium);
             $entityManager->flush();
+            $contenido = substr($noticium->getCuerpo(), 0, 15).'...';
+
+            $email = (new NotificationEmail())
+                ->from('jsapenafutbolistics@gmail.com')
+                ->to('jaumesapena77@gmail.com')
+                ->subject($noticium->getTitular())
+                ->action('Leer', '127.0.0.1:8000/noticias/noticia/' . $noticium->getId())
+                ->markdown("");
+                //->importance(NotificationEmail::IMPORTANCE_MEDIUM);
+
+            $mailer->send($email);
 
             return $this->redirectToRoute('noticia_index');
         }
@@ -95,17 +109,17 @@ class NoticiaController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
+/*
     /**
-     * @Route("/{id}", name="noticia_show", methods={"GET"})
-     */
+     * @Route("/num/{id}", name="noticia_show", methods={"GET"})
+
     public function show(Noticia $noticium): Response
     {
         return $this->render('noticia/show.html.twig', [
             'noticium' => $noticium,
         ]);
     }
-
+*/
     /**
      * @Route("/{id}/edit", name="noticia_edit", methods={"GET","POST"})
      */

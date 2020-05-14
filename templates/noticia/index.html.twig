@@ -31,7 +31,7 @@
 
     {% include 'pagina/partials/header.twig' %}
 
-    {{ dump(noticias) }}
+
     <!--MAIN MENU WRAP END-->
 
     <!--BREADCRUMBS BEGIN-->
@@ -144,15 +144,11 @@
     <!-- noticia -->
     <div class="item img-top">
         <div class="img-wrap">
-            <div class="bage">
-                <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">Destacado</a>
-            </div>
-            <div>
-                {% if app.user is not empty %}
-                    {% if app.user.rol is not empty %}
-                        {% if app.user.rol == ['ROLE_ADMIN'] or app.user.rol == ['ROLE_COLABORATOR']  %}
-                            <a href="{{ path('noticia_edit', {id: noticia.Id}) }}">
-                                <div class="dropdown" style="float: right; padding-right: 60px">
+            <div class="bage-actions">
+                    {% if app.user is not empty %}
+                        {% if app.user.rol is not empty %}
+                            {% if app.user.rol == ['ROLE_ADMIN'] or app.user.rol == ['ROLE_COLABORATOR']  %}
+                                <div class="dropdown" >
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                                         <span class="caret"></span></button>
                                     <ul class="dropdown-menu">
@@ -167,12 +163,17 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </a>
+                                </a>
+                            {% endif %}
                         {% endif %}
                     {% endif %}
-                {% endif %}
             </div>
-            <a href="{{ path('noticias_byId', {id: noticia.Id}) }}"><img src="{{ asset('assets/images/noticias/') }}{{ noticia.Imagen }}" alt="post image"></a>
+            <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">
+                <img src="{{ asset('assets/images/noticias/') }}{{ noticia.Imagen }}" alt="post image">
+            </a>
+        </div>
+        <div>
+
         </div>
         <div class="info">
             <a href="{{ path('noticias_byId', {id: noticia.Id}) }}" class="name">{{ noticia.Titular }}</a>
