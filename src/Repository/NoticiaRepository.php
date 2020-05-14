@@ -6,6 +6,7 @@ use App\Entity\Noticia;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use App\Pagination\Paginator;
+use DateTime;
 
 /**
  * @method Noticia|null find($id, $lockMode = null, $lockVersion = null)

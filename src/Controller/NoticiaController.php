@@ -8,6 +8,7 @@ use App\Form\NoticiaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use DateTime;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -23,7 +24,7 @@ class NoticiaController extends AbstractController
      * Content-Type header for the response.
      * See https://symfony.com/doc/current/routing.html#special-parameters
      */
-    public function index(Request $request, int $page): Response
+    public function index(Request $request, int $page)
     {
         $news = $this->getDoctrine()
             ->getRepository(Noticia::class);

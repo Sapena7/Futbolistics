@@ -147,18 +147,31 @@
             <div class="bage">
                 <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">Destacado</a>
             </div>
-            {% if app.user is not empty %}
-                {% if app.user.rol is not empty %}
-                    {% if app.user.rol == ['ROLE_ADMIN'] or app.user.rol == ['ROLE_COLABORATOR']  %}
-                        <a href="{{ path('noticia_edit', {id: noticia.Id}) }}">
-                            <img src="{{ asset('assets/images/common/edit.svg') }}" width="50px" height="50px" alt="edit image">
-                        </a>
-                        <a href="{{ path('noticia_delete', {id: noticia.Id}) }}">
-                            <img src="{{ asset('assets/images/common/delete.svg') }}" width="50px" height="50px" alt="edit image">
-                        </a>
+            <div>
+                {% if app.user is not empty %}
+                    {% if app.user.rol is not empty %}
+                        {% if app.user.rol == ['ROLE_ADMIN'] or app.user.rol == ['ROLE_COLABORATOR']  %}
+                            <a href="{{ path('noticia_edit', {id: noticia.Id}) }}">
+                                <div class="dropdown" style="float: right; padding-right: 60px">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('noticia_edit', {id: noticia.Id}) }}">
+                                                Editar
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('noticia_delete', {id: noticia.Id}) }}">
+                                                Borrar
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </a>
+                        {% endif %}
                     {% endif %}
                 {% endif %}
-            {% endif %}
+            </div>
             <a href="{{ path('noticias_byId', {id: noticia.Id}) }}"><img src="{{ asset('assets/images/noticias/') }}{{ noticia.Imagen }}" alt="post image"></a>
         </div>
         <div class="info">

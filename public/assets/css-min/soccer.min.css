@@ -3808,6 +3808,12 @@ tbody.collapse.in {
     position: relative
 }
 
+.dropdown-actions {
+    float: right;
+    padding-right: 40px;
+}
+
+
 .dropdown-toggle:focus {
     outline: 0
 }
@@ -24010,7 +24016,7 @@ overflow-scroll.table tr td {
 }
 
 .staff-box .edit {
-    padding: 10px 0 10px 320px;
+    padding: 10px 0 10px 340px;
     width: 30%;
     position: absolute;
     top: 0;
@@ -24020,7 +24026,7 @@ overflow-scroll.table tr td {
 }
 
 .staff-box .delete {
-    padding: 60px 0 10px 320px;
+    padding: 50px 0 10px 340px;
     width: 30%;
     position: absolute;
     top: 0;
