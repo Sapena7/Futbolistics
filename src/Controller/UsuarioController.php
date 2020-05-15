@@ -109,6 +109,23 @@ class UsuarioController extends AbstractController
         $usuario = $usuarios->findUserById($id_user);
 
         $usuario->setEquipoFavorito($equipo);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($usuario);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('equipo_index');
+    }
+
+    /**
+     * @Route("/user/{id_user}/unfollowTeam", name="unfollow_team", methods={"GET"})
+     */
+    public function unfollowTeam($id_user)
+    {
+        $usuarios = $this->getDoctrine()
+            ->getRepository(Usuario::class);
+        $usuario = $usuarios->findUserById($id_user);
+
+        $usuario->setEquipoFavorito(null);
 
         return $this->redirectToRoute('equipo_index');
     }

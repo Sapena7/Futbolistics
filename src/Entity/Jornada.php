@@ -70,5 +70,4 @@ class Jornada
     public function __toString() {
         return $this->getJornada();
     }
-
 }

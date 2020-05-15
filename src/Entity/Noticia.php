@@ -45,9 +45,9 @@ class Noticia
     private $fecha;
 
     /**
-     * @var string
+     * @var string|null
      *
-     * @ORM\Column(name="imagen", type="string", length=100, nullable=false)
+     * @ORM\Column(name="imagen", type="string", length=100, nullable=true)
      */
     private $imagen;
 
@@ -138,7 +138,7 @@ class Noticia
         return $this->imagen;
     }
 
-    public function setImagen(string $imagen): self
+    public function setImagen(?string $imagen): self
     {
         $this->imagen = $imagen;
 
@@ -172,5 +172,4 @@ class Noticia
     public function __toString() {
         return $this->getTitular();
     }
-
 }

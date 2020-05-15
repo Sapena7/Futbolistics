@@ -99,7 +99,7 @@ class Estadio
         return $this->fotoEstadio;
     }
 
-    public function setFotoEstadio(string $fotoEstadio): self
+    public function setFotoEstadio(?string $fotoEstadio): self
     {
         $this->fotoEstadio = $fotoEstadio;
 

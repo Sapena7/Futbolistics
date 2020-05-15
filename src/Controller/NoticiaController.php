@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Equipo;
 use App\Entity\Noticia;
+use App\Entity\Usuario;
 use App\Form\NoticiaType;
 use Symfony\Bridge\Twig\Mime\NotificationEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -81,6 +82,8 @@ class NoticiaController extends AbstractController
      */
     public function new(Request $request, MailerInterface $mailer): Response
     {
+        $usuarios = $this->getDoctrine()
+            ->getRepository(Usuario::class);
         $noticium = new Noticia();
         $form = $this->createForm(NoticiaType::class, $noticium);
         $form->handleRequest($request);
@@ -89,12 +92,19 @@ class NoticiaController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($noticium);
             $entityManager->flush();
+
+            $id_equipo = $noticium->getEquipo()->getId();
+
+            $lista = $usuarios->findEmailsByTeam($id_equipo);
+            //$listaEnviar= implode(',',$lista);
+
             $contenido = substr($noticium->getCuerpo(), 0, 15).'...';
+            $arraaay = "jaumesapena77@gmail.com, jaumesapena7777@gmail.com";
 
             //TODO enviar a tots els correus registrats en eixe equip
             $email = (new NotificationEmail())
                 ->from('jsapenafutbolistics@gmail.com')
-                ->to('jaumesapena77@gmail.com')
+                ->to($arraaay)
                 ->subject($noticium->getTitular())
                 ->action('Leer', 'http://127.0.0.1:8000/noticias/noticia/' . $noticium->getId());
                 //->importance(NotificationEmail::IMPORTANCE_MEDIUM);

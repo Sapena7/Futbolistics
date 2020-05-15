@@ -70,21 +70,6 @@ class Equipo
      */
     private $fotoPerfilFile;
 
-    /**
-     * @return mixed
-     */
-    public function getFotoPerfilFile()
-    {
-        return $this->fotoPerfilFile;
-    }
-
-    /**
-     * @param mixed $fotoPerfilFile
-     */
-    public function setFotoPerfilFile($fotoPerfilFile): void
-    {
-        $this->fotoPerfilFile = $fotoPerfilFile;
-    }
 
     /**
      * @var \Estadio
@@ -176,11 +161,27 @@ class Equipo
         return $this->fotoPerfil;
     }
 
-    public function setFotoPerfil(string $fotoPerfil): self
+    public function setFotoPerfil(?string $fotoPerfil): self
     {
         $this->fotoPerfil = $fotoPerfil;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFotoPerfilFile()
+    {
+        return $this->fotoPerfilFile;
+    }
+
+    /**
+     * @param mixed $fotoPerfilFile
+     */
+    public function setFotoPerfilFile($fotoPerfilFile): void
+    {
+        $this->fotoPerfilFile = $fotoPerfilFile;
     }
 
     public function getEstadio(): ?Estadio

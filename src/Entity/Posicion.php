@@ -48,5 +48,4 @@ class Posicion
     public function __toString() {
         return $this->getNombre();
     }
-
 }

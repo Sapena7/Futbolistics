@@ -61,14 +61,20 @@
                 <div class="col-md-9 col-sm-9 col-xs-9">
                     <h4>{{ equipo.nombre }}</h4>
                 </div>
-                {% if app.user is not empty %}
-                <div class="col-md-3 col-sm-3 col-xs-3">
-                    <a href="{{ path('follow_team', {id_team: equipo.Id, id_user: app.user.Id}) }}" class="btn small club-top-btn">Seguir</a>
-                </div>
-                {% endif %}
                 <div class="col-md-3 col-sm-3 col-xs-3">
                     <a href="{{ path('equipos_byId', {id: equipo.Id}) }}" class="btn small club-top-btn">Jugadores</a>
                 </div>
+                {% if app.user is not empty %}
+                    {% if app.user.equipoFavorito is empty or app.user.equipoFavorito.id != equipo.id%}
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <a href="{{ path('follow_team', {id_team: equipo.Id, id_user: app.user.Id}) }}" onclick="return confirm('Estas seguro?')" class="btn small club-top-btn">Seguir</a>
+                        </div>
+                    {% elseif app.user.equipoFavorito.id == equipo.Id %}
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <a href="{{ path('unfollow_team', {id_user: app.user.Id}) }}" class="btn small club-top-btn">Dejar de seguir</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
         <div class="club-top-info">

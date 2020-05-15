@@ -3,13 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Array_;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Usuario
  *
- * @ORM\Table(name="Usuario", indexes={@ORM\Index(name="rol", columns={"rol"}), @ORM\Index(name="equipo_favorito", columns={"equipo_favorito"})})
+ * @ORM\Table(name="Usuario", uniqueConstraints={@ORM\UniqueConstraint(name="nombre", columns={"nombre"})}, indexes={@ORM\Index(name="equipo_favorito", columns={"equipo_favorito"}), @ORM\Index(name="rol", columns={"rol"})})
  * @ORM\Entity(repositoryClass="App\Repository\UsuarioRepository")
  * @Vich\Uploadable()
  */
@@ -53,6 +54,13 @@ class Usuario implements UserInterface
     private $password;
 
     /**
+     * @var json
+     *
+     * @ORM\Column(name="rol", type="json")
+     */
+    private $rol = [];
+
+    /**
      * @var string|null
      *
      * @ORM\Column(name="foto_perfil", type="string", length=100, nullable=true)
@@ -89,13 +97,6 @@ class Usuario implements UserInterface
      * })
      */
     private $equipoFavorito;
-
-    /**
-     * @var json
-     *
-     * @ORM\Column(name="rol", type="json")
-     */
-    private $rol = [];
 
     public function getId(): ?int
     {
@@ -150,6 +151,18 @@ class Usuario implements UserInterface
         return $this;
     }
 
+    public function getRol(): ?array
+    {
+        return $this->rol;
+    }
+
+    public function setRol(array $rol): self
+    {
+        $this->rol = $rol;
+
+        return $this;
+    }
+
     public function getFotoPerfil(): ?string
     {
         return $this->fotoPerfil;
@@ -170,18 +183,6 @@ class Usuario implements UserInterface
     public function setEquipoFavorito(?Equipo $equipoFavorito): self
     {
         $this->equipoFavorito = $equipoFavorito;
-
-        return $this;
-    }
-
-    public function getRol(): ?array
-    {
-        return $this->rol;
-    }
-
-    public function setRol(array $rol): self
-    {
-        $this->rol = $rol;
 
         return $this;
     }
