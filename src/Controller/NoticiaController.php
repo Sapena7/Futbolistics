@@ -97,13 +97,14 @@ class NoticiaController extends AbstractController
             $id_equipo = $noticium->getEquipo()->getId();
 
             $lista = $usuarios->findEmailsByTeam($id_equipo);
-            //$listaEnviar= implode(',',$lista);
 
-            //$toAddresses = ['jaumesapena77@gmail.com', new Address('jaumesapena7777@gmail.com')];
-            $toAddresses = [$lista[0]["email"], new Address($lista[0]["email"])];
             $contenido = substr($noticium->getCuerpo(), 0, 15).'...';
 
-
+            $array_num = count($lista);
+            $toAddresses = [];
+            for ($i = 0; $i < $array_num; ++$i){
+                array_push($toAddresses,$lista[$i]["email"]);
+            }
 
             //TODO enviar a tots els correus registrats en eixe equip
             $email = (new NotificationEmail())
