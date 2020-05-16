@@ -6,6 +6,7 @@ use App\Entity\Usuario;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UsuarioType extends AbstractType
 {
@@ -16,9 +17,11 @@ class UsuarioType extends AbstractType
             ->add('nombrecompleto')
             ->add('email')
             ->add('password')
-            ->add('fotoPerfil')
+            ->add('fotoPerfilFile', VichImageType::class, [
+                'label' => false,
+                'required' => false
+            ])
             ->add('equipoFavorito')
-            ->add('rol')
         ;
     }
 
