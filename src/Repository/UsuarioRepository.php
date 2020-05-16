@@ -29,7 +29,7 @@ class UsuarioRepository extends ServiceEntityRepository
         return $query->getSingleResult();
     }
 
-    public function findEmailsByTeam($id_equipo) {
+    public function findEmailsByTeam($id_equipo): array {
         $query = $this->createQueryBuilder('u')
             ->select("u.email")
             ->andwhere("u.equipoFavorito = :id")

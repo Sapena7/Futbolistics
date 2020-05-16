@@ -14,6 +14,7 @@ use DateTime;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\Address;
 
 /**
  * @Route("/noticias")
@@ -98,13 +99,16 @@ class NoticiaController extends AbstractController
             $lista = $usuarios->findEmailsByTeam($id_equipo);
             //$listaEnviar= implode(',',$lista);
 
+            //$toAddresses = ['jaumesapena77@gmail.com', new Address('jaumesapena7777@gmail.com')];
+            $toAddresses = [$lista[0]["email"], new Address($lista[0]["email"])];
             $contenido = substr($noticium->getCuerpo(), 0, 15).'...';
-            $arraaay = "jaumesapena77@gmail.com, jaumesapena7777@gmail.com";
+
+
 
             //TODO enviar a tots els correus registrats en eixe equip
             $email = (new NotificationEmail())
                 ->from('jsapenafutbolistics@gmail.com')
-                ->to($arraaay)
+                ->to(...$toAddresses)
                 ->subject($noticium->getTitular())
                 ->action('Leer', 'http://127.0.0.1:8000/noticias/noticia/' . $noticium->getId());
                 //->importance(NotificationEmail::IMPORTANCE_MEDIUM);
