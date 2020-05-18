@@ -6,6 +6,7 @@ use App\Entity\Noticia;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class NoticiaType extends AbstractType
 {
@@ -15,7 +16,10 @@ class NoticiaType extends AbstractType
             ->add('titular')
             ->add('cuerpo')
             ->add('fecha')
-            ->add('imagen')
+            ->add('imagenFile', VichImageType::class, [
+                'label' => false,
+                'required' => false
+            ])
             ->add('equipo')
             ->add('colaborador')
         ;

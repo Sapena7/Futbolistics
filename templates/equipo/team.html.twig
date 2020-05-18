@@ -55,6 +55,7 @@
 
     <!--CLUB WRAP BEGIN-->
 
+
     <section class="club-wrap">
         <div class="container">
             <div class="row row-eq-height">
@@ -83,11 +84,16 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="club-logo  wpb_animate_when_almost_visible wpb_zoomInLeft zoomInLeft wpb_start_animation animated">
+                    <br>
+                    <br>
                     <img class="img-responsive" src="{{ asset('assets/images/escudos/')}}{{ equipo.fotoPerfil }}" alt="organisation logo" height="300" width="300" >
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="org-club-info">
+                    <br>
+                    <br>
+
                     <div class="title">Información</div><br>
                     <div class="item"><span>Fundacion:</span> {{ equipo.fundacion }}</div>
                     <div class="item"><span>Campo:</span> {{ equipo.estadio.nombre }}</div>
@@ -108,6 +114,15 @@
                         <div class="text">Perdidos </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <div class="org-club-stat">
+                    <div class="title">Estadio</div>
+                    <div class="item">{{ equipo.estadio.nombre }}</div><br>
+                    <img src="{{ asset('assets/images/estadios/')}}{{ equipo.estadio.fotoEstadio }}" width="300px" height="200px" alt="arena-img">
+                </div>
+                <br>
+                <br>
             </div>
         </div>
     </div>	
@@ -135,134 +150,25 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12"><h6>Ultimos cinco partidos</h6></div>
-            <div class="col-md-12 overflow-scroll">
 
-                <table>
-                    <tr>
-                        <th>Rival</th>
-                        <th>gp</th>
-                        <th>gs</th>
-                        <th>min</th>
-                        <th>fgm-a</th>
-                        <th>fg%</th>
-                        <th>3pm-a</th>
-                        <th>3p%</th>
-                        <th>om</th>
-                        <th>or</th>
-                        <th>to</th>
-                        <th>pts</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="team"><img src="images/soccer/team-logo1.png" width="30" height="30" alt="team-logo"></span>
-                            <span>Team 1</span>
-                        </td>
-                        <td>2</td>
-                        <td>55</td>
-                        <td>62</td>
-                        <td>5</td>
-                        <td>0</td>
-                        <td>8</td>
-                        <td>89</td>
-                        <td>7</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td><span>12</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="team"><img src="images/soccer/team-logo2.png" width="30" height="30" alt="team-logo"></span>
-                            <span>Team 2</span>
-                        </td>
-                        <td>2</td>
-                        <td>55</td>
-                        <td>62</td>
-                        <td>5</td>
-                        <td>0</td>
-                        <td>8</td>
-                        <td>89</td>
-                        <td>7</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td><span>12</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="team"><img src="images/soccer/team-logo3.png" width="30" height="30" alt="team-logo"></span>
-                            <span>Team 3</span>
-                        </td>
-                        <td>2</td>
-                        <td>55</td>
-                        <td>62</td>
-                        <td>5</td>
-                        <td>0</td>
-                        <td>8</td>
-                        <td>89</td>
-                        <td>7</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td><span>12</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="team"><img src="images/soccer/team-logo4.png" width="30" height="30" alt="team-logo"></span>
-                            <span>Team 4</span>
-                        </td>
-                        <td>2</td>
-                        <td>55</td>
-                        <td>62</td>
-                        <td>5</td>
-                        <td>0</td>
-                        <td>8</td>
-                        <td>89</td>
-                        <td>7</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td><span>12</span></td>
-                    </tr>
-                </table>
-
-            </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <p>Pabst irony tattooed, synth sriracha selvage pok pok. Wayfarers kinfolk sartorial, helvetica you probably haven't heard of them tumeric venmo deep v mixtape semiotics brunch.</p>
                 <div class="col-md-6">
-                    <h6>Salary cap</h6>
-                    <div class="canvas-minutes-big">
-                        <div class="ct-chart" id="stackedbar" ></div>
-                    </div>
+                    <h6>Goleadores</h6>
+                    <table style="width: 280px">
+                        <tr>
+                            <th>Jugador</th>
+                            <th>Goles</th>
+                            <th>Posicion</th>
+                        </tr>
+                        {% for jugador in goleadores %}
+                            <tr>
+                                <td>{{ jugador.nombre }}</td>
+                                <td>{{ jugador.goles }}</td>
+                                <td>{{ jugador.posicion.nombre }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
                 </div>
-
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6>Main investors</h6>
-                        <div class="canvas-investors">
-                            <div class="ct-chart" id="gaugechart" ></div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-                <h6>Raitings</h6>
-                <div class="canvas-minutes-big" >
-                    <div class="ct-chart svgpath" data-ready id="svgpath" ></div>
-                </div>
-                <h6>Financial indicators</h6>
-                <div class="canvas-minutes-big">
-                    <div class="ct-chart" id="pickcircle" ></div>
-                </div>
-
-
-
-
-                <h6>Attendance</h6>
-                <div class="canvas-minutes">
-                    <div class="ct-chart" id="label_placement" ></div>
-                </div>
-                
             </div>
         </div>
     </div>

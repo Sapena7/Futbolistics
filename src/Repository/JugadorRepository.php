@@ -37,4 +37,14 @@ class JugadorRepository extends ServiceEntityRepository
 
         return $query->getSingleResult();
     }
+
+    public function orderByGoalsTeamId($id): array {
+        $query = $this->createQueryBuilder('j')
+            ->orderBy('j.goles', 'DESC')
+            ->andwhere("j.equipo = :id AND j.goles > 0")
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

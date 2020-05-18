@@ -5,6 +5,21 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/css-min/soccer.min.css') }}" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+            form {
+                padding-left: 100px;
+                padding-right: 100px;
+                padding-top: 20px;
+                padding-bottom: 50px;
+            }
+            input {
+                width: 100px;
+            }
+        </style>
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>

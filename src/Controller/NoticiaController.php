@@ -106,7 +106,6 @@ class NoticiaController extends AbstractController
                 array_push($toAddresses,$lista[$i]["email"]);
             }
 
-            //TODO enviar a tots els correus registrats en eixe equip
             $email = (new NotificationEmail())
                 ->from('jsapenafutbolistics@gmail.com')
                 ->to(...$toAddresses)

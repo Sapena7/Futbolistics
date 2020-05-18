@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Clasificacion{% endblock %}
+{% block title %}Editar Clasificacion{% endblock %}
 
 {% block body %}
-    <h1>Edit Clasificacion</h1>
+    <h1>Editar Clasificacion</h1>
 
     {{ include('clasificacion/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('clasificacion_index') }}">back to list</a>
+    <a href="{{ path('clasificacion_index') }}"><button class="btn">Volver</button></a>
 
     {{ include('clasificacion/_delete_form.html.twig') }}
 {% endblock %}
