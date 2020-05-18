@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Futbolistics</title>
+    <title>Home</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
@@ -117,15 +117,15 @@
                 <div id="main-breaking-list" class="carousel slide main-breaking-list" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <a href="../noticia/noticia.twig">
-                                <span class="date">20 Sep 2016 <span>/</span></span>
-                                <span class="news"><img src="{{ asset('assets/images/common/news-youtube-icon.png') }}" alt="news-youtube">Revenge is sweet: Great matchday four recoveries</span>
+                            <a href="{{ path('noticias_byId', {id: ultimasNoticias[0].Id}) }}">
+                                <span class="date">{{ ultimasNoticias[0].Fecha|date("d/m/Y") }}<span>/</span></span>
+                                <span class="news">{{ ultimasNoticias[0].Titular }}</span>
                             </a>
                         </div>
                         <div class="item">
-                            <a href="../noticia/noticia.twig">
-                                <span class="date">22 Sep 2016 <span>/</span></span>
-                                <span class="news">Revenge is sweet: Great matchday four recoveries</span>
+                            <a href="{{ path('noticias_byId', {id: ultimasNoticias[1].Id}) }}">
+                                <span class="date">{{ ultimasNoticias[1].Fecha|date("d/m/Y") }}<span>/</span></span>
+                                <span class="news">{{ ultimasNoticias[1].Titular }}</span>
                             </a>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
             <div class="col-md-12"><h6>Ultimos partidos</h6></div>
             <div class="col-md-12">
                 <ul class="tab-filters" role="tablist">
-                    <li class="active"><a href="#nationalcup" role="tab" data-toggle="tab">National cup</a></li>
+                    <li class="active"><a href="#nationalcup" role="tab" data-toggle="tab">{{ ultimosPartidos[0].liga.nombre }}</a></li>
                 </ul>
             </div>
 
@@ -205,340 +205,6 @@
 <!--MAIN MATCH SHEDULE END-->
 
 
-<!--MAIN CLUB STAFF BEGIN-->
-<div class="main-club-stuff amateurs-club-stuff">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h4>Rankings</h4>
-                <ul class="tab-filters" role="tablist">
-                    <li class="active">
-                        <a href="#managers" role="tab" data-toggle="tab">
-                            Goleadores
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#firstteam" role="tab" data-toggle="tab">
-                            Asistencias
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="tab-content">
-        <div class="tab-pane active" id="managers" role="tabpanel">
-            <div id="managers_carousel" class="carousel slide main-stuff-slider" data-ride="carousel" >
-                <div class="carousel-inner" role="listbox" >
-                    <div class="item active">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucas<br>Marshman</span>
-                                                <span class="position">Left Forward</span>
-                                                <span class="number">14</span>
-                                            </span>
-
-                                            <img src="{{ asset('assets/images/soccer/stuff-person.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucas<br>Marshman</span>
-                                                <span class="position">Left Midfielder</span>
-                                                <span class="number">8</span>
-                                            </span>
-
-                                            <img src="{{ asset('assets/images/soccer/player-2.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 ">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucas<br>Marshman</span>
-                                                <span class="position">Central Attacking Midfielder</span>
-                                                <span class="number">7</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/soccer/player-3.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucas<br>Marshman</span>
-                                                <span class="position">Left Forward</span>
-                                                <span class="number">14</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/soccer/player-3.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucas<br>Marshman</span>
-                                                <span class="position">Left Midfielder</span>
-                                                <span class="number">8</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/soccer/player-2.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 ">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucas<br>Marshman</span>
-                                                <span class="position">Central Attacking Midfielder</span>
-                                                <span class="number">7</span>
-                                            </span>
-
-                                            <img src="{{ asset('assets/images/stuff-person.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Controls -->
-                    <a class="nav-arrow left-arrow" href="#managers_carousel" role="button" data-slide="prev">
-                        <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        <span class="sr-only"></span>
-                    </a>
-                    <a class="nav-arrow right-arrow" href="#managers_carousel" role="button" data-slide="next">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        <span class="sr-only"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane" id="academy" role="tabpanel">
-            <div id="academy_carousel" class="carousel slide main-stuff-slider" data-ride="carousel" >
-                <div class="carousel-inner" role="listbox" >
-                    <div class="item active">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Vito<br>Palet</span>
-                                                <span class="position">Left Forward</span>
-                                                <span class="number">14</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/stuff-person.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucas<br>Melet</span>
-                                                <span class="position">Left Midfielder</span>
-                                                <span class="number">8</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/player-2.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 ">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucas<br>Marse</span>
-                                                <span class="position">Central Attacking Midfielder</span>
-                                                <span class="number">7</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/player-3.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucas<br>Marsan</span>
-                                                <span class="position">Left Forward</span>
-                                                <span class="number">14</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/player-3.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Luscas<br>Mars</span>
-                                                <span class="position">Left Midfielder</span>
-                                                <span class="number">8</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/player-2.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 ">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucas<br>Mafo</span>
-                                                <span class="position">Central Attacking Midfielder</span>
-                                                <span class="number">7</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/stuff-person.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Controls -->
-                    <a class="nav-arrow left-arrow" href="#academy_carousel" role="button" data-slide="prev">
-                        <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        <span class="sr-only"></span>
-                    </a>
-                    <a class="nav-arrow right-arrow" href="#academy_carousel" role="button" data-slide="next">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        <span class="sr-only"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane" id="firstteam" role="tabpanel">
-            <div id="firstteam_carousel" class="carousel slide main-stuff-slider" data-ride="carousel" >
-                <div class="carousel-inner" role="listbox" >
-                    <div class="item active">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">James<br>Deshon</span>
-                                                <span class="position">Left Forward</span>
-                                                <span class="number">14</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/stuff-person.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Deshon<br>James</span>
-                                                <span class="position">Left Midfielder</span>
-                                                <span class="number">8</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/player-2.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 ">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">James<br>Deshon</span>
-                                                <span class="position">Central Attacking Midfielder</span>
-                                                <span class="number">7</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/player-3.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucas<br>Marsh</span>
-                                                <span class="position">Left Forward</span>
-                                                <span class="number">14</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/player-3.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Luca<br>Mas</span>
-                                                <span class="position">Left Midfielder</span>
-                                                <span class="number">8</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/player-2.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 ">
-                                    <div class="staff-item">
-                                        <a href="../jugador/player.html.twig">
-                                            <span class="info">
-                                                <span class="name">Lucasoto<br>Marsh</span>
-                                                <span class="position">Central Attacking Midfielder</span>
-                                                <span class="number">7</span>
-                                            </span>
-                                            <img src="{{ asset('assets/images/stuff-person.jpg') }}"  alt="person-slider">
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Controls -->
-                    <a class="nav-arrow left-arrow" href="#firstteam_carousel" role="button" data-slide="prev">
-                        <i class="fa fa-angle-left" aria-hidden="true"></i>
-                        <span class="sr-only"></span>
-                    </a>
-                    <a class="nav-arrow right-arrow" href="#firstteam_carousel" role="button" data-slide="next">
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        <span class="sr-only"></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--MAIN CLUB STAFF END-->
 
 
 <!--SUCCESS STORY BEGIN-->
@@ -583,7 +249,7 @@
                 <div class="text">
                     <div class="big-title">Competiciones</div>
                     <p>Sigue las mejores competiciones</p>
-                    <a href="trophies.html" class="btn">Detalles</a>
+                    <a href="{{ path('clasificacion_index') }}" class="btn">Detalles</a>
                 </div>
             </div>
             <div class="col-md-7">
@@ -711,7 +377,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <b class="text">Patrocinadores. </b><br>
+                <h3>Patrocinadores</h3<br><br><br><br><br><br>
             </div>
 
             <div class="col-xs-3 text-center">
@@ -730,115 +396,9 @@
     </div>
 </div>
 <!--SPONSOR BOX END-->
-
-<!--AMATEURS NEWS LIST BEGIN-->
-<div class="amateurs-news-list">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12"><h4>Noticias recomendadas</h4></div> <!-- Segons equip de l'usuari, si no en te, aleatori -->
-            <div class="tab-content">
-                <div class="tab-pane active" id="news" role="tabpanel">
-                    <div class="col-md-4">
-                        <div class="item">
-                            <a href="../noticia/noticia.twig" class="img-wrap"><img src="{{ asset('assets/images/soccer/news1.jpg') }}" alt="news-single"></a>
-                            <a href="../noticia/noticia.twig" class="name">Bauza: Bozo and Topolo will start against Intertupo</a>
-                            <div class="date"><a href="../noticia/noticia.twig">25 Sep 2016</a> by <a href="../noticia/noticia.twig">Logan Holmes</a></div>
-                            <p>Snackwave tote bag fixie gluten-free, affogato master cleanse cronut portland prism knausgaard.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!--AMATEURS NEWS LIST END-->
 
-<!--FOOTER BEGIN-->
-<footer class="footer">
-    <div class="wrapper-overfllow">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12">
-                    <div class="footer-left">
-
-                        <div class="wrap">
-                            <a href="index-2.html" class="foot-logo"><img src="{{ asset('assets/images/soccer/footer-logo.png') }}" alt="footer-logo"></a>
-                            <p>Activated charcoal trust fund ugh prism af, beard marfa air plant stumptown gastropub farm-to-table jianbing.</p>
-                            <ul class="foot-left-menu">
-                                <li><a href="../jugador/index.html.twig">First team</a></li>
-                                <li><a href="../jugador/index.html.twig">Second team</a></li>
-                                <li><a href="amateurs.html.twig">Amateurs</a></li>
-                                <li><a href="trophies.html">trophies</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-12 col-lg-offset-1">
-                    <div class="foot-news">
-                        <h4>Recent news</h4>
-                        <div class="item">
-                            <a href="../noticia/index.html.twig" class="image"><img class="img-responsive" src="{{ asset('assets/images/soccer/foot-news-img.jpg') }}" alt="news-image"></a>
-                            <a href="../noticia/index.html.twig" class="name">When somersaulting Sanchez shouldered Mexico’s hopes</a>
-                            <a href="../noticia/index.html.twig" class="date">25 Sep 2016</a>
-                            <span class="separator">in</span>
-                            <a href="../noticia/index.html.twig" class="category">Highlights</a>
-                        </div>
-                    </div>
-                </div>
-                <div class=" col-lg-3 col-md-4 col-sm-12">
-                    <div class="foot-contact">
-                        <h4>Contact us</h4>
-                        <ul class="contact-list">
-                            <li><i class="fa fa-flag" aria-hidden="true"></i><span>276 Upper Parliament Street, Liverpool L8, Great Britain</span></li>
-                            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:team@email.com">team@email.com</a></li>
-                            <li class="phone"><i class="fa fa-phone" aria-hidden="true"></i><span>+61 3 8376 6284</span></li>
-                        </ul>
-                        <ul class="socials">
-                            <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-menu-wrap">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="footer-menu">
-                        <li class="active"><a href="index-2.html"><span>Home</span></a></li>
-                        <li><a href="matches.html.twig"><span>Matches</span></a></li>
-                        <li><a href="../jugador/index.html.twig"><span>Team</span></a></li>
-                        <li><a href="../noticia/index.html.twig"><span>News</span></a></li>
-                        <li><a href="../contact/contacts.html.twig"><span>Contact</span></a></li>
-                    </ul>
-                    <a href="#top" class="foot-up"><span>up <i class="fa fa-caret-up" aria-hidden="true"></i></span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="copyrights">
-                        <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <div class="created">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-<!--FOOTER END-->
+{% include 'pagina/partials/footer.twig' %}
 
 <script type="text/javascript" src="{{ asset('assets/js/library/jquery.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/library/jquery-ui.js') }}"></script>

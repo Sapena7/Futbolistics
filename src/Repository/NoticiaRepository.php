@@ -30,6 +30,15 @@ class NoticiaRepository extends ServiceEntityRepository
         return $query->getOneOrNullResult();
     }
 
+    public function orderByFecha(){
+        $query = $this->createQueryBuilder('n')
+            ->orderBy('n.fecha', 'DESC')
+            ->setMaxResults(2)
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
     /**
      * @return Noticia[]
      */

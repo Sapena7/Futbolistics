@@ -47,4 +47,15 @@ class PartidoRepository extends ServiceEntityRepository
 
         return $query->getResult();
     }
+
+    public function orderByFechaByTeam($id){
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('p.fecha', 'DESC')
+            ->andwhere('p.equipoLocal = :id OR p.equipoVisitante = :id')
+            ->setParameter('id', $id)
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

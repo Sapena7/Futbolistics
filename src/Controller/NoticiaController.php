@@ -23,7 +23,7 @@ class NoticiaController extends AbstractController
 {
     /**
      * @Route("/", defaults={"page": "1"}, methods="GET", name="noticia_index")
-     * @Route("/page/{page<[1-9]\d*>}", methods="GET", name="noticia_paginated")
+     * @Route("/pagina/{page<[1-9]\d*>}", methods="GET", name="noticia_paginated")
      *
      * NOTE: For standard formats, Symfony will also automatically choose the best
      * Content-Type header for the response.

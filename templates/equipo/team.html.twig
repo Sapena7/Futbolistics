@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Team HTML</title>
+    <title>{{ equipo.nombre }}</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
     <link rel="icon" href="../pagina/favicon.ico" type="image/x-icon">
     <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
@@ -88,6 +88,7 @@
             </div>
             <div class="col-md-3">
                 <div class="org-club-info">
+                    <div class="title">Información</div><br>
                     <div class="item"><span>Fundacion:</span> {{ equipo.fundacion }}</div>
                     <div class="item"><span>Campo:</span> {{ equipo.estadio.nombre }}</div>
                     <div class="item"><span>Trofeos:</span> {{ equipo.trofeos }}</div>
@@ -99,16 +100,16 @@
                 <div class="org-club-stat">
                     <div class="title">Estadisticas</div>
                     <div class="circle-item">
-                        <div class="circle-bar" id="circle_3" data-percent="47"></div>
+                        <div class="circle-bar" id="circle_3" data-percent="{{ ganados.ganados*100/numeroJornadas[1] }}"></div>
                         <div class="text">Ganados </div>
                     </div>
                     <div class="circle-item">
-                        <div class="circle-bar" id="circle_4" data-percent="87"></div>
+                        <div class="circle-bar" id="circle_4" data-percent="{{ perdidos.perdidos*100/numeroJornadas[1] }}"></div>
                         <div class="text">Perdidos </div>
-                    </div>             
+                    </div>
                 </div>
             </div>
-        </div>	
+        </div>
     </div>	
 </div>
         </div>
@@ -124,13 +125,13 @@
                 <h6>Ultimo partido</h6>
                 <div class="last-match">
                     <div class="team">
-                        <a href="../pagina/about-club.html"><img src="images/soccer/team-logo1.png" width="40" height="40" alt="team-logo"></a>
-                        <a href="../pagina/about-club.html" class="name">Team 1</a>
+                        <a href="{{ path('equipo_show', {id: ultimoPartido[0].equipoLocal.Id}) }}"><img src="{{ asset('assets/images/escudos/')}}{{ ultimoPartido[0].equipoLocal.fotoPerfil }}" width="40" height="50" alt="team-logo"></a>
+                        <a href="{{ path('equipo_show', {id: ultimoPartido[0].equipoLocal.Id}) }}" class="name">{{ ultimoPartido[0].equipoLocal.nombre }}</a>
                     </div>
                     <div class="score"><span>2</span>:<span>0</span></div>
                     <div class="team right">
-                        <a href="../pagina/about-club.html" class="name">Team 2</a>
-                        <a href="../pagina/about-club.html"><img src="images/soccer/team-logo2.png" width="40" height="40" alt="team-logo"></a>
+                        <a href="{{ path('equipo_show', {id: ultimoPartido[0].equipoVisitante.Id}) }}" class="name">{{ ultimoPartido[0].equipoVisitante.nombre }}</a>
+                        <a href="{{ path('equipo_show', {id: ultimoPartido[0].equipoVisitante.Id}) }}"><img src="{{ asset('assets/images/escudos/')}}{{ ultimoPartido[0].equipoVisitante.fotoPerfil }}" width="40" height="50" alt="team-logo"></a>
                     </div>
                 </div>
             </div>

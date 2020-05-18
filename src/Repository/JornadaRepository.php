@@ -27,4 +27,12 @@ class JornadaRepository extends ServiceEntityRepository
 
         return $query->getSingleResult();
     }
+
+    public function countJornadas(){
+        $query = $this->createQueryBuilder('j')
+            ->select("COUNT(j.id)")
+            ->getQuery();
+
+        return $query->getSingleResult();
+    }
 }

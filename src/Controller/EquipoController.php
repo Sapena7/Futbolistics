@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Clasificacion;
 use App\Entity\Equipo;
+use App\Entity\Jornada;
+use App\Entity\Partido;
 use App\Entity\Usuario;
 use App\Form\EquipoType;
 use App\Repository\EquipoRepository;
@@ -60,8 +63,19 @@ class EquipoController extends AbstractController
     {
         $equipos = $this->getDoctrine()
             ->getRepository(Equipo::class);
+        $clasificacion = $this->getDoctrine()
+            ->getRepository(Clasificacion::class);
+        $jornadas = $this->getDoctrine()
+            ->getRepository(Jornada::class);
+        $partidos = $this->getDoctrine()
+            ->getRepository(Partido::class);
         $equipo = $equipos->findTeamById($id);
-        $properties = ['equipo' => $equipo];
+        $ganados = $clasificacion->findPartidosGanadosByEquipo($id);
+        $perdidos = $clasificacion->findPartidosPerdidosByEquipo($id);
+
+        $numeroJornadas = $jornadas->countJornadas();
+        $ultimoPartido = $partidos->orderByFechaByTeam($id);
+        $properties = ['equipo' => $equipo, 'ganados' => $ganados, 'perdidos' => $perdidos, 'numeroJornadas' => $numeroJornadas, 'ultimoPartido' => $ultimoPartido];
         return $this->render('equipo/team.html.twig', $properties);
     }
 

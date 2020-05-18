@@ -64,29 +64,47 @@
 <section class="sidebar col-xs-6 col-md-3 sidebar-offcanvas" id="sidebar">
     <div class="sidebar-menu-wrap">
         <h6>Categories</h6>
+        <form action="{{ path('noticia_index') }}" name="search_form" method='GET'>
+            <input type="hidden" name="page" value="{{ app.request.query.get("page") }} ?? 'index'">
         <ul class="categories-list">
             <li>
-                <a href="#"><span class="count">4</span>News</a>
+                <a href="#"><span class="count">{{ equipos|length }}</span>Equipos</a>
+                <ul>
+                        <select name="equipo">
+                            <option value="">Equipo</option>
+                            {% for equipo in equipos %}
+                                <option value="{{ equipo.Id }}">{{ equipo.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </ul>
             </li>
             <li>
-                <a href="#"><span class="count">22</span>Competiciones</a>
-                <ul>
-                    <li><a href="#"><span class="count">12</span>Noticias</a></li>
-                    <li><a href="#"><span class="count">10</span>Competitions & Reviews</a></li>
-                    <li><a href="#"><span class="count">9</span>Entrevistas</a></li>
-                    <li><a href="#"><span class="count">8</span>Highlights</a></li>
-                    <li><a href="#"><span class="count">7</span>Other</a></li>	
-                </ul>
+                <a href="#"><span class="count">4</span>Noticias</a>
             </li>
             <li>
                 <a href="#"><span class="count">4</span>Entrevistas</a>
             </li>
             <li>
-                <a href="#"><span class="count">4</span>Highlights</a>
+                <a href="#"><span class="count">4</span>Comunicados</a>
             </li>
             <li>
-                <a href="#"><span class="count">4</span>Other</a>
+                <a href="#"><span class="count">4</span>Otros</a>
             </li>
+        <br>
+        <h6>Fecha</h6>
+
+        <td>Inicio:</td>
+        <input type="date" name="fechaMin" style="width: 160px"><br>
+
+
+        <td>Final: </td>
+        <input type="date" name="fechaMax" style="width: 160px"><br><br>
+
+        <td>Texto a filtrar:</td>
+        <input class="text" type="text" name="text">
+
+        <input type="submit" name="search" value="Filtrar">
         </ul>
     </div>
 
@@ -119,27 +137,25 @@
         <br>
     </div>
     <!-- fin filtro -->
-
-
 </section>
 
 
-<!--SIEDBAR END-->
+<!--SIEDBAR END--><br>
                 <!--NEWS LIST BEGIN-->
+                {% if app.user is not empty %}
+                    {% if app.user.rol is not empty %}
+                        {% if app.user.rol == ['ROLE_ADMIN'] or app.user.rol == ['ROLE_COLABORATOR'] %}
+                            <a href="{{ path('noticia_new') }}" class="btn small club-top-btn">Crear noticia</a>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
 <div class="news-list col-xs-12 col-md-9">
     <p class="hidden-md hidden-lg">
         <button type="button" class="btn sidebar-btn" data-toggle="offcanvas" title="Toggle sidebar">sidebar</button>
     </p>
-    {% if app.user is not empty %}
-        {% if app.user.rol is not empty %}
-            {% if app.user.rol == ['ROLE_ADMIN'] or app.user.rol == ['ROLE_COLABORATOR'] %}
-                <a href="{{ path('noticia_new') }}">
-                    <img src="{{ asset('assets/images/common/new.png') }}" width="50px" height="50px" alt="edit image">
-                </a>
-            {% endif %}
-        {% endif %}
+    {% if noticias.results is empty %}
+        <h3>No hay resultados</h3>
     {% endif %}
-
     {% for noticia in noticias.results %}
     <!-- noticia -->
     <div class="item img-top">
@@ -185,32 +201,25 @@
     </div>
     {% endfor %}
     <!-- fin noticia -->
-
     {% if noticias.hasToPaginate %}
-        <div class="product_pagination">
-            <ul>
-                {% if noticias.hasPreviousPage %}
-                    <li class="prev"><a href="{{ path('noticia_paginated', {page: noticias.previousPage}) }}" rel="previous"><i class="fa fw fa-long-arrow-left"></i> {{ 'previous'|trans }}</a></li>
+    <div class="pagination-wrap">
+        <ul class="pagination">
+            <li><a href="{{ path('noticia_paginated', {page: noticias.previousPage}) }}"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+            {% for i in 1..noticias.lastPage %}
+                {% if i == noticias.currentPage %}
+                    <li class="active"><a href="{{ path('noticia_paginated', {page: i}) }}">{{ i }}</a></li>
                 {% else %}
-                    <li class="prev disabled"><span><i class="fa fw fa-arrow-left"></i> {{ 'previous'|trans }}</span></li>
+                    <li><a href="{{ path('noticia_paginated', {page: i}) }}">{{ i }}</a></li>
                 {% endif %}
-
-                {% for i in 1..noticias.lastPage %}
-                    {% if i == noticias.currentPage %}
-                        <li class="active"><span>{{ i }} <span class="sr-only">{{ 'current'|trans }}</span></span></li>
-                    {% else %}
-                        <li><a href="{{ path('noticia_paginated', {page: i}) }}">{{ i }}</a></li>
-                    {% endif %}
-                {% endfor %}
-
-                {% if noticias.hasNextPage %}
-                    <li class="next"><a href="{{ path('noticia_paginated', {page: noticias.nextPage}) }}" rel="next">{{ 'next'|trans }} <i class="fa fw fa-arrow-right"></i></a></li>
-                {% else %}
-                    <li class="next disabled"><span>{{ 'next'|trans }} <i class="fa fw fa-arrow-right"></i></span></li>
+            {% endfor %}
+            {% if noticias.hasNextPage %}
+                <li><a href="{{ path('noticia_paginated', {page: noticias.nextPage}) }}"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
+            {% else %}
+                <li><a hidden><i hidden></i></a></li>
                 {% endif %}
-            </ul>
-        </div>
     {% endif %}
+        </ul>
+    </div>
 </div>
 <!--NEWS LIST END-->
 

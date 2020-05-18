@@ -17,12 +17,14 @@ class DefaultController extends AbstractController
 
         $partidos = $this->getDoctrine()
             ->getRepository(Partido::class);
-        $noticias = $this->getDoctrine()
+        $noticiasRepos = $this->getDoctrine()
             ->getRepository(Noticia::class);
+
+        $ultimasNoticias = $noticiasRepos->orderByFecha();
 
         $ultimosPartidos = $partidos->orderByFecha();
 
-        $properties = ['ultimosPartidos' => $ultimosPartidos];
+        $properties = ['ultimosPartidos' => $ultimosPartidos, 'ultimasNoticias' => $ultimasNoticias];
 
         return $this->render('default/index.html.twig', $properties);
     }
