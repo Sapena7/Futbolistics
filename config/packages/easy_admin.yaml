@@ -212,6 +212,7 @@ easy_admin:
             - nombre
             - nombreCompleto
             - email
+            - password
             - equipoFavorito
             - rol
             - { property: 'fotoPerfilFile', type: 'vich_image', label: 'Foto usuario' }

@@ -14,7 +14,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass="App\Repository\UsuarioRepository")
  * @Vich\Uploadable()
  */
-class Usuario implements UserInterface
+class Usuario implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -151,9 +151,14 @@ class Usuario implements UserInterface
         return $this;
     }
 
-    public function getRol(): ?array
+    public function getRol(): ?string
     {
-        return $this->rol;
+        if ($this->rol == null){
+            return 'ROLE_USER';
+        }else{
+            return $this->rol[0];
+        }
+
     }
 
     public function setRol(array $rol): self
@@ -226,6 +231,24 @@ class Usuario implements UserInterface
 
     public function __toString() {
         return $this->getNombre();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize(): string
+    {
+        // add $this->salt too if you don't use Bcrypt or Argon2i
+        return serialize([$this->id, $this->nombre, $this->password, $this->rol[0]]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized): void
+    {
+        // add $this->salt too if you don't use Bcrypt or Argon2i
+        [$this->id, $this->nombre, $this->password, $this->rol[0]] = unserialize($serialized, ['allowed_classes' => false]);
     }
 
 }

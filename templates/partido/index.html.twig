@@ -79,7 +79,7 @@
                 <div class="tab-content">
                     {% if app.user is not empty %}
                         {% if app.user.rol is not empty %}
-                            {% if app.user.rol == ['ROLE_ADMIN'] or app.user.rol == ['ROLE_COLABORATOR']  %}
+                            {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
                                 <div class="dropdown" >
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                                         <span class="caret"></span></button>
@@ -130,7 +130,7 @@
                 {% for partido in partidos %}
                     {% if app.user is not empty %}
                         {% if app.user.rol is not empty %}
-                            {% if app.user.rol == ['ROLE_ADMIN'] or app.user.rol == ['ROLE_COLABORATOR']  %}
+                            {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="font-size: 5px">
                                         <span class="caret"></span></button>
