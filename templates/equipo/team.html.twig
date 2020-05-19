@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{{ equipo.nombre }}</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
-    <link rel="icon" href="../pagina/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/images/escudos/')}}{{ equipo.fotoPerfil }}" type="image/x-icon">
     <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
@@ -91,15 +91,20 @@
             </div>
             <div class="col-md-3">
                 <div class="org-club-info">
-                    <br>
-                    <br>
-
                     <div class="title">Información</div><br>
                     <div class="item"><span>Fundacion:</span> {{ equipo.fundacion }}</div>
                     <div class="item"><span>Campo:</span> {{ equipo.estadio.nombre }}</div>
+                    <div class="item"><span>Ciudad:</span> {{ equipo.estadio.ciudad }}</div>
                     <div class="item"><span>Trofeos:</span> {{ equipo.trofeos }}</div>
                     <div class="item"><span>Entrenador:</span> {{ equipo.entrenador }}</div>
                     <div class="item"><span>Región:</span> {{ equipo.region }}</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="org-club-stat">
+                    <div class="title">Estadio</div>
+                    <div class="item">{{ equipo.estadio.nombre }}</div><br>
+                    <img src="{{ asset('assets/images/estadios/')}}{{ equipo.estadio.fotoEstadio }}" width="300px" height="200px" alt="arena-img">
                 </div>
             </div>
             <div class="col-md-4">
@@ -113,13 +118,7 @@
                         <div class="circle-bar" id="circle_4" data-percent="{{ perdidos.perdidos*100/numeroJornadas[1] }}"></div>
                         <div class="text">Perdidos </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="org-club-stat">
-                    <div class="title">Estadio</div>
-                    <div class="item">{{ equipo.estadio.nombre }}</div><br>
-                    <img src="{{ asset('assets/images/estadios/')}}{{ equipo.estadio.fotoEstadio }}" width="300px" height="200px" alt="arena-img">
+
                 </div>
                 <br>
                 <br>

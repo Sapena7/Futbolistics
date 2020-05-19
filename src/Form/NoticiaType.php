@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Noticia;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -14,7 +15,7 @@ class NoticiaType extends AbstractType
     {
         $builder
             ->add('titular')
-            ->add('cuerpo')
+            ->add('cuerpo', TextareaType::class)
             ->add('fecha')
             ->add('imagenFile', VichImageType::class, [
                 'label' => false,

@@ -43,6 +43,7 @@ class PartidoController extends AbstractController
         $partidos = $partidos->findByJornada($jornadaId);
 
         $jornada = $jornadasRepo->findById($jornadaId);
+
         $properties = ['partidos' => $partidos, 'jornadas' => $jornadas, 'ligas' => $ligas, 'jornada' => $jornada];
 
         return $this->render('partido/index.html.twig', $properties);
