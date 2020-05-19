@@ -78,11 +78,13 @@ class EquipoController extends AbstractController
         $equipo = $equipos->findTeamById($id);
         $ganados = $clasificacion->findPartidosGanadosByEquipo($id);
         $perdidos = $clasificacion->findPartidosPerdidosByEquipo($id);
+        $clasificacionLiga = $clasificacion->find(1);
+        $jugadoresEquipo = $jugadores->findByEquipo($id);
 
         $numeroJornadas = $jornadas->countJornadas();
         $ultimoPartido = $partidos->orderByFechaByTeam($id);
         $properties = ['equipo' => $equipo, 'ganados' => $ganados, 'perdidos' => $perdidos, 'numeroJornadas' => $numeroJornadas, 'ultimoPartido' => $ultimoPartido,
-            'goleadores' => $goleadores];
+            'goleadores' => $goleadores, 'clasificacion' => $clasificacionLiga, 'jugadores' => $jugadoresEquipo];
         return $this->render('equipo/team.html.twig', $properties);
     }
 

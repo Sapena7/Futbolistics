@@ -60,6 +60,7 @@ class NoticiaController extends AbstractController
             $fechaMin = DateTime::createFromFormat($formato, $fechaMin .  " 00:00");
             $fechaMax = DateTime::createFromFormat($formato, $fechaMax . " 00:00");
         }
+
         $noticias = $news->findAllOrderByDate($page, $equipo, $fechaMin, $fechaMax, $text);
 
         $properties = ['noticias' => $noticias, 'equipos' => $equipos];
@@ -155,7 +156,7 @@ class NoticiaController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="noticia_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="noticia_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Noticia $noticium): Response
     {

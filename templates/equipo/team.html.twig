@@ -170,6 +170,28 @@
                 </div>
             </div>
         </div>
+        <h6>Resumen</h6>
+        <b>{{ equipo.nombre }}</b> fundado en {{ equipo.fundacion }}, juega en el campo <b>{{ equipo.estadio.nombre }}</b> en la ciudad de <b>{{ equipo.estadio.ciudad }}</b>, actualmente en
+        <b>{{ clasificacion.liga.nombre }}</b>, cuenta con una plantilla de <b>{{ jugadores |length }}</b> jugadores y con un staff técnico.
+        {% if equipo.trofeos == 0 %}
+            De momento no cuenta con trofeos
+        {% endif %}
+        {% if equipo.trofeos == 1 %}
+            Ha ganado {{ equipo.trofeos }} trofeo <br><br>
+            <div style="width: 80%; margin: 0 auto;">
+                    <img src="{{ asset('assets/images/common/am-trophey1.png') }}" alt="am-trophey">
+            </div>
+
+        {% endif %}
+        {% if equipo.trofeos > 1 %}
+            Ha ganado {{ equipo.trofeos }} trofeos <br><br>
+            <div style="width: 80%; margin: 0 auto;">
+                {% for i in 1..equipo.trofeos %}
+                    <img src="{{ asset('assets/images/common/am-trophey1.png') }}" alt="am-trophey">
+                {% endfor %}
+            </div>
+
+        {% endif %}
     </div>
 </section>
 <!--CLUB MAIN STAT END-->

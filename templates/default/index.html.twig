@@ -36,17 +36,17 @@
 
     <div class="owl-carousel owl-theme" role="listbox">
 
-        <div class="item msp_post_slide slide-1" >
+        <div class="item msp_post_slide slide-1" style="background: url({{ asset('assets/images/noticias/') }}{{ ultimasNoticias[0].imagen }}) no-repeat; background-size: 1500px 603px;">
             <div class="slider-caption">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-sm-8">
-                            <h1 class="title">Team 1 - Team 2</h1>
+                            <h1 class="title">{{ ultimasNoticias[0].titular }}</h1>
                             <div class="sub-title">
                                 FINAL GAME
                             </div>
-                            <a href="amateurs.html.twig" class="btn">
-                                Read more
+                            <a href="{{ path('noticias_byId', {id: ultimasNoticias[0].Id}) }}" class="btn">
+                                Leer
                             </a>
                         </div>
                     </div>
@@ -54,35 +54,17 @@
             </div>
         </div>
 
-        <div class="item msp_post_slide slide-2" >
+        <div class="item msp_post_slide slide-2"  style="background: url({{ asset('assets/images/noticias/') }}{{ ultimasNoticias[1].imagen }}) no-repeat; background-size: 1500px 603px;">
             <div class="slider-caption">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6 col-sm-8">
-                            <h1 class="title">Team 1 - Team 2</h1>
+                            <h1 class="title">{{ ultimasNoticias[1].titular }}</h1>
                             <div class="sub-title">
                                 FINAL GAME
                             </div>
-                            <a href="amateurs.html.twig" class="btn">
-                                Read more
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="item msp_post_slide slide-3" >
-            <div class="slider-caption">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-8">
-                            <h1 class="title">Team 1 - Team 2</h1>
-                            <div class="sub-title">
-                                FINAL GAME
-                            </div>
-                            <a href="amateurs.html.twig" class="btn">
-                                Read more
+                            <a href="{{ path('noticias_byId', {id: ultimasNoticias[1].Id}) }}" class="btn">
+                                Leer
                             </a>
                         </div>
                     </div>
