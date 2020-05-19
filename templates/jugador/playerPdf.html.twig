@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hola</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+<table width="100%">
+    <tr>
+        <td width="50%" align="left"><img src="../public/images/logo.png"></td>
+        <td width="50%" align="right"><small>Documento creado: {{ "now"|date("d-m-Y") }}</small></td>
+    </tr>
+</table>
+<hr>
+<table width="100%">
+    <tbody>
+    {% for j in jugadores %}
+        <tr>
+            <td width="100%">{{ j.nombre }} {{ j.dorsal }} - {{ j.goles }} - {{ j.amarillas }} - rojas: {{ j.rojas }} - {{ j.posicion.nombre }} €</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<hr>
+<table width="100%">
+    <tr>
+        <td width="50%" align="right"><p class="align-self-end"></p></td>
+    </tr>
+</table>
+</body>
+</html>
