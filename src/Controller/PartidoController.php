@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Equipo;
 use App\Entity\Partido;
 use App\Entity\Jornada;
 use App\Entity\Liga;
 use App\Entity\Jugador;
 use App\Form\PartidoType;
 use App\Repository\PartidoRepository;
+use Mpdf\Mpdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -127,5 +129,35 @@ class PartidoController extends AbstractController
         }
 
         return $this->redirectToRoute('partidos_index');
+    }
+
+    /**
+     * @Route("/{id}/jornada/pdf", name="jornada_pdf", methods={"GET"})
+     */
+    public function generatePDF($id):Response{
+        $jornadasRepo = $this->getDoctrine()
+            ->getRepository(Jornada::class);
+        $jugadoresRepos = $this->getDoctrine()
+            ->getRepository(Jugador::class);
+        $equiposRepos = $this->getDoctrine()
+            ->getRepository(Equipo::class);
+        $partidos = $this->getDoctrine()
+            ->getRepository(Partido::class);
+
+        $jornada = $jornadasRepo->findById($id);
+        $partidos = $partidos->findByJornada($id);
+
+        $properties = ['jornada' => $jornada, 'partidos' => $partidos];
+
+
+        $mpdf = new mPDF();
+
+        // Write some HTML code:
+
+        $html = $this->renderView('partido/partidosJornadaPdf.html.twig', $properties);
+        $mpdf->WriteHTML($html);
+
+        // Output a PDF file directly to the browser
+        $mpdf->Output();
     }
 }

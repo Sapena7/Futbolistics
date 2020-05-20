@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Partidos {{ jornada.jornada }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css-min/soccer.min.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div style="text-align: center;">
+    <h1>Partidos {{ jornada.jornada }}</h1>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12"><h1>{{ jornada.jornada }}</h1></div>
+<table width="100%" style="padding-top: 50px">
+    <tr>
+        <th>Equipo Local</th>
+        <th>Resultado</th>
+        <th>Equipo Visitante</th>
+    </tr>
+    {% for partido in partidos %}
+        <tr>
+            <td style="text-align: center;"><img src="{{ asset('assets/images/escudos/')}}{{ partido.equipoLocal.fotoPerfil }}" width="20px" height="20px" alt="team-image"> {{ partido.equipoLocal.nombre }}</td>
+            <td style="text-align: center;">{{ partido.golesLocal }} - {{ partido.golesVisitante }}</td>
+            <td style="text-align: center;">{{ partido.equipoVisitante.nombre }} <img src="{{ asset('assets/images/escudos/')}}{{ partido.equipoVisitante.fotoPerfil }}" width="20px" height="20px" alt="team-image"></td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>

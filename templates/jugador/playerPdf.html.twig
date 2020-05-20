@@ -2,31 +2,47 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Hola</title>
+    <title>Plantilla {{ equipo.nombre }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
+    <link rel="icon" href="{{ asset('assets/images/escudos/')}}{{ equipo.fotoPerfil }}" type="image/x-icon">
+    <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css-min/soccer.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<table width="100%">
+<div style="text-align: center;">
+    <h1>Plantilla {{ equipo.nombre }}</h1>
+</div>
+
+<table width="100%" style="padding-top: 50px">
     <tr>
-        <td width="50%" align="left"><img src="../public/images/logo.png"></td>
-        <td width="50%" align="right"><small>Documento creado: {{ "now"|date("d-m-Y") }}</small></td>
+        <th>Jugador</th>
+        <th>Dorsal</th>
+        <th>Goles</th>
+        <th>Amarillas</th>
+        <th>Rojas</th>
+        <th>Posicion</th>
     </tr>
-</table>
-<hr>
-<table width="100%">
-    <tbody>
-    {% for j in jugadores %}
+    {% for jugador in jugadores %}
         <tr>
-            <td width="100%">{{ j.nombre }} {{ j.dorsal }} - {{ j.goles }} - {{ j.amarillas }} - rojas: {{ j.rojas }} - {{ j.posicion.nombre }} €</td>
+            <td style="text-align: center;">{{ jugador.nombre }}</td>
+            <td style="text-align: center;">{{ jugador.dorsal }}</td>
+            <td style="text-align: center;">{{ jugador.goles }}</td>
+            <td style="text-align: center;">{{ jugador.amarillas }}</td>
+            <td style="text-align: center;">{{ jugador.rojas }}</td>
+            <td style="text-align: center;">{{ jugador.posicion.nombre }}</td>
         </tr>
     {% endfor %}
-    </tbody>
 </table>
-<hr>
-<table width="100%">
-    <tr>
-        <td width="50%" align="right"><p class="align-self-end"></p></td>
-    </tr>
-</table>
+<div style="text-align: center; padding-top: 50px">
+    <img src="{{ asset('assets/images/escudos/') }}{{ equipo.fotoPerfil }}" width="60px" height="80px">
+</div>
+<div style="text-align: right;">
+    <small>Documento creado: {{ "now"|date("d-m-Y") }}</small>
+
+</div>
+
 </body>
 </html>

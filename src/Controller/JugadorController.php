@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Mpdf\Mpdf;
 
 /**
  * @Route("/jugador")
@@ -132,36 +133,26 @@ class JugadorController extends AbstractController
     /**
      * @Route("/{id}/jugadores/pdf", name="players_pdf", methods={"GET"})
      */
-    public function generatePDF($id):Response
-    {
-        $jug = $this->getDoctrine()
+    public function generatePDF($id):Response{
+        $jugadoresRepos = $this->getDoctrine()
             ->getRepository(Jugador::class);
-        $jugadores = $jug->findByEquipo($id);
+        $equiposRepos = $this->getDoctrine()
+            ->getRepository(Equipo::class);
 
-        $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
+        $jugadores = $jugadoresRepos->findByEquipo($id);
+        $equipo = $equiposRepos->findTeamById($id);
 
-        // Instantiate Dompdf with our options
-        $dompdf = new Dompdf($pdfOptions);
+        $properties = ['jugadores' => $jugadores, 'equipo' => $equipo];
 
-        // Retrieve the HTML generated in our twig file
-        $html = $this->render('jugador/playerPdf.html.twig', [
-            'title' => "Jugadores", 'jugadores' => $jugadores
-        ]);
 
-        // Load HTML to Dompdf
-        $dompdf->loadHtml($html);
+        $mpdf = new mPDF();
 
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A4', 'portrait');
+        // Write some HTML code:
 
-        // Render the HTML as PDF
-        $dompdf->render();
+        $html = $this->renderView('jugador/playerPdf.html.twig', $properties);
+        $mpdf->WriteHTML($html);
 
-        $fileName = "prueba.pdf";
-        // Output the generated PDF to Browser (force download)
-        $dompdf->stream($fileName, [
-            "Attachment" => true
-        ]);
+        // Output a PDF file directly to the browser
+        $mpdf->Output();
     }
 }
