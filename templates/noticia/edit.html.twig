@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Noticia{% endblock %}
+{% block title %}Editar noticia{% endblock %}
 
 {% block body %}
-    <h1>Edit Noticia</h1>
-
-    {{ include('noticia/_form.html.twig', {'button_label': 'Update'}) }}
-
-    {{ include('noticia/_delete_form.html.twig') }}
-
-    <a href="{{ path('noticia_index') }}"><button class="btn">Volver</button></a>
+    <div class="container">
+        <h1>Editar noticia</h1>
+        <div>
+            {{ include('noticia/_form.html.twig', {'button_label': 'Update'}) }}
+            <a href="{{ path('noticia_index') }}"><button class="btn">Volver</button></a>
+        </div>
+        {{ include('noticia/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

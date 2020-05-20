@@ -76,28 +76,6 @@
                 </form>
                 <br>
                 <div class="tab-content">
-                    {% if app.user is not empty %}
-                        {% if app.user.rol is not empty %}
-                            {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
-                                <div class="dropdown" >
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                        <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{ path('partido_edit', {id: jornada.partidoEstrella.Id}) }}">
-                                                Editar
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('partido_delete', {id: jornada.partidoEstrella.Id}) }}">
-                                                Borrar
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                </a>
-                            {% endif %}
-                        {% endif %}
-                    {% endif %}
                     <div class="tab-pane active" id="all">
                         <div class="amateurs-main-match">
                             <div class="title">{{ jornada.partidoEstrella.fecha|date("d/m/Y") }}</div>
@@ -125,30 +103,31 @@
         <div class="col-md-12 col-sm-12 col-xs-12"><h6>{{ jornada.jornada }}</h6>
         </div>
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="main-lates-matches">
-                {% for partido in partidos %}
-                    {% if app.user is not empty %}
-                        {% if app.user.rol is not empty %}
-                            {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="font-size: 5px">
-                                        <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{ path('partido_edit', {id: partido.Id}) }}">
-                                                Editar
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('partido_delete', {id: partido.Id}) }}">
-                                                Borrar
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                </a>
-                            {% endif %}
-                        {% endif %}
+            {% for partido in partidos %}
+            {% if app.user is not empty %}
+                {% if app.user.rol is not empty %}
+                    {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
+                        <div class="dropdown" style="float: right; z-index: 3; text-align: right">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="font-size: 5px">
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('partido_edit', {id: partido.Id}) }}">
+                                        Editar
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('partido_delete', {id: partido.Id}) }}">
+                                        Borrar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        </a>
                     {% endif %}
+                {% endif %}
+            {% endif %}
+            <br>
+            <div class="main-lates-matches">
                     <a href="{{ path('partidos_byId', {id: partido.Id}) }}" class="item">
             <span class="teams-wrap">
                 <span class="team">

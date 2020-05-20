@@ -118,7 +118,7 @@ class PartidoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="partido_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="partido_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Partido $partido): Response
     {

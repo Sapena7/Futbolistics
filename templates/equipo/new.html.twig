@@ -3,9 +3,11 @@
 {% block title %}Crear equipo{% endblock %}
 
 {% block body %}
-    <h1>Crear equipo</h1>
-
-    {{ include('equipo/_form.html.twig') }}
-
-    <a href="{{ path('equipo_index') }}"><button class="btn">Volver</button></a>
+    <div class="container">
+        <h1>Crear equipo</h1>
+        <div>
+            {{ include('equipo/_form.html.twig') }}
+            <a href="{{ path('equipo_index') }}"><button class="btn">Volver</button></a>
+        </div>
+    </div>
 {% endblock %}

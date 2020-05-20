@@ -3,10 +3,11 @@
 {% block title %}Nueva Clasificacion{% endblock %}
 
 {% block body %}
-    <h1>Crear nueva Clasificacion</h1>
-
-    {{ include('clasificacion/_form.html.twig') }}
-
-    <a href="{{ path('clasificacion_index') }}"><button class="btn">Volver</button></a>
-
+    <div class="container">
+        <h1>Crear nueva Clasificacion</h1>
+        <div>
+            {{ include('clasificacion/_form.html.twig') }}
+            <a href="{{ path('clasificacion_index') }}"><button class="btn">Volver</button></a>
+        </div>
+    </div>
 {% endblock %}
