@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Clasificacion {{ clasificacion[0].liga.nombre }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css-min/soccer.min.css') }}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div style="text-align: center;">
+    <h3>Clasificacion {{ clasificacion[0].liga.nombre }}</h3>
+</div>
+<table width="100%" style="padding-top: 50px">
+    <tr>
+        <th>Equipo</th>
+        <th>J</th>
+        <th>G</th>
+        <th>E</th>
+        <th>P</th>
+        <th>G.F</th>
+        <th>G.C</th>
+        <th>Diferencia</th>
+        <th>Puntos</th>
+    </tr>
+    {% set pos = 0 %}
+    {% for equipoClas in clasificacion %}
+        {% set pos = pos+1 %}
+        <tr>
+            {% if (pos == 1) or (pos == 2) or (pos == 3) %}
+            <td class="up" style="text-align: left; background: #19ff1d;">
+                <i class="fa fa-caret-up" aria-hidden="true"></i> {{ pos }} <span class="team">
+                                        {% elseif (pos == 14) or (pos == 15) or (pos == 16) %}
+            <td class="down" style="text-align: left; background: #ff1f17;">
+                <i class="fa fa-caret-down" aria-hidden="true"></i> {{ pos }} <span class="team">
+                                        {% else %}
+            <td style="text-align: left">
+                <i class="fa fa-caret-right" aria-hidden="true"></i> {{ pos }} <span class="team">
+                                        {% endif %}
+                                            <img src="{{ asset('assets/images/escudos/')}}{{ equipoClas.equipo.fotoPerfil }}" width="30" height="30" alt="team-logo">
+                                        </span> {{ equipoClas.equipo.nombre }}
+            </td>
+            <td>{{ equipoClas.jugados }}</td>
+            <td>{{ equipoClas.ganados }}</td>
+            <td>{{ equipoClas.empatados }}</td>
+            <td>{{ equipoClas.perdidos }}</td>
+            <td>{{ equipoClas.golesFavor }}</td>
+            <td>{{ equipoClas.golesContra }}</td>
+            <td>{{ equipoClas.golesDiferencia }}</td>
+            <td style="width: 40px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 9px;
+    background: #6199ff;
+    display: inline-block;
+    color: #fff"><span>{{ equipoClas.puntos }}</span></td>
+
+        </tr>
+    {% endfor %}
+</table>
+
+<div style="text-align: right;">
+    <small>Documento creado: {{ "now"|date("d-m-Y") }}</small>
+</div>
+</body>
+</html>

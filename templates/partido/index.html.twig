@@ -63,7 +63,6 @@
             <div class="col-md-10 col-sm-9 col-xs-9">
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
-
                 <ul class="tab-filters" role="tablist">
                     <li class="active"><a href="#premierleague" role="tab" data-toggle="tab" aria-expanded="true">Liga</a></li>
                 </ul>
@@ -123,9 +122,9 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 col-sm-12 col-xs-12"><h6>{{ jornada.jornada }}</h6></div>
+        <div class="col-md-12 col-sm-12 col-xs-12"><h6>{{ jornada.jornada }}</h6>
+        </div>
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <a class="btn btn-sm btn-primary" href="{{ path('jornada_pdf', {'id': jornada.Id}) }}"><i class="icon icon-eye"></i>PDF</a>
             <div class="main-lates-matches">
                 {% for partido in partidos %}
                     {% if app.user is not empty %}
@@ -172,6 +171,9 @@
                 {% endfor %}
 
             </div>
+        </div>
+        <div style="text-align: center; padding-top: 50px">
+            <a class="btn btn-sm btn-primary" href="{{ path('jornada_pdf', {'id': jornada.Id}) }}"><i class="icon icon-eye"></i>Descargar jornada</a>
         </div>
     </div>
     </div>

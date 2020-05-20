@@ -158,6 +158,6 @@ class PartidoController extends AbstractController
         $mpdf->WriteHTML($html);
 
         // Output a PDF file directly to the browser
-        $mpdf->Output();
+        $mpdf->Output($jornada->getJornada() . '.pdf', 'I');
     }
 }

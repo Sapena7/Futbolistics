@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Mpdf\Mpdf;
 
 /**
  * @Route("/clasificacion")
@@ -99,5 +100,27 @@ class ClasificacionController extends AbstractController
         }
 
         return $this->redirectToRoute('clasificacion_index');
+    }
+
+    /**
+     * @Route("/clasificacion/pdf", name="clasificacion_pdf", methods={"GET"})
+     */
+    public function generatePDF():Response{
+        $clasificacion = $this->getDoctrine()
+            ->getRepository(Clasificacion::class)
+            ->findAll();
+
+        $properties = ['clasificacion' => $clasificacion];
+
+
+        $mpdf = new mPDF();
+
+        // Write some HTML code:
+
+        $html = $this->renderView('clasificacion/clasificacionPdf.html.twig', $properties);
+        $mpdf->WriteHTML($html);
+
+        // Output a PDF file directly to the browser
+        $mpdf->Output('Clasificacion primera regional grupo 6'. '.pdf', 'I');
     }
 }
