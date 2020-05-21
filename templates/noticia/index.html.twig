@@ -59,55 +59,48 @@
     <div class="content">
         <div class="container">
             <div class="row row-offcanvas row-offcanvas-left">
-                <div class="container-fluid bg-light ">
-                    <form action="{{ path('noticia_index') }}" name="search_form" method='GET'>
-                        <input type="hidden" name="page" value="{{ app.request.query.get("page") }} ?? 'index'">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-md-2 pt-3">
-                            <div class="form-group ">
-                                <select id="equipo" name="equipo" class="form-control">
-                                    <option value="">Equipo</option>
-                                    {% for equipo in equipos %}
-                                        <option value="{{ equipo.Id }}">{{ equipo.nombre }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-2 pt-3">
-                            <div class="form-group">
-                                <input type="date" class="form-control" name="fechaMin" style="width: 180px"><br>
-                            </div>
-                        </div>
-                        <div class="col-md-2 pt-3">
-                            <div class="form-group">
-                                <input type="date" class="form-control" name="fechaMax" style="width: 180px"><br><br>
-                            </div>
-                        </div>
-                        <div class="col-md-2 pt-3">
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="text" placeholder="Buscar texto">
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <input type="submit" name="search" value="Filtrar">
-                        </div>
-                    </div>
-                    </form>
+                <div class="container-fluid bg-light " style="padding-top: 50px;">
+
+                    {% if app.user is not empty %}
+                        {% if app.user.rol is not empty %}
+                            {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR' %}
+                                <a href="{{ path('noticia_new') }}" class="btn small club-top-btn">Crear noticia</a>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
                 </div>
-
+                <hr>
                 <!--SIDEBAR BEGIN-->
+                <section class="sidebar col-xs-6 col-md-3 sidebar-offcanvas" id="sidebar">
+                    <div class="sidebar-menu-wrap">
+                        <h6>Filtro</h6>
+                        <form action="{{ path('noticia_index') }}" name="search_form" method='GET'>
+                            <input type="hidden" name="page" value="{{ app.request.query.get("page") }} ?? 'index'">
+                            <select id="equipo" name="equipo" style="width: 180px; height: 45px" class="form-control">
+                                <option value="">Equipo</option>
+                                {% for equipo in equipos %}
+                                    <option value="{{ equipo.Id }}">{{ equipo.nombre }}</option>
+                                {% endfor %}
+                            </select>
 
+                            <td>Fecha Inicio:</td>
+                            <input type="date" class="form-control" name="fechaMin" style="width: 180px; height: 45px">
+
+
+                            <td>Fecha Final:</td>
+                            <input type="date" class="form-control" name="fechaMax" style="width: 180px; height: 45px"><br>
+
+                            <input class="form-control" type="text" name="text" style="width: 180px; height: 45px" placeholder="Buscar texto">
+
+                            <input type="submit" name="search" value="Filtrar" class="btn small club">
+                        </form>
+                        <br>
+                    </div>
+                    <!-- fin filtro -->
+                </section>
 
 
 <!--SIEDBAR END--><br>
-                <!--NEWS LIST BEGIN-->
-                {% if app.user is not empty %}
-                    {% if app.user.rol is not empty %}
-                        {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR' %}
-                            <a href="{{ path('noticia_new') }}" class="btn small club-top-btn">Crear noticia</a>
-                        {% endif %}
-                    {% endif %}
-                {% endif %}
 <div class="news-list col-xs-12 col-md-9" style="text-align: center">
     <p class="hidden-md hidden-lg">
         <button type="button" class="btn sidebar-btn" data-toggle="offcanvas" title="Toggle sidebar">sidebar</button>
@@ -132,7 +125,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ path('noticia_delete', {id: noticia.Id}) }}">
+                                            <a href="{{ path('noticia_delete', {id: noticia.Id}) }}" onclick="return confirm('Seguro que quieres borrarlo?');">
                                                 Borrar
                                             </a>
                                         </li>

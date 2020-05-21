@@ -67,12 +67,12 @@
                     <li class="active"><a href="#premierleague" role="tab" data-toggle="tab" aria-expanded="true">Liga</a></li>
                 </ul>
                 <form action=" {{ path('partidos_index') }}" name="search_form" method="GET">
-                    <select name="jornada">
+                    <select name="jornada" class="form-control" style="width: 140px">
                         {% for jornada in jornadas %}
                             <option value="{{ jornada.Id }}">{{ jornada.Jornada }}</option>
                         {% endfor %}
                     </select>
-                    <input type="submit" name="search" value="Filtrar">
+                    <input type="submit" name="search" class="btn" value="Filtrar">
                 </form>
                 <br>
                 <div class="tab-content">
