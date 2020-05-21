@@ -17664,11 +17664,11 @@ blockquote p.name {
 }
 
 .share-box {
-    padding: 50px 0 100px 0
+    padding: 50px 0 100px 0;
 }
 
 .share-box .item {
-    background: #fcfcfc
+    background: #fcfcfc;
 }
 
 .share-box .item .title {
@@ -17676,7 +17676,7 @@ blockquote p.name {
     color: #666;
     font-size: 12px;
     text-transform: uppercase;
-    font-family: Montserrat, sans-serif
+    font-family: Montserrat, sans-serif;
 }
 
 .share-box .share-socials {

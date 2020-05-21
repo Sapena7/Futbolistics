@@ -68,4 +68,14 @@ class NoticiaRepository extends ServiceEntityRepository
 
         return (new Paginator($qb))->paginate($page);
     }
+
+    public function countNoticiasByIdColaborador($id){
+        $query = $this->createQueryBuilder('n')
+            ->select("COUNT(n.id)")
+            ->andwhere("n.colaborador = :id")
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $query->getSingleResult();
+    }
 }

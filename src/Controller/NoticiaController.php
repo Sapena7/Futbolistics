@@ -75,7 +75,11 @@ class NoticiaController extends AbstractController
         $noticias = $this->getDoctrine()
             ->getRepository(Noticia::class);
         $noticia = $noticias->findNewsById($id);
-        $properties = ['noticia' => $noticia];
+        $noticiasRecomendadas = $noticias->orderByFecha();
+        $idColaborador = $noticia->getColaborador();
+        $nNoticiasColaborador = $noticias->countNoticiasByIdColaborador($idColaborador);
+
+        $properties = ['noticia' => $noticia, 'noticiasRecomendadas' => $noticiasRecomendadas, 'nNoticiasColaborador' => $nNoticiasColaborador];
         return $this->render('noticia/noticia.twig', $properties);
     }
 

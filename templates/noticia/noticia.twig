@@ -41,7 +41,7 @@
                     <div class="wrap">
                         <ul class="breadcrumbs">
                             <li><a href="{{ path('homepage') }}">Home</a>/</li>
-                            <li>Noticia</li>
+                            <li><a href="{{ path('noticia_index') }}"></a>Noticias</li>
                         </ul>
                         <h1>Noticia</h1>
                     </div>
@@ -61,60 +61,16 @@
                 <!--SIEDBAR BEGIN-->
 
                 <section class="sidebar col-xs-6 col-sm-6 col-md-3 sidebar-offcanvas" id="sidebar">
-                    <div class="sidebar-menu-wrap">
-                        <h6>Categories</h6>
-                        <ul class="categories-list">
-                            <li>
-                                <a href="#"><span class="count">4</span>News</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="count">22</span>Competitions & Reviews</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#"><span class="count">12</span>News</a></li>
-                                    <li><a href="#"><span class="count">10</span>Competitions & Reviews</a></li>
-                                    <li><a href="#"><span class="count">9</span>Interviews</a></li>
-                                    <li><a href="#"><span class="count">8</span>Highlights</a></li>
-                                    <li><a href="#"><span class="count">7</span>Other</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><span class="count">4</span>Interviews</a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="count">4</span>Highlights</a>
-                            </li>
-                            <li>
-                                <a href="#"><span class="count">4</span>Other</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Buscador -->
-                    <div class="sidebar-search-wrap">
-                        <h6>Search</h6>
-                        <form>
-                            <div class="wrap">
-                                <input type="text">
-                                <button><i class="fa fa-search" aria-hidden="true"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Buscador -->
 
                     <!-- Ultimos posts -->
                     <div class="recent-news">
-                        <h6>recent news</h6>
+                        <h6>Noticias destacadas</h6>
+                        {% for noticia in noticiasRecomendadas%}
                         <div class="item">
-                            <div class="date"><a href="noticia.twig">25 Sep 2016</a> in <a href="noticia.twig">highlights</a></div>
-                            <a href="noticia.twig" class="name">When somersaulting Sanchez shoulderd Mexico’s </a>
+                            <div class="date"><a href="noticia.twig">{{ noticia.Fecha|date("m/d/Y") }}</a><a href="{{ path('noticias_byId', {id: noticia.Id}) }}"> Destacado</a></div>
+                            <a href="{{ path('noticias_byId', {id: noticia.Id}) }}" class="name">{{ noticia.titular }}</a>
                         </div>
-                        <div class="item">
-                            <div class="date"><a href="noticia.twig">25 Sep 2016</a> in <a href="noticia.twig">highlights</a></div>
-                            <a href="noticia.twig" class="name">When somersaulting Sanchez shoulderd Mexico’s </a>
-                        </div>
-                        <div class="item">
-                            <div class="date"><a href="noticia.twig">25 Sep 2016</a> in <a href="noticia.twig">highlights</a></div>
-                            <a href="noticia.twig" class="name">When somersaulting Sanchez shoulderd Mexico’s </a>
-                        </div>
+                        {% endfor %}
                     </div>
                     <!-- Ultimos posts -->
 
@@ -130,18 +86,22 @@
                     </p>
                     <div class="item">
                         <div class="top-info">
-                            <div class="date"><a href="#">{{ noticia.Fecha|date("m/d/Y") }}</a> por <a href="#">{{ noticia.Colaborador.NombreCompleto }}</a></div>
+                            <h4>{{ noticia.Titular }}</h4>
                         </div>
+                        <hr>
                         <div class="img-wrap">
                             <div class="bage highlight">Destacado</div>
                             <img src="{{ asset('assets/images/noticias/') }}{{ noticia.Imagen }}" alt="news-single">
                         </div>
                         <div class="post-text">
-                            <p>{{ noticia.Cuerpo }}
+                            <p>{{ noticia.Cuerpo | raw }}
                             </p>
                         </div>
+                        <div class="top-info">
+                            <div class="date"><a href="#">{{ noticia.Fecha|date("m/d/Y") }}</a> por <a href="#">{{ noticia.Colaborador.NombreCompleto }}</a></div>
+                        </div>
                         <div class="author-box">
-                            <div class="top">
+                            <div class="top" style="border: 2px solid black">
                                 <div class="avatar"><img src="{{ asset('assets/images/usuarios/') }}{{ noticia.Colaborador.FotoPerfil }}" alt="author-avatar"></div>
                                 <div class="info">
                                     <div class="name">{{ noticia.Colaborador.NombreCompleto }}</div>
@@ -151,10 +111,10 @@
                             <div class="share-box">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="item">
+                                        <div class="item" style="border: 2px solid black">
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                                    <div class="title">25 posts</div>
+                                                    <div class="title">{{ nNoticiasColaborador[1] }} noticias</div>
                                                 </div>
                                                 <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 text-right">
                                                     <ul class="share-socials">

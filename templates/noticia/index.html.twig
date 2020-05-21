@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Noticias</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:700,400%7CRaleway:400,800,900" rel="stylesheet" />
-    <link rel="icon" href="../pagina/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/images/iconos/news.svg') }}" type="image/x-icon">
     <link href="{{ asset('assets/css/library/bootstrap.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/dev-assets/preloader-default.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/dev-assets/demo-switcher.css') }}" rel="stylesheet" type="text/css" />
@@ -43,7 +43,7 @@
                     <div class="wrap">
                         <ul class="breadcrumbs">
                             <li><a href="{{ path('homepage') }}">Home</a>/</li>
-                            <li>Noticias</li>
+                            <li><a href="{{ path('noticia_index') }}"></a>Noticias</li>
                         </ul>
                         <h1>General</h1>
                     </div>
@@ -59,85 +59,44 @@
     <div class="content">
         <div class="container">
             <div class="row row-offcanvas row-offcanvas-left">
+                <div class="container-fluid bg-light ">
+                    <form action="{{ path('noticia_index') }}" name="search_form" method='GET'>
+                        <input type="hidden" name="page" value="{{ app.request.query.get("page") }} ?? 'index'">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group ">
+                                <select id="equipo" name="equipo" class="form-control">
+                                    <option value="">Equipo</option>
+                                    {% for equipo in equipos %}
+                                        <option value="{{ equipo.Id }}">{{ equipo.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group">
+                                <input type="date" class="form-control" name="fechaMin" style="width: 180px"><br>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group">
+                                <input type="date" class="form-control" name="fechaMax" style="width: 180px"><br><br>
+                            </div>
+                        </div>
+                        <div class="col-md-2 pt-3">
+                            <div class="form-group">
+                                <input class="form-control" type="text" name="text" placeholder="Buscar texto">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" name="search" value="Filtrar">
+                        </div>
+                    </div>
+                    </form>
+                </div>
 
                 <!--SIDEBAR BEGIN-->
-<section class="sidebar col-xs-6 col-md-3 sidebar-offcanvas" id="sidebar">
-    <div class="sidebar-menu-wrap">
-        <h6>Categories</h6>
-        <form action="{{ path('noticia_index') }}" name="search_form" method='GET'>
-            <input type="hidden" name="page" value="{{ app.request.query.get("page") }} ?? 'index'">
-        <ul class="categories-list">
-            <li>
-                <a href="#"><span class="count">{{ equipos|length }}</span>Equipos</a>
-                <ul>
-                        <select name="equipo">
-                            <option value="">Equipo</option>
-                            {% for equipo in equipos %}
-                                <option value="{{ equipo.Id }}">{{ equipo.nombre }}</option>
-                            {% endfor %}
-                        </select>
-                    </form>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><span class="count">4</span>Noticias</a>
-            </li>
-            <li>
-                <a href="#"><span class="count">4</span>Entrevistas</a>
-            </li>
-            <li>
-                <a href="#"><span class="count">4</span>Comunicados</a>
-            </li>
-            <li>
-                <a href="#"><span class="count">4</span>Otros</a>
-            </li>
-        <br>
-        <h6>Fecha</h6>
 
-        <td>Inicio:</td>
-        <input type="date" name="fechaMin" style="width: 160px"><br>
-
-
-        <td>Final: </td>
-        <input type="date" name="fechaMax" style="width: 160px"><br><br>
-
-        <td>Texto a filtrar:</td>
-        <input class="text" type="text" name="text">
-
-        <input type="submit" name="search" value="Filtrar">
-        </ul>
-    </div>
-
-
-    <!-- filtro -->
-    <div class="sidebar-search-wrap">
-        <h6>Filtro</h6>
-        <form action="{{ path('noticia_index') }}" name="search_form" method='GET'>
-            <input type="hidden" name="page" value="{{ app.request.query.get("page") }} ?? 'index'">
-            <td>Equipo:</td>
-            <select name="equipo">
-                <option value="">Equipo</option>
-                {% for equipo in equipos %}
-                    <option value="{{ equipo.Id }}">{{ equipo.nombre }}</option>
-                {% endfor %}
-            </select>
-
-            <td>Fecha Inicio:</td>
-            <input type="date" name="fechaMin" style="width: 160px">
-
-
-            <td>Fecha Final:</td>
-            <input type="date" name="fechaMax" style="width: 160px">
-
-            <td>Texto a filtrar:</td>
-            <input class="text" type="text" name="text">
-
-            <input type="submit" name="search" value="Filtrar">
-        </form>
-        <br>
-    </div>
-    <!-- fin filtro -->
-</section>
 
 
 <!--SIEDBAR END--><br>
@@ -149,7 +108,7 @@
                         {% endif %}
                     {% endif %}
                 {% endif %}
-<div class="news-list col-xs-12 col-md-9">
+<div class="news-list col-xs-12 col-md-9" style="text-align: center">
     <p class="hidden-md hidden-lg">
         <button type="button" class="btn sidebar-btn" data-toggle="offcanvas" title="Toggle sidebar">sidebar</button>
     </p>
