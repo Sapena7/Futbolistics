@@ -23,7 +23,11 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
-    <body>
+    <body style="  background: #FFD400;
+  background: -webkit-linear-gradient(left, #F9FDFD, #DFE4E9, #C2CBD2);
+  background: -o-linear-gradient(left, #F9FDFD, #DFE4E9, #C2CBD2);
+  background: -moz-linear-gradient(left, #F9FDFD, #DFE4E9, #C2CBD2);
+  background: linear-gradient(left, #F9FDFD, #DFE4E9, #C2CBD2);">
     {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
