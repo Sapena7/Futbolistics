@@ -36,14 +36,21 @@
 				<span class="login100-form-title p-b-41">
 					Futbolistics
 				</span>
+
             {{ form_start(registrationForm) }}
             {{ form_row(registrationForm.email) }}
             {{ form_row(registrationForm.nombre) }}
-            {{ form_row(registrationForm.nombrecompleto) }}
-            {{ form_row(registrationForm.plainPassword) }}
-
-            <button class="btn">Register</button>
+            {{ form_row(registrationForm.nombrecompleto, { 'label': 'Nombre completo'}) }}
+            {{ form_row(registrationForm.plainPassword, { 'label': 'Contraseña'}) }}
+            <br>
+            <button style="width: 40%;
+margin-left: 30%;
+margin-right: 30%" class="login100-form-btn">Registrarse</button>
             {{ form_end(registrationForm) }}
+            <br>
+            <a href="{{ path('homepage') }}"><button style="width: 40%;
+margin-left: 30%;
+margin-right: 30%" class="login100-form-btn">Volver</button></a>
 
         </div>
     </div>
