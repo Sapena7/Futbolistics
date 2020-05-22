@@ -23,6 +23,7 @@ class ClasificacionRepository extends ServiceEntityRepository
     public function findAllOrderedByPuntos() {
         $query = $this->createQueryBuilder('c')
             ->orderBy('c.puntos', 'DESC')
+            ->setMaxResults(16)
             ->getQuery();
 
         return $query->getResult();

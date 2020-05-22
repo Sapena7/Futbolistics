@@ -6,6 +6,7 @@ use App\Entity\Equipo;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class EquipoType extends AbstractType
 {
@@ -17,7 +18,10 @@ class EquipoType extends AbstractType
             ->add('trofeos')
             ->add('region')
             ->add('fundacion')
-            ->add('fotoPerfil')
+            ->add('fotoPerfilFile', VichImageType::class, [
+                'label' => false,
+                'required' => false
+            ])
             ->add('estadio')
             ->add('liga')
         ;

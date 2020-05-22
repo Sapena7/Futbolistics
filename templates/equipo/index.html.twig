@@ -58,6 +58,23 @@
         <div class="row">
             {% for equipo in equipos %}
                 <div class="col-md-3">
+                    {% if app.user is not empty %}
+                        {% if app.user.rol is not empty %}
+                            {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
+                                <div class="dropdown" style="float: right; z-index: 3; text-align: right">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="font-size: 5px">
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ path('equipo_edit', {id: equipo.Id}) }}">
+                                                Editar<br>Borrar
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
                     <a href="{{ path('equipo_show', {id: equipo.Id}) }}" class="item">
                         <span class="logo"><img src="{{ asset('assets/images/escudos/')}}{{ equipo.fotoPerfil }}" width="80" height="80" alt="team-logo"></span>
                         <span class="name">{{ equipo.Nombre }}</span>

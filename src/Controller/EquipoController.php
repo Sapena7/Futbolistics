@@ -6,6 +6,7 @@ use App\Entity\Clasificacion;
 use App\Entity\Equipo;
 use App\Entity\Jornada;
 use App\Entity\Jugador;
+use App\Entity\Liga;
 use App\Entity\Partido;
 use App\Entity\Usuario;
 use App\Form\EquipoType;
@@ -43,9 +44,29 @@ class EquipoController extends AbstractController
         $form = $this->createForm(EquipoType::class, $equipo);
         $form->handleRequest($request);
 
+        $liga = $this->getDoctrine()
+            ->getRepository(Liga::class);
+
+        $ligaEquipo = $liga->find(1);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($equipo);
+            $entityManager->flush();
+
+            $clasificacion = new Clasificacion();
+            $clasificacion->setLiga($ligaEquipo);
+            $clasificacion->setEquipo($equipo);
+            $clasificacion->setPuntos(0);
+            $clasificacion->setJugados(0);
+            $clasificacion->setGanados(0);
+            $clasificacion->setEmpatados(0);
+            $clasificacion->setPerdidos(0);
+            $clasificacion->setGolesFavor(0);
+            $clasificacion->setGolesContra(0);
+            $clasificacion->setGolesDiferencia(0);
+
+            $entityManager->persist($clasificacion);
             $entityManager->flush();
 
             return $this->redirectToRoute('equipo_index');

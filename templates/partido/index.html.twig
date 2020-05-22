@@ -42,10 +42,10 @@
                 <div class="info">
                     <div class="wrap">
                         <ul class="breadcrumbs">
-                            <li><a href="index-2.html">Home</a>/</li>
-                            <li>Category</li>
+                            <li><a href="{{ path('homepage') }}">Home</a>/</li>
+                            <li>Partidos</li>
                         </ul>
-                        <h1>Category</h1>
+                        <h1>Partidos</h1>
                     </div>
                 </div>
             </div>
@@ -56,6 +56,15 @@
 <!--MAIN MATCH SHEDULE BEGIN-->
 <section class="main-match-shedule amateurs-match-shedule">
     <div class="container">
+        {% if app.user is not empty %}
+            {% if app.user.rol is not empty %}
+                {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR' %}
+                    <a href="{{ path('partido_new') }}" class="btn small club-top-btn">Crear partido</a>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        <br>
+        <hr>
         <div class="row">
             {% for liga in ligas %}
                 <div class="col-md-12 col-sm-12 col-xs-12"><h5>{{ liga.nombre }}</h5></div>
@@ -112,12 +121,7 @@
                                 <span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a href="{{ path('partido_edit', {id: partido.Id}) }}">
-                                        Editar
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('partido_delete', {id: partido.Id}) }}">
-                                        Borrar
+                                        Editar<br>Borrar
                                     </a>
                                 </li>
                             </ul>
