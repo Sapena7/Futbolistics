@@ -16,7 +16,8 @@ class NoticiaType extends AbstractType
         $builder
             ->add('titular')
             ->add('cuerpo', TextareaType::class, [
-                'attr' => ['class' => 'tinymce'],
+                'required' => false,
+                'attr' => ['class' => 'tinymce']
             ])
             ->add('fecha')
             ->add('imagenFile', VichImageType::class, [
