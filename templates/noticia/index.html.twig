@@ -132,7 +132,7 @@
                     {% endif %}
             </div>
             <a href="{{ path('noticias_byId', {id: noticia.Id}) }}">
-                <img src="{{ asset('assets/images/noticias/') }}{{ noticia.Imagen }}" alt="post image">
+                <img src="{{ asset('assets/images/noticias/') }}{{ noticia.Imagen }}" width="847px" height="476" alt="post image">
             </a>
         </div>
         <div>
@@ -148,6 +148,7 @@
     </div>
     {% endfor %}
     <!-- fin noticia -->
+
     {% if noticias.hasToPaginate %}
     <div class="pagination-wrap">
         <ul class="pagination">
@@ -176,6 +177,8 @@
     </div>
 
     <!--CONTENT END-->
+    <br>
+    <hr>
 
     {% include 'pagina/partials/footer.twig' %}
 
