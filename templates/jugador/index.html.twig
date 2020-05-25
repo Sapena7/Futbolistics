@@ -91,17 +91,6 @@
                         {% endif %}
                     {% endif %}
                 </span>
-                <span class="delete">
-                    {% if app.user is not empty %}
-                        {% if app.user.rol is not empty %}
-                            {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
-                                <a href="{{ path('jugador_delete', {id: jugador.Id}) }}">
-                                    <img src="{{ asset('assets/images/common/delete.png') }}" width="25px" height="25px" alt="edit image">
-                                </a>
-                            {% endif %}
-                        {% endif %}
-                    {% endif %}
-                </span>
             </div>
         {% endif %}
     {% endfor %}
@@ -129,17 +118,6 @@
                             {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
                                 <a href="{{ path('jugador_edit', {id: jugador.Id}) }}">
                                     <img src="{{ asset('assets/images/common/edit.png') }}" width="25px" height="25px" alt="edit image">
-                                </a>
-                            {% endif %}
-                        {% endif %}
-                    {% endif %}
-                </span>
-                    <span class="delete">
-                    {% if app.user is not empty %}
-                        {% if app.user.rol is not empty %}
-                            {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
-                                <a href="{{ path('jugador_delete', {id: jugador.Id}) }}">
-                                    <img src="{{ asset('assets/images/common/delete.png') }}" width="25px" height="25px" alt="edit image">
                                 </a>
                             {% endif %}
                         {% endif %}
@@ -176,17 +154,6 @@
                         {% endif %}
                     {% endif %}
                 </span>
-                                <span class="delete">
-                    {% if app.user is not empty %}
-                        {% if app.user.rol is not empty %}
-                            {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
-                                <a href="{{ path('jugador_delete', {id: jugador.Id}) }}">
-                                    <img src="{{ asset('assets/images/common/delete.png') }}" width="25px" height="25px" alt="edit image">
-                                </a>
-                            {% endif %}
-                        {% endif %}
-                    {% endif %}
-                </span>
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -215,17 +182,6 @@
                             {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
                                 <a href="{{ path('jugador_edit', {id: jugador.Id}) }}">
                                     <img src="{{ asset('assets/images/common/edit.png') }}" width="25px" height="25px" alt="edit image">
-                                </a>
-                            {% endif %}
-                        {% endif %}
-                    {% endif %}
-                </span>
-                                <span class="delete">
-                    {% if app.user is not empty %}
-                        {% if app.user.rol is not empty %}
-                            {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
-                                <a href="{{ path('jugador_delete', {id: jugador.Id}) }}">
-                                    <img src="{{ asset('assets/images/common/delete.png') }}" width="25px" height="25px" alt="edit image">
                                 </a>
                             {% endif %}
                         {% endif %}

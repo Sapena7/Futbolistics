@@ -6,10 +6,9 @@
     <div class="container">
         <h1>Edit Partido</h1>
         <div>
-            {{ include('partido/_form.html.twig', {'button_label': 'Editar'}) }}
-            {{ include('partido/_delete_form.html.twig') }}
+            {{ include('partido/_form.html.twig', {'button_label': 'Guardar'}) }}
         </div>
-        <a href="{{ path('partidos_index') }}"><button class="btn">Volver</button></a>
-
+            {{ include('partido/_delete_form.html.twig') }}
+            <a href="{{ path('partidos_index') }}"><button class="btn">Volver</button></a>
     </div>
 {% endblock %}

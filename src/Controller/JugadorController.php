@@ -113,7 +113,7 @@ class JugadorController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('jugador_index');
+            return $this->redirectToRoute('equipos_byId', array('id' => $equipo->getId()));
         }
 
         return $this->render('jugador/edit.html.twig', [
@@ -128,13 +128,17 @@ class JugadorController extends AbstractController
      */
     public function delete(Request $request, Jugador $jugador): Response
     {
+        $jug = $this->getDoctrine()
+            ->getRepository(Jugador::class);
+        $jugador2 = $jug->findById($jugador->getId());
+        $equipo = $jugador2->getEquipo();
         if ($this->isCsrfTokenValid('delete'.$jugador->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($jugador);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('jugador_index');
+        return $this->redirectToRoute('equipos_byId', array('id' => $equipo->getId()));
     }
 
     /**

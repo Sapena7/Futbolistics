@@ -73,7 +73,7 @@ class UsuarioController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('usuario_index');
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('usuario/edit.html.twig', [
@@ -93,7 +93,7 @@ class UsuarioController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('usuario_index');
+        return $this->redirectToRoute('homepage');
     }
 
     /**

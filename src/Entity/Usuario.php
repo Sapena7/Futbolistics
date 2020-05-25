@@ -170,7 +170,12 @@ class Usuario implements UserInterface, \Serializable
 
     public function getFotoPerfil(): ?string
     {
-        return $this->fotoPerfil;
+        if ($this->fotoPerfil == null){
+            $this->fotoPerfil = 'perfilPorDefecto.png';
+        }
+            return $this->fotoPerfil;
+
+
     }
 
     public function setFotoPerfil(?string $fotoPerfil): self
