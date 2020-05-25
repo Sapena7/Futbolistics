@@ -82,10 +82,16 @@
                 </div>
             {% endfor %}
             <div class="col-md-3">
+                {% if app.user is not empty %}
+                    {% if app.user.rol is not empty %}
+                        {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR'  %}
                 <a href="{{ path('equipo_new')}}" class="item">
                     <span class="logo"><img src="{{ asset('assets/images/common/new.png')}}" width="80" height="80" alt="team-logo"></span>
                     <span class="name">Crear equipo</span>
                 </a>
+                {% endif %}
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>

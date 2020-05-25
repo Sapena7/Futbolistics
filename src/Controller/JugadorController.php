@@ -101,6 +101,12 @@ class JugadorController extends AbstractController
      */
     public function edit(Request $request, Jugador $jugador): Response
     {
+        $equipoRespos = $this->getDoctrine()
+            ->getRepository(Equipo::class);
+        $jug = $this->getDoctrine()
+            ->getRepository(Jugador::class);
+        $jugador2 = $jug->findById($jugador->getId());
+        $equipo = $jugador2->getEquipo();
         $form = $this->createForm(JugadorType::class, $jugador);
         $form->handleRequest($request);
 
@@ -112,6 +118,7 @@ class JugadorController extends AbstractController
 
         return $this->render('jugador/edit.html.twig', [
             'jugador' => $jugador,
+            'equipo' => $equipo,
             'form' => $form->createView(),
         ]);
     }

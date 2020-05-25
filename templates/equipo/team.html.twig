@@ -66,13 +66,14 @@
                     <a href="{{ path('equipos_byId', {id: equipo.Id}) }}" class="btn small club-top-btn">Jugadores</a>
                 </div>
                 {% if app.user is not empty %}
-                    {% if app.user.equipoFavorito is empty or app.user.equipoFavorito.id != equipo.id%}
+                    {% if app.user.equipoFavorito is empty or app.user.equipoFavorito.id != equipo.id %}
                         <div class="col-md-3 col-sm-3 col-xs-3">
                             <a href="{{ path('follow_team', {id_team: equipo.Id, id_user: app.user.Id}) }}" onclick="return confirm('Estas seguro?')" class="btn small club-top-btn">Seguir</a>
                         </div>
-                    {% elseif app.user.equipoFavorito.id == equipo.Id %}
+                        {% endif %}
+                    {% if app.user.equipoFavorito is not empty and app.user.equipoFavorito.id == equipo.Id %}
                         <div class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="{{ path('unfollow_team', {id_user: app.user.Id}) }}" class="btn small club-top-btn">Dejar de seguir</a>
+                            <a href="{{ path('unfollow_team', {id_user: app.user.Id}) }}" onclick="return confirm('Estas seguro?')" class="btn small club-top-btn">Dejar de seguir</a>
                         </div>
                     {% endif %}
                 {% endif %}
@@ -93,7 +94,6 @@
                 <div class="org-club-info">
                     <div class="title">Información</div><br>
                     <div class="item"><span>Fundacion:</span> {{ equipo.fundacion }}</div>
-                    <div class="item"><span>Campo:</span> {{ equipo.estadio.nombre }}</div>
                     <div class="item"><span>Ciudad:</span> {{ equipo.estadio.ciudad }}</div>
                     <div class="item"><span>Trofeos:</span> {{ equipo.trofeos }}</div>
                     <div class="item"><span>Entrenador:</span> {{ equipo.entrenador }}</div>

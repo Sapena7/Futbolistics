@@ -97,7 +97,7 @@ class UsuarioController extends AbstractController
     }
 
     /**
-     * @Route("/equipo/{id_team}/user/{id_user}", name="follow_team", methods={"GET"})
+     * @Route("/equipo/{id_team}/user/{id_user}/followTeam", name="follow_team", methods={"GET"})
      */
     public function followTeam($id_team, $id_user)
     {
@@ -126,6 +126,9 @@ class UsuarioController extends AbstractController
         $usuario = $usuarios->findUserById($id_user);
 
         $usuario->setEquipoFavorito(null);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($usuario);
+        $entityManager->flush();
 
         return $this->redirectToRoute('equipo_index');
     }
