@@ -21,7 +21,7 @@ class NoticiaType extends AbstractType
             ])
             ->add('fecha')
             ->add('imagenFile', VichImageType::class, [
-                'label' => false,
+                'label' => 'Imagen',
                 'required' => false
             ])
             ->add('equipo')

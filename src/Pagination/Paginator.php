@@ -40,7 +40,7 @@ class Paginator
 
         $query = $this->queryBuilder
             ->setFirstResult($firstResult)
-            ->setMaxResults($this->pageSize)
+            ->setMaxResults(4)
             ->getQuery();
 
         if (0 === \count($this->queryBuilder->getDQLPart('join'))) {

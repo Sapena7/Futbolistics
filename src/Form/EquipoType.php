@@ -19,7 +19,7 @@ class EquipoType extends AbstractType
             ->add('region')
             ->add('fundacion')
             ->add('fotoPerfilFile', VichImageType::class, [
-                'label' => false,
+                'label' => 'Imagen',
                 'required' => false
             ])
             ->add('estadio')
