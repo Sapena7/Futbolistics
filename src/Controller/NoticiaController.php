@@ -120,6 +120,11 @@ class NoticiaController extends AbstractController
 
             $mailer->send($email);
 
+            $this->addFlash(
+                'info',
+                'Creado correctamente'
+            );
+
             return $this->redirectToRoute('noticia_index');
         }
 
@@ -150,6 +155,11 @@ class NoticiaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'info',
+                'Editado correctamente'
+            );
+
             return $this->redirectToRoute('noticia_index');
         }
 
@@ -168,6 +178,11 @@ class NoticiaController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($noticium);
             $entityManager->flush();
+
+            $this->addFlash(
+                'info',
+                'Borrado correctamente'
+            );
         }
 
         return $this->redirectToRoute('noticia_index');

@@ -55,10 +55,22 @@
 
 <!--STANDING TABLE WRAP BEGIN-->
 
-
+<hr>
+{% for message in app.flashes('info') %}
+    <div class="alert alert-success" style="width: 50%; text-align: center; margin: auto;">
+        {{ message }}
+    </div>
+{% endfor %}
 <section class="standing-table-wrap">
     <div class="container">
         <div class="row">
+            {% if app.user is not empty %}
+                {% if app.user.rol is not empty %}
+                    {% if app.user.rol == 'ROLE_ADMIN' or app.user.rol == 'ROLE_COLABORATOR' %}
+                        <a href="{{ path('clasificacion_new') }}" class="btn small club-top-btn">Añadir equipo</a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <h4>Primera Regional Grupo 6</h4>
             </div>

@@ -52,7 +52,13 @@
 </section>
 <!--BREADCRUMBS END-->
 <br>
-
+<br>
+{% for message in app.flashes('info') %}
+    <div class="alert alert-success" style="width: 50%; text-align: center; margin: auto;">
+        {{ message }}
+    </div>
+{% endfor %}
+<br>
 <div class="part-list">
     <div class="container">
         <div class="row">

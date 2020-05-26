@@ -54,20 +54,10 @@ class EquipoController extends AbstractController
             $entityManager->persist($equipo);
             $entityManager->flush();
 
-            $clasificacion = new Clasificacion();
-            $clasificacion->setLiga($ligaEquipo);
-            $clasificacion->setEquipo($equipo);
-            $clasificacion->setPuntos(0);
-            $clasificacion->setJugados(0);
-            $clasificacion->setGanados(0);
-            $clasificacion->setEmpatados(0);
-            $clasificacion->setPerdidos(0);
-            $clasificacion->setGolesFavor(0);
-            $clasificacion->setGolesContra(0);
-            $clasificacion->setGolesDiferencia(0);
-
-            $entityManager->persist($clasificacion);
-            $entityManager->flush();
+            $this->addFlash(
+                'info',
+                'Creado correctamente'
+            );
 
             return $this->redirectToRoute('equipo_index');
         }
@@ -120,6 +110,11 @@ class EquipoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'info',
+                'Editado correctamente'
+            );
+
             return $this->redirectToRoute('equipo_index');
         }
 
@@ -134,10 +129,16 @@ class EquipoController extends AbstractController
      */
     public function delete(Request $request, Equipo $equipo): Response
     {
+
         if ($this->isCsrfTokenValid('delete'.$equipo->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($equipo);
             $entityManager->flush();
+
+            $this->addFlash(
+                'info',
+                'Borrado correctamente'
+            );
         }
 
         return $this->redirectToRoute('equipo_index');

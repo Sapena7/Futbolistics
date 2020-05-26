@@ -65,6 +65,11 @@ class PartidoController extends AbstractController
             $entityManager->persist($partido);
             $entityManager->flush();
 
+            $this->addFlash(
+                'info',
+                'Creado correctamente'
+            );
+
             return $this->redirectToRoute('partidos_index');
         }
 
@@ -111,6 +116,11 @@ class PartidoController extends AbstractController
             return $this->redirectToRoute('partidos_index');
         }
 
+        $this->addFlash(
+            'info',
+            'Editado correctamente'
+        );
+
         return $this->render('partido/edit.html.twig', [
             'partido' => $partido,
             'form' => $form->createView(),
@@ -126,6 +136,11 @@ class PartidoController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($partido);
             $entityManager->flush();
+
+            $this->addFlash(
+                'info',
+                'Borrado correctamente'
+            );
         }
 
         return $this->redirectToRoute('partidos_index');

@@ -55,6 +55,11 @@
 <!--BREADCRUMBS END-->
 <!--MAIN MATCH SHEDULE BEGIN-->
 <section class="main-match-shedule amateurs-match-shedule">
+    {% for message in app.flashes('info') %}
+        <div class="alert alert-success" style="width: 50%; text-align: center; margin: auto;">
+            {{ message }}
+        </div>
+    {% endfor %}
     <div class="container">
         {% if app.user is not empty %}
             {% if app.user.rol is not empty %}

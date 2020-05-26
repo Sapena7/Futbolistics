@@ -49,6 +49,11 @@ class ClasificacionController extends AbstractController
             $entityManager->persist($clasificacion);
             $entityManager->flush();
 
+            $this->addFlash(
+                'info',
+                'Creado correctamente'
+            );
+
             return $this->redirectToRoute('clasificacion_index');
         }
 
@@ -79,6 +84,11 @@ class ClasificacionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'info',
+                'Editado correctamente'
+            );
+
             return $this->redirectToRoute('clasificacion_index');
         }
 
@@ -97,6 +107,11 @@ class ClasificacionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($clasificacion);
             $entityManager->flush();
+
+            $this->addFlash(
+                'info',
+                'Borrado correctamente'
+            );
         }
 
         return $this->redirectToRoute('clasificacion_index');
