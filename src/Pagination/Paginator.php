@@ -20,7 +20,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator as DoctrinePaginator;
  */
 class Paginator
 {
-    private const PAGE_SIZE = 10;
+    private const PAGE_SIZE = 4;
     private $queryBuilder;
     private $currentPage;
     private $pageSize;
@@ -40,7 +40,7 @@ class Paginator
 
         $query = $this->queryBuilder
             ->setFirstResult($firstResult)
-            ->setMaxResults(4)
+            ->setMaxResults($this->pageSize)
             ->getQuery();
 
         if (0 === \count($this->queryBuilder->getDQLPart('join'))) {

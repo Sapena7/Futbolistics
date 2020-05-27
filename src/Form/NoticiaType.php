@@ -19,7 +19,10 @@ class NoticiaType extends AbstractType
                 'required' => false,
                 'attr' => ['class' => 'tinymce']
             ])
-            ->add('fecha')
+            ->add('fecha',\Symfony\Component\Form\Extension\Core\Type\DateType::class, array(
+                'label' => 'Fecha',
+                'data' => new \DateTime()
+            ))
             ->add('imagenFile', VichImageType::class, [
                 'label' => 'Imagen',
                 'required' => false

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Partido;
+use Doctrine\DBAL\Types\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,7 +15,10 @@ class PartidoType extends AbstractType
         $builder
             ->add('golesLocal')
             ->add('golesVisitante')
-            ->add('fecha')
+            ->add('fecha',\Symfony\Component\Form\Extension\Core\Type\DateType::class, array(
+                'label' => 'Fecha',
+                'data' => new \DateTime()
+            ))
             ->add('equipoLocal')
             ->add('equipoVisitante')
             ->add('estadio')
