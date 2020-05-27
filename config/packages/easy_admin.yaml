@@ -174,7 +174,7 @@ easy_admin:
           fields:
             - { property: 'titular', type: 'string' }
             - { property: 'equipo'}
-            - { property: 'cuerpo', type: 'email' }
+            - { property: 'cuerpo'}
             - { property: 'fecha'}
             - { property: 'colaborador'}
             - { property: 'imagen', type: 'image' }

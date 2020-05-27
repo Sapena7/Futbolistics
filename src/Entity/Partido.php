@@ -194,7 +194,7 @@ class Partido
     }
 
     public function __toString() {
-        return $this->getEquipoLocal()->getNombre();
+        return $this->getEquipoLocal()->getNombre() . ' - ' . $this->getEquipoVisitante()->getNombre();
     }
 
 }
