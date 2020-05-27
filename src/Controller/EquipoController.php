@@ -54,6 +54,20 @@ class EquipoController extends AbstractController
             $entityManager->persist($equipo);
             $entityManager->flush();
 
+            $clasificacion = new Clasificacion();
+            $clasificacion->setLiga($ligaEquipo);
+            $clasificacion->setEquipo($equipo);
+            $clasificacion->setJugados(0);
+            $clasificacion->setPuntos(0);
+            $clasificacion->setGanados(0);
+            $clasificacion->setEmpatados(0);
+            $clasificacion->setPerdidos(0);
+            $clasificacion->setGolesFavor(0);
+            $clasificacion->setGolesContra(0);
+            $clasificacion->setGolesDiferencia(0);
+            $entityManager->persist($clasificacion);
+            $entityManager->flush();
+
             $this->addFlash(
                 'info',
                 'Creado correctamente'
@@ -129,11 +143,20 @@ class EquipoController extends AbstractController
      */
     public function delete(Request $request, Equipo $equipo): Response
     {
+        $clasificacionRepos = $this->getDoctrine()
+            ->getRepository(Clasificacion::class);
+
+        $clasificacion = $clasificacionRepos->findByTeamId($equipo->getId());
 
         if ($this->isCsrfTokenValid('delete'.$equipo->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->remove($clasificacion);
+            $entityManager->flush();
+
             $entityManager->remove($equipo);
             $entityManager->flush();
+
 
             $this->addFlash(
                 'info',

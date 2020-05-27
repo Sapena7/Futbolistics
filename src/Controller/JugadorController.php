@@ -71,13 +71,16 @@ class JugadorController extends AbstractController
         $jugador = new Jugador();
         $form = $this->createForm(JugadorType::class, $jugador);
         $form->handleRequest($request);
+        $equipos = $this->getDoctrine()
+            ->getRepository(Equipo::class);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($jugador);
             $entityManager->flush();
+            $equipo = $jugador->getEquipo();
 
-            return $this->redirectToRoute('jugador_index');
+            return $this->redirectToRoute('equipos_byId', array('id' => $equipo->getId()));
         }
 
         return $this->render('jugador/new.html.twig', [

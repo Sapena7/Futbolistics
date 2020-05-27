@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Usuario;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,10 +16,12 @@ class UsuarioType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('nombrecompleto')
+            ->add('nombrecompleto', \Symfony\Component\Form\Extension\Core\Type\TextType::class,[
+                'label' => 'Nombre completo',
+            ])
             ->add('email')
             ->add('fotoPerfilFile', VichImageType::class, [
-                'label' => false,
+                'label' => 'Foto perfil',
                 'required' => false
             ])
             ->add('equipoFavorito')

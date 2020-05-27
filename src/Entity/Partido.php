@@ -193,4 +193,8 @@ class Partido
         return $this;
     }
 
+    public function __toString() {
+        return $this->getEquipoLocal()->getNombre();
+    }
+
 }

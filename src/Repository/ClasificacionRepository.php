@@ -29,6 +29,15 @@ class ClasificacionRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function findByTeamId($id) : Clasificacion {
+        $query = $this->createQueryBuilder('c')
+            ->andwhere("c.equipo = :id")
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $query->getSingleResult();
+    }
+
     public function findPartidosGanadosByEquipo($id) {
         $query = $this->createQueryBuilder('c')
             ->select("c.ganados")
