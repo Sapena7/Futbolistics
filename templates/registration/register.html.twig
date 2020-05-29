@@ -39,8 +39,8 @@
 
             {{ form_start(registrationForm) }}
             {{ form_row(registrationForm.email) }}
-            {{ form_row(registrationForm.nombre) }}
-            {{ form_row(registrationForm.nombrecompleto, { 'label': 'Nombre completo'}) }}
+            {{ form_row(registrationForm.nombre, { 'label': 'Usuario'}) }}
+            {{ form_row(registrationForm.nombrecompleto, { 'label': 'Nombre'}) }}
             {{ form_row(registrationForm.plainPassword, { 'label': 'Contraseña'}) }}
             <br>
             <button style="width: 40%;

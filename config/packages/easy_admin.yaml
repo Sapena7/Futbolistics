@@ -214,7 +214,7 @@ easy_admin:
             - email
             - password
             - equipoFavorito
-            - rol
+            - { property: 'rol', type: 'choice', type_options: { choices:  { 'ROLE_ADMIN': "ROLE_ADMIN", 'ROLE_COLABORATOR': "ROLE_COLABORATOR", 'ROLE_USER': "ROLE_USER"} } }
             - { property: 'fotoPerfilFile', type: 'vich_image', label: 'Foto usuario' }
         list:
           item_permission: 'ROLE_ADMIN'

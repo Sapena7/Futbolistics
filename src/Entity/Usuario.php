@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Array_;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Usuario
@@ -155,13 +156,17 @@ class Usuario implements UserInterface, \Serializable
     {
         if ($this->rol == null){
             return 'ROLE_USER';
-        }else{
+        }
+
+        if (is_array($this->rol)){
             return $this->rol[0];
+        }else{
+            return $this->rol;
         }
 
     }
 
-    public function setRol(array $rol): self
+    public function setRol(string $rol): self
     {
         $this->rol = $rol;
 
@@ -171,7 +176,7 @@ class Usuario implements UserInterface, \Serializable
     public function getFotoPerfil(): ?string
     {
         if ($this->fotoPerfil == null){
-            $this->fotoPerfil = 'perfilPorDefecto.png';
+            $this->fotoPerfil = 'perfilPerDefecte.jpg';
         }
             return $this->fotoPerfil;
 
@@ -218,7 +223,7 @@ class Usuario implements UserInterface, \Serializable
      */
     public function getRoles():?array{
 
-        $roles = $this->rol;
+        $roles = array($this->rol);
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Usuario;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,11 +16,11 @@ class UsuarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nombre')
-            ->add('nombrecompleto', \Symfony\Component\Form\Extension\Core\Type\TextType::class,[
-                'label' => 'Nombre completo',
-            ])
-            ->add('email')
+            ->add('nombre', \Symfony\Component\Form\Extension\Core\Type\TextType::class)
+            ->add('nombrecompleto', \Symfony\Component\Form\Extension\Core\Type\TextType::class, array(
+                'attr' => ['pattern' => '[a-zA-Z]*']
+            ))
+            ->add('email', EmailType::class)
             ->add('fotoPerfilFile', VichImageType::class, [
                 'label' => 'Foto perfil',
                 'required' => false

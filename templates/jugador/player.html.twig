@@ -113,20 +113,28 @@
                         </div>
                         <h6>Resumen</h6>
                         <p><b>{{ jugador.nombre }}</b> es <b>{{ jugador.posicion.nombre }}</b> en el equipo <b>{{ jugador.equipo.nombre }} </b>en <b>{{ jugador.equipo.liga.nombre }}</b></p>
-                        <h6>Trophies</h6>
+                        <h6>Trofeos jugador</h6>
                         <ul class="player-trophey">
-                            <li>
-                                <img src="images/common/am-trophey1.png" width="100" height="150" alt="trophy">
-                                <div class="year">2012</div>
-                            </li>
-                            <li>
-                                <img src="images/common/am-trophey.png" width="100" height="150" alt="trophy">
-                                <div class="year">2015</div>
-                            </li>
-                            <li>
-                                <img src="images/common/am-trophey2.png" width="100" height="150" alt="trophy">
-                                <div class="year">2017</div>
-                            </li>
+                            {% if jugador.equipo.trofeos == 0 %}
+                                De momento no cuenta con trofeos
+                            {% endif %}
+                            {% if jugador.equipo.trofeos == 1 %}
+                                Ha ganado {{ equipo.trofeos }} trofeo <br><br>
+                                <li>
+                                    <img src="{{ asset('assets/images/common/am-trophey1.png') }}" width="100" height="150" alt="trophy">
+                                </li>
+
+                            {% endif %}
+                            {% if jugador.equipo.trofeos > 1 %}
+                                Ha ganado {{ equipo.trofeos }} trofeos <br><br>
+                                {% for i in 1..jugador.equipo.trofeos %}
+                                    <li>
+                                        <img src="{{ asset('assets/images/common/am-trophey1.png') }}" width="100" height="150" alt="trophy">
+                                    </li>
+                                {% endfor %}
+
+
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
