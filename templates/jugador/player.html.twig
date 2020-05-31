@@ -94,19 +94,17 @@
                                 <div class="col-md-9 col-sm-9 col-xs-9">{{ jugador.rojas }}</div>
                             </div>
                         </div>
-                        <h6>club history</h6>
+                        <h6>Estadisticas</h6>
                         <div class="overflow-scroll">
                             <table>
                                 <tr>
                                     <th>Temporada</th>
                                     <th class="club">Equipo</th>
-                                    <th>Partidos</th>
                                     <th>Goles</th>
                                 </tr>
                                 <tr>
                                     <td>2019/2020</td>
                                     <td class="club"><img src="{{ asset('assets/images/escudos/') }}{{ jugador.equipo.fotoPerfil }}" width="30" height="30" alt="trophy"> {{ jugador.equipo.nombre }}</td>
-                                    <td>{{ jugador.goles }}</td>
                                     <td><span>{{ jugador.goles }}</span></td>
                                 </tr>
                             </table>

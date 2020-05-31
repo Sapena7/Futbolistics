@@ -17,9 +17,7 @@ class UsuarioType extends AbstractType
     {
         $builder
             ->add('nombre', \Symfony\Component\Form\Extension\Core\Type\TextType::class)
-            ->add('nombrecompleto', \Symfony\Component\Form\Extension\Core\Type\TextType::class, array(
-                'attr' => ['pattern' => '[a-zA-Z]*']
-            ))
+            ->add('nombrecompleto', \Symfony\Component\Form\Extension\Core\Type\TextType::class)
             ->add('email', EmailType::class)
             ->add('fotoPerfilFile', VichImageType::class, [
                 'label' => 'Foto perfil',
